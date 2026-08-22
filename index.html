@@ -1,2453 +1,5422 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#03050a">
-<meta name="description" content="Cognitive Dynamics Studio — Four Interactive Models of Cognition. An educational interactive simulation laboratory.">
-<meta name="author" content="Cognitive Dynamics Studio">
-<meta property="og:title" content="Cognitive Dynamics Studio">
-<meta property="og:description" content="Four Interactive Models of Cognition">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://cognitivedynamicsstudio.com/">
-<link rel="canonical" href="https://cognitivedynamicsstudio.com/">
-<title>Cognitive Dynamics Studio — Four Interactive Models of Cognition</title>
-
-<style>
-:root{
-  --bg:#03050a;
-  --panel:#080d15;
-  --panel2:#0b131d;
-  --line:#263746;
-  --text:#f5f8fb;
-  --muted:#a9b6c2;
-  --soft:#718292;
-  --blue:#25b8ff;
-  --green:#42ed72;
-  --purple:#c765ff;
-  --orange:#ff9e27;
-  --danger:#ff5c6c;
-  --shadow:0 24px 90px rgba(0,0,0,.48);
-}
-
-*{box-sizing:border-box}
-
-html{
-  background:var(--bg);
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 50% -12%,rgba(23,54,79,.42),transparent 38%),
-    radial-gradient(circle at 0 40%,rgba(37,184,255,.045),transparent 28%),
-    radial-gradient(circle at 100% 65%,rgba(199,101,255,.04),transparent 28%),
-    var(--bg);
-  color:var(--text);
-  font:18px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
-
-button,input,select{
-  font:inherit;
-}
-
-button{
-  -webkit-tap-highlight-color:transparent;
-}
-
-a{
-  color:#c5eaff;
-}
-
-a:hover{
-  color:#fff;
-}
-
-.wrap{
-  width:min(1600px,100%);
-  margin:auto;
-  padding:0 20px;
-}
-
-.top{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(3,5,10,.9);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid #223241;
-}
-
-.topin{
-  width:min(1600px,100%);
-  margin:auto;
-  padding:13px 20px;
-}
-
-.row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.brand{
-  font-weight:900;
-  font-size:1.15rem;
-  letter-spacing:-.02em;
-}
-
-.eyebrow{
-  color:#8193a5;
-  font:800 10px/1.2 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-}
-
-.nav{
-  display:flex;
-  gap:4px;
-  overflow:auto;
-  padding-top:8px;
-  scrollbar-width:none;
-}
-
-.nav::-webkit-scrollbar{
-  display:none;
-}
-
-.nav a{
-  color:#aebbc7;
-  text-decoration:none;
-  padding:8px 11px;
-  border-radius:8px;
-  white-space:nowrap;
-}
-
-.nav a:hover{
-  background:#101a25;
-  color:#fff;
-}
-
-.hero{
-  padding:62px 0 35px;
-}
-
-.hero h1{
-  max-width:1120px;
-  margin:10px 0 22px;
-  font-size:clamp(2.8rem,6.2vw,6.2rem);
-  line-height:.94;
-  letter-spacing:-.065em;
-}
-
-.hero p{
-  max-width:940px;
-  margin:0;
-  color:var(--muted);
-  font-size:1.13rem;
-}
-
-.cta{
-  display:inline-block;
-  margin-top:20px;
-  padding:14px 19px;
-  border-radius:10px;
-  background:#f3f7fa;
-  color:#05080d;
-  font-weight:900;
-  text-decoration:none;
-}
-
-.cta:hover{
-  color:#000;
-  background:#fff;
-  transform:translateY(-1px);
-}
-
-.section{
-  padding:31px 0;
-  scroll-margin-top:105px;
-}
-
-.section h2{
-  margin:5px 0 8px;
-  font-size:clamp(2rem,3vw,3rem);
-  line-height:1.05;
-  letter-spacing:-.035em;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-.simgrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-  margin-top:22px;
-}
-
-.sim{
-  --accent:var(--blue);
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(145deg,#09111a,#05090f);
-  border:1px solid #2b3d4d;
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  transition:border-color .2s,box-shadow .2s;
-}
-
-.sim.focused{
-  border-color:var(--accent);
-  box-shadow:
-    0 0 0 1px var(--accent),
-    0 24px 90px rgba(0,0,0,.55),
-    0 0 55px color-mix(in srgb,var(--accent) 12%,transparent);
-}
-
-.simhead{
-  min-height:106px;
-  padding:19px 20px 15px;
-  border-bottom:1px solid #253746;
-  display:flex;
-  align-items:flex-start;
-  gap:13px;
-}
-
-.number{
-  flex:0 0 42px;
-  height:42px;
-  display:grid;
-  place-items:center;
-  border-radius:11px;
-  background:var(--accent);
-  color:#04101a;
-  font-weight:950;
-  box-shadow:0 0 28px color-mix(in srgb,var(--accent) 60%,transparent);
-}
-
-.simtitle{
-  font-size:1.45rem;
-  font-weight:900;
-  line-height:1.12;
-  letter-spacing:-.025em;
-}
-
-.simdesc{
-  margin-top:4px;
-  color:#aebbc6;
-  font-size:.9rem;
-}
-
-.live{
-  margin-left:auto;
-  white-space:nowrap;
-  padding:5px 8px;
-  border:1px solid #285a38;
-  border-radius:999px;
-  background:#06150a;
-  color:#68ff83;
-  font:800 9px ui-monospace,SFMono-Regular,monospace;
-}
-
-.live::before{
-  content:"";
-  display:inline-block;
-  width:7px;
-  height:7px;
-  margin-right:5px;
-  border-radius:50%;
-  background:#55ff73;
-  box-shadow:0 0 10px #55ff73;
-}
-
-.visual{
-  position:relative;
-  height:570px;
-  background:#010409;
-}
-
-.visual canvas{
-  display:block;
-  width:100%;
-  height:100%;
-}
-
-.hud{
-  position:absolute;
-  inset:13px;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  pointer-events:none;
-}
-
-.badge{
-  padding:6px 8px;
-  border:1px solid #3b4f61;
-  border-radius:8px;
-  background:rgba(3,7,13,.86);
-  color:#c7d2db;
-  font:800 9px ui-monospace,SFMono-Regular,monospace;
-}
-
-.explain{
-  padding:15px 18px;
-  border-top:1px solid color-mix(in srgb,var(--accent) 30%,#263746);
-  background:linear-gradient(
-    90deg,
-    color-mix(in srgb,var(--accent) 9%,#07101a),
-    #070c13
-  );
-}
-
-.explain strong{
-  display:block;
-  color:var(--accent);
-  font:900 10px ui-monospace,SFMono-Regular,monospace;
-  letter-spacing:.12em;
-}
-
-.phase{
-  margin-top:2px;
-  font-size:1.08rem;
-  font-weight:900;
-}
-
-.explain p{
-  margin:3px 0 0;
-  color:#aebbc5;
-  font-size:.9rem;
-}
-
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-  padding:11px;
-  background:#05090f;
-}
-
-.metric{
-  padding:8px;
-  border:1px solid #263746;
-  border-radius:8px;
-  background:#08111a;
-}
-
-.metric b{
-  display:block;
-  color:#728596;
-  font:800 9px ui-monospace,SFMono-Regular,monospace;
-}
-
-.metric span{
-  display:block;
-  margin-top:2px;
-  color:#e0e7ec;
-  font-size:.82rem;
-}
-
-.controls{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:7px;
-  padding:11px;
-  border-top:1px solid #263746;
-}
-
-.btn{
-  min-height:43px;
-  padding:9px 13px;
-  border:1px solid #3b5063;
-  border-radius:9px;
-  background:#09121c;
-  color:#eef4f8;
-  cursor:pointer;
-  font-weight:750;
-}
-
-.btn:hover{
-  background:#162534;
-  border-color:#8b9dac;
-}
-
-.btn.primary{
-  background:#f3f7fa;
-  color:#05080d;
-  border-color:#f3f7fa;
-}
-
-.btn.primary:hover{
-  background:#fff;
-}
-
-.speed{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  margin-left:auto;
-  color:#8091a0;
-  font:800 9px ui-monospace,SFMono-Regular,monospace;
-}
-
-.speed input{
-  width:115px;
-  accent-color:var(--accent);
-}
-
-.progress{
-  height:5px;
-  background:#17232d;
-}
-
-.progress div{
-  width:0;
-  height:100%;
-  background:var(--accent);
-  box-shadow:0 0 15px var(--accent);
-  transition:width .15s;
-}
-
-.overview{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-  margin-top:18px;
-}
-
-.overview button{
-  padding:11px;
-  border:1px solid #293c4c;
-  border-radius:10px;
-  background:#07101a;
-  color:#d5dde4;
-  text-align:left;
-  cursor:pointer;
-}
-
-.overview button:hover,
-.overview button.active{
-  border-color:#aab8c4;
-  background:#101b26;
-}
-
-.overview strong{
-  display:block;
-  font-size:.9rem;
-}
-
-.overview small{
-  display:block;
-  margin-top:2px;
-  color:#81909e;
-}
-
-.info{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-
-.info article,
-.source{
-  padding:18px;
-  border:1px solid #293b4b;
-  border-radius:14px;
-  background:#080e15;
-}
-
-.info h3{
-  margin:6px 0;
-  font-size:1.05rem;
-}
-
-.info p,
-.source p{
-  color:#9facb8;
-  font-size:.9rem;
-}
-
-.source a{
-  color:#c4e9ff;
-}
-
-.grid3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-
-.input,
-.select{
-  width:100%;
-  padding:10px;
-  border:1px solid #3a4d5e;
-  border-radius:9px;
-  background:#050a10;
-  color:#edf2f5;
-}
-
-.field-label{
-  display:block;
-}
-
-.field-label .eyebrow{
-  display:block;
-  margin-bottom:6px;
-}
-
-.check-card{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.check-card input{
-  width:20px;
-  height:20px;
-  accent-color:#fff;
-}
-
-pre{
-  white-space:pre-wrap;
-  overflow:auto;
-}
-
-.hidden{
-  display:none!important;
-}
-
-.fullscreen{
-  position:fixed!important;
-  inset:0!important;
-  z-index:1000!important;
-  border-radius:0!important;
-  background:#010409!important;
-}
-
-.fullscreen .visual{
-  height:calc(100vh - 185px);
-}
-
-.fullscreen .simhead{
-  min-height:90px;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible{
-  outline:3px solid #d9e6ef;
-  outline-offset:3px;
-}
-
-body.high-contrast{
-  --text:#fff;
-  --muted:#d5dde4;
-  --line:#617485;
-}
-
-body.high-contrast .sim,
-body.high-contrast .source,
-body.high-contrast .info article{
-  border-color:#718596;
-}
-
-body.high-contrast .metric{
-  border-color:#667a8b;
-}
-
-.sr-only{
-  position:absolute;
-  width:1px;
-  height:1px;
-  padding:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
-}
-
-footer{
-  padding:50px 0 70px;
-  text-align:center;
-}
-
-@media(max-width:1100px){
-  .simgrid{
-    grid-template-columns:1fr;
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Cognitive Dynamics — Four Interactive Simulations
+  </title>
+
+  <meta
+    name="description"
+    content="Cognitive Dynamics is an interactive laboratory exploring four visual simulations: Dialectical–Algorithmic, Causal–Deterministic, Holographical–Panoramic, and Vortical–Synergetic cognition."
+  >
+
+  <meta
+    name="keywords"
+    content="cognitive dynamics, cognitive simulation, interactive simulations, dialectical cognition, algorithmic cognition, causal deterministic cognition, holographical panoramic cognition, vortical synergetic cognition"
+  >
+
+  <meta
+    name="author"
+    content="Cognitive Dynamics"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <meta
+    name="theme-color"
+    content="#05070b"
+  >
+
+  <meta
+    name="color-scheme"
+    content="dark"
+  >
+
+  <meta
+    name="application-name"
+    content="Cognitive Dynamics"
+  >
+
+  <!-- Open Graph -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="Cognitive Dynamics — Four Interactive Simulations"
+  >
+
+  <meta
+    property="og:description"
+    content="An interactive cognition laboratory exploring four distinct visual models of cognitive dynamics."
+  >
+
+  <meta
+    property="og:site_name"
+    content="Cognitive Dynamics"
+  >
+
+  <meta
+    property="og:locale"
+    content="en_US"
+  >
+
+  <!-- Twitter / X -->
+
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Cognitive Dynamics — Four Interactive Simulations"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Explore four interactive simulations of cognitive dynamics in a browser-based laboratory."
+  >
+
+  <!-- Canonical URL -->
+
+  <link
+    rel="canonical"
+    href="https://cognitive-dynamics.netlify.app/"
+  >
+
+  <!-- Fonts / libraries -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  >
+
+  <!-- Structured data -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cognitive Dynamics",
+    "url": "https://cognitive-dynamics.netlify.app/",
+    "description": "An interactive laboratory exploring four visual simulations of cognitive dynamics.",
+    "inLanguage": "en",
+    "keywords": [
+      "cognitive dynamics",
+      "cognitive simulation",
+      "dialectical algorithmic cognition",
+      "causal deterministic cognition",
+      "holographical panoramic cognition",
+      "vortical synergetic cognition"
+    ]
   }
+  </script>
 
-  .info{
-    grid-template-columns:1fr 1fr;
-  }
-}
+  <style>
 
-@media(max-width:800px){
-  .grid3{
-    grid-template-columns:1fr;
-  }
+    /* =========================================================
+       GLOBAL
+       ========================================================= */
 
-  .overview{
-    grid-template-columns:1fr 1fr;
-  }
-}
+    :root {
 
-@media(max-width:620px){
-  .wrap{
-    padding:0 12px;
-  }
+      --background:
+        #05070b;
 
-  .topin{
-    padding:12px;
-  }
+      --background-soft:
+        #080c12;
 
-  .hero{
-    padding-top:36px;
-  }
+      --panel:
+        #0c1118;
 
-  .hero h1{
-    font-size:clamp(2.6rem,14vw,4.3rem);
-  }
+      --panel-light:
+        #101722;
 
-  .visual{
-    height:420px;
-  }
+      --border:
+        #27313d;
 
-  .metrics{
-    grid-template-columns:1fr 1fr;
-  }
+      --border-light:
+        #354252;
 
-  .overview,
-  .info{
-    grid-template-columns:1fr;
-  }
+      --text:
+        #e7ebf1;
 
-  .speed{
-    width:100%;
-    margin-left:0;
-  }
+      --text-bright:
+        #f5f7fa;
 
-  .speed input{
-    flex:1;
-  }
+      --text-muted:
+        #8792a3;
 
-  .simtitle{
-    font-size:1.25rem;
-  }
+      --text-dim:
+        #566171;
 
-  .simhead{
-    padding:16px;
-  }
-}
+      --accent:
+        #dce4ed;
 
-@media(prefers-reduced-motion:reduce){
-  html{
-    scroll-behavior:auto;
-  }
+    }
 
-  *,
-  *::before,
-  *::after{
-    animation-duration:.001ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.001ms!important;
-  }
-}
-</style>
+
+    * {
+      box-sizing:
+        border-box;
+    }
+
+
+    html {
+
+      min-height:
+        100%;
+
+      background:
+        var(--background);
+
+      scroll-behavior:
+        smooth;
+    }
+
+
+    body {
+
+      margin:
+        0;
+
+      min-height:
+        100vh;
+
+      background:
+        radial-gradient(
+          circle at 50% -15%,
+          rgba(
+            110,
+            130,
+            155,
+            0.10
+          ),
+          transparent 38%
+        ),
+        var(--background);
+
+      color:
+        var(--text);
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+
+    button,
+    input,
+    select {
+
+      font:
+        inherit;
+    }
+
+
+    button {
+
+      cursor:
+        pointer;
+    }
+
+
+    button:focus-visible,
+    input:focus-visible {
+
+      outline:
+        2px solid
+        #aab8c8;
+
+      outline-offset:
+        2px;
+    }
+
+
+    .mono {
+
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    }
+
+
+    .glass {
+
+      background:
+        rgba(
+          8,
+          12,
+          18,
+          0.90
+        );
+
+      backdrop-filter:
+        blur(16px);
+
+      -webkit-backdrop-filter:
+        blur(16px);
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .simulation-tab {
+
+      transition:
+        background-color 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.12s ease;
+    }
+
+
+    .simulation-tab:hover {
+
+      background:
+        #151c25;
+    }
+
+
+    .simulation-tab:active {
+
+      transform:
+        translateY(1px);
+    }
+
+
+    .simulation-tab.active {
+
+      color:
+        #070a0e;
+
+      background:
+        #e8edf3;
+
+      border-color:
+        #e8edf3;
+    }
+
+
+    /* =========================================================
+       CONTROLS
+       ========================================================= */
+
+    .control-button {
+
+      color:
+        #dbe3ed;
+
+      background:
+        #0c1118;
+
+      border:
+        1px solid
+        #293441;
+
+      transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.12s ease;
+    }
+
+
+    .control-button:hover {
+
+      background:
+        #151d27;
+
+      border-color:
+        #455263;
+    }
+
+
+    .control-button:active {
+
+      transform:
+        translateY(1px);
+    }
+
+
+    .control-input {
+
+      color:
+        #dbe3ed;
+
+      background:
+        #0b1017;
+
+      border:
+        1px solid
+        #293441;
+
+      outline:
+        none;
+    }
+
+
+    .control-input::placeholder {
+
+      color:
+        #586575;
+    }
+
+
+    .control-input:focus {
+
+      border-color:
+        #68788b;
+
+      box-shadow:
+        0 0 0 2px
+        rgba(
+          130,
+          150,
+          175,
+          0.10
+        );
+    }
+
+
+    /* =========================================================
+       CANVAS
+       ========================================================= */
+
+    #canvas {
+
+      display:
+        block;
+
+      width:
+        100%;
+
+      height:
+        100%;
+    }
+
+
+    /* =========================================================
+       METRICS
+       ========================================================= */
+
+    .metric-cell:last-child {
+
+      border-right:
+        none;
+    }
+
+
+    /* =========================================================
+       SCROLLBAR
+       ========================================================= */
+
+    .scrollbar::-webkit-scrollbar {
+
+      width:
+        7px;
+
+      height:
+        7px;
+    }
+
+
+    .scrollbar::-webkit-scrollbar-track {
+
+      background:
+        #080c11;
+    }
+
+
+    .scrollbar::-webkit-scrollbar-thumb {
+
+      background:
+        #27313d;
+
+      border-radius:
+        10px;
+    }
+
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+
+      background:
+        #3b4857;
+    }
+
+
+    /* =========================================================
+       SCREEN-READER TEXT
+       ========================================================= */
+
+    .sr-only {
+
+      position:
+        absolute;
+
+      width:
+        1px;
+
+      height:
+        1px;
+
+      padding:
+        0;
+
+      margin:
+        -1px;
+
+      overflow:
+        hidden;
+
+      clip:
+        rect(
+          0,
+          0,
+          0,
+          0
+        );
+
+      white-space:
+        nowrap;
+
+      border:
+        0;
+    }
+
+
+    /* =========================================================
+       ANIMATION
+       ========================================================= */
+
+    .fade-in {
+
+      animation:
+        fadeIn
+        0.3s
+        ease
+        both;
+    }
+
+
+    @keyframes fadeIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(3px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (
+      max-width: 640px
+    ) {
+
+      .simulation-tab {
+
+        font-size:
+          10px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
-<header class="top">
-  <div class="topin">
-    <div class="row">
-      <div>
-        <div class="eyebrow">Cognitive Dynamics Studio · Final Edition</div>
-        <div class="brand">Four Interactive Models of Cognition</div>
-      </div>
-      <div class="eyebrow">LIVE · EDUCATIONAL</div>
-    </div>
+  <!-- =========================================================
+       APPLICATION
+       ========================================================= -->
+
+  <div
+    id="application"
+    class="min-h-screen flex flex-col"
+  >
+
+    <!-- =======================================================
+         HEADER
+         ======================================================= -->
+
+    <header
+      class="
+        glass
+        sticky
+        top-0
+        z-50
+        border-b
+        border-slate-800/80
+      "
+    >
+
+      <div
+        class="
+          max-w-[1600px]
+          mx-auto
+          w-full
+          px-4
+          sm:px-6
+          py-4
+        "
+      >
+
+        <div
+          class="
+            flex
+            flex-col
+            xl:flex-row
+            xl:items-center
+            xl:justify-between
+            gap-4
+          "
+        >
+
+          <!-- BRAND -->
+
+          <div>
+
+            <div
+              class="
+                mono
+                text-[10px]
+                sm:text-[11px]
+                tracking-[0.28em]
+                uppercase
+                text-slate-500
+              "
+            >
+              Interactive Cognition Laboratory
+            </div>
+
+
+            <h1
+              class="
+                mt-1
+                text-xl
+                sm:text-2xl
+                font-semibold
+                tracking-tight
+                text-slate-100
+              "
+            >
+              Cognitive Dynamics
+            </h1>
+
+
+            <p class="sr-only">
+              Cognitive Dynamics is an interactive laboratory
+              containing four simulations:
+              Dialectical–Algorithmic,
+              Causal–Deterministic,
+              Holographical–Panoramic,
+              and Vortical–Synergetic cognition.
+            </p>
 
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#simulations">Simulations</a>
-      <a href="#how">How they work</a>
-      <a href="#experiment">Experiment</a>
-      <a href="#integrity">Integrity</a>
-      <a href="#sources">Sources</a>
-      <a href="#settings">Accessibility</a>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap">
-
-<section class="hero">
-  <div class="eyebrow">Cognitive Dynamics Studio</div>
-
-  <h1>Four different ways of modeling cognition.</h1>
-
-  <p>
-    Explore four interactive computational interpretations through large,
-    visual simulations. Pause them, step through their states, change speed,
-    inspect live metrics, or open a model fullscreen.
-  </p>
-
-  <a class="cta" href="#simulations">Enter the simulation studio ↓</a>
-</section>
-
-<section id="simulations" class="section">
-  <div class="eyebrow">01 · Live simulation studio</div>
-
-  <h2>See all four simulations</h2>
-
-  <p class="muted">
-    Each model has a distinct visual language. The color identifies the model,
-    while the state panel explains what is happening.
-  </p>
-
-  <div id="overview" class="overview"></div>
-
-  <div id="simgrid" class="simgrid"></div>
-</section>
-
-<section id="how" class="section">
-  <div class="eyebrow">02 · How they work</div>
-
-  <h2>What each visualization actually models</h2>
-
-  <div class="info">
-
-    <article>
-      <div class="eyebrow" style="color:var(--blue)">CAUSAL–DETERMINIST</div>
-      <h3>Follow a chain</h3>
-      <p>
-        Seven explicit states form a directional chain. Step advances exactly
-        one state; playback uses the same transition.
-      </p>
-    </article>
-
-    <article>
-      <div class="eyebrow" style="color:var(--green)">DIALECTICAL–ALGORITHMIC</div>
-      <h3>Hold opposites together</h3>
-      <p>
-        Thesis and antithesis converge on contradiction, then move through
-        synthesis, rule formation and algorithmic iteration.
-      </p>
-    </article>
-
-    <article>
-      <div class="eyebrow" style="color:var(--purple)">HOLOGRAPHICAL–PANORAMIC</div>
-      <h3>Change the viewpoint</h3>
-      <p>
-        The central object remains stable while the active projection rotates
-        through six perspectives.
-      </p>
-    </article>
-
-    <article>
-      <div class="eyebrow" style="color:var(--orange)">VORTICAL–SYNERGETIC</div>
-      <h3>Watch a dynamic field</h3>
-      <p>
-        Alternatives fluctuate around an attractor; field density, attraction
-        and feedback are explicit state variables.
-      </p>
-    </article>
-
-  </div>
-</section>
-
-<section id="experiment" class="section">
-  <div class="source">
-
-    <div class="eyebrow">03 · Experiment studio</div>
-
-    <h2>Reproduce a computer-model run</h2>
-
-    <p>
-      A reproducible run means that the same model version, seed and transition
-      rules produce the same discrete state sequence. It does not establish
-      empirical validity of the underlying theory.
-    </p>
-
-    <div class="grid3">
-
-      <label class="field-label">
-        <span class="eyebrow">Seed</span>
-        <input id="seed" class="input" type="number" value="482913">
-      </label>
-
-      <label class="field-label">
-        <span class="eyebrow">Model</span>
-        <select id="model" class="select">
-          <option value="cd">Causal–Determinist</option>
-          <option value="da">Dialectical–Algorithmic</option>
-          <option value="hp">Holographical–Panoramic</option>
-          <option value="vs">Vortical–Synergetic</option>
-        </select>
-      </label>
-
-      <label class="field-label">
-        <span class="eyebrow">Discrete steps</span>
-        <input id="steps" class="input" type="number" min="1" max="1000" value="20">
-      </label>
-
-    </div>
-
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
-      <button class="btn" id="baseline">Capture baseline</button>
-      <button class="btn" id="intervention">Capture intervention</button>
-      <button class="btn primary" id="run">Run deterministic experiment</button>
-      <button class="btn" id="download">Export JSON</button>
-    </div>
-
-    <pre id="out"
-      class="hidden"
-      aria-live="polite"
-      style="margin-top:16px;background:#03070c;border:1px solid #263746;border-radius:12px;padding:15px;color:#cdd7df;font-size:12px"></pre>
-
-  </div>
-</section>
-
-<section id="integrity" class="section">
-  <div class="source">
-
-    <div class="eyebrow">04 · Scientific integrity</div>
-
-    <h2>Source, implementation and evidence are separated.</h2>
-
-    <div class="grid3">
-
-      <div>
-        <div class="eyebrow">Source-derived</div>
-        <p>
-          The four names, terminology and conceptual framing are presented as
-          source-derived material.
-        </p>
-      </div>
-
-      <div>
-        <div class="eyebrow">Original implementation</div>
-        <p>
-          Numerical state variables, transition rules, particles, trajectories,
-          metrics and visual metaphors are software choices in this website.
-        </p>
-      </div>
-
-      <div>
-        <div class="eyebrow">Evidence boundary</div>
-        <p>
-          These are educational simulations, not psychological tests,
-          diagnoses, neuroscience models or validated measures of individual
-          cognition.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="source" style="margin-top:18px">
-      <b>How to read the display</b>
-
-      <p>
-        A particle, score, trajectory or state label is an output of the
-        computational model. It should not be treated as empirical evidence
-        that the underlying framework predicts human cognition.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section id="sources" class="section">
-  <div class="source">
-
-    <div class="eyebrow">05 · Sources</div>
-
-    <h2>Primary publication and English translation</h2>
-
-    <p>
-      <b>Viktor V. Gulenko, “Forms of Thinking”</b><br>
-      <em>Socionics, Mentology and Personality Psychology</em>,
-      No. 4 (2002), pp. 9–25.
-    </p>
-
-    <p>
-      <a href="https://www.publishing.socionic.info/index.php/socionics/article/view/1228"
-         target="_blank"
-         rel="noopener noreferrer">
-        Publisher record ↗
-      </a>
-      ·
-      <a href="https://www.socionicsforum.com/vbulletin/content.php/51-Forms-of-Cognition-by-Victor-Gulenko"
-         target="_blank"
-         rel="noopener noreferrer">
-        English translation ↗
-      </a>
-    </p>
-
-    <p>
-      This project does not claim endorsement by the author, journal or linked
-      sites.
-    </p>
-
-  </div>
-</section>
-
-<section id="settings" class="section">
-  <div class="source">
-
-    <div class="eyebrow">06 · Accessibility</div>
-
-    <h2>Make the studio easier to see and control</h2>
-
-    <div class="grid3">
-
-      <label class="field-label">
-        <span class="eyebrow">Text size</span>
-        <select id="textsize" class="select">
-          <option value="normal">Normal</option>
-          <option value="large">Large</option>
-          <option value="xl">Extra large</option>
-        </select>
-      </label>
-
-      <label class="source check-card">
-        <span>High contrast</span>
-        <input id="contrast" type="checkbox">
-      </label>
-
-      <label class="source check-card">
-        <span>Reduced motion</span>
-        <input id="reduced" type="checkbox">
-      </label>
-
-    </div>
-
-    <p class="muted" style="font-size:.85rem">
-      Reduced motion stops automatic animation. You can still advance every
-      model manually with Step.
-    </p>
-
-  </div>
-</section>
-
-<footer>
-  <div class="eyebrow">Cognitive Dynamics Studio</div>
-
-  <p class="muted" style="font-size:.85rem">
-    Four Interactive Models of Cognition · educational computational software
-    · not a validated psychological measurement
-  </p>
-</footer>
-
-</main>
-
-<script>
-"use strict";
-
-const MODELS = {
-  cd:{
-    name:"Causal–Determinist",
-    color:"#25b8ff",
-    stages:[
-      "Observation",
-      "Premise",
-      "Mechanism",
-      "Causal Link",
-      "Process",
-      "Deduction",
-      "Result"
-    ]
-  },
-
-  da:{
-    name:"Dialectical–Algorithmic",
-    color:"#42ed72",
-    stages:[
-      "Thesis",
-      "Antithesis",
-      "Contradiction",
-      "Synthesis",
-      "Rule",
-      "Algorithm"
-    ]
-  },
-
-  hp:{
-    name:"Holographical–Panoramic",
-    color:"#c765ff",
-    stages:[
-      "Front",
-      "Right",
-      "Top",
-      "Detail",
-      "Context",
-      "Analogy"
-    ]
-  },
-
-  vs:{
-    name:"Vortical–Synergetic",
-    color:"#ff9e27",
-    stages:[
-      "Fluctuation",
-      "Alternatives",
-      "Trial",
-      "Screening",
-      "Attractor",
-      "Feedback",
-      "Branching",
-      "Dissipation"
-    ]
-  }
-};
-
-const state={
-  cd:{i:0},
-  da:{i:0},
-  hp:{i:0,angle:0},
-  vs:{
-    t:0,
-    field:.45,
-    attractor:.72,
-    feedback:.62
-  }
-};
-
-const paused={
-  cd:false,
-  da:false,
-  hp:false,
-  vs:false
-};
-
-const speeds={
-  cd:1,
-  da:1,
-  hp:1,
-  vs:1
-};
-
-let selected="cd";
-let reducedMotion=false;
-let random=makeRandom(482913);
-let baseline=null;
-let intervention=null;
-
-function makeRandom(seed){
-  let x=(Number(seed)||1)>>>0;
-
-  return function(){
-    x+=0x6D2B79F5;
-
-    let q=x;
-
-    q=Math.imul(q^q>>>15,q|1);
-    q^=q+Math.imul(q^q>>>7,q|61);
-
-    return((q^q>>>14)>>>0)/4294967296;
-  };
-}
-
-function buildSimulations(){
-
-  const overview=document.getElementById("overview");
-  const grid=document.getElementById("simgrid");
-
-  Object.entries(MODELS).forEach(([id,model],index)=>{
-
-    const overviewButton=document.createElement("button");
-
-    overviewButton.dataset.id=id;
-    overviewButton.setAttribute(
-      "aria-label",
-      `Focus ${model.name} simulation`
-    );
-
-    overviewButton.innerHTML=`
-      <strong>${index+1}. ${model.name}</strong>
-      <small>${model.stages.join(" → ")}</small>
-    `;
-
-    overviewButton.addEventListener("click",()=>focusSimulation(id));
-
-    overview.appendChild(overviewButton);
-
-    const article=document.createElement("article");
-
-    article.className="sim";
-    article.id=`sim-${id}`;
-    article.style.setProperty("--accent",model.color);
-
-    const description=
-      id==="cd"
-        ?"Cause → mechanism → consequence"
-      :id==="da"
-        ?"Opposition → synthesis → algorithm"
-      :id==="hp"
-        ?"One object → many perspectives"
-        :"Alternatives → attraction → feedback";
-
-    article.innerHTML=`
-
-      <div class="simhead">
-
-        <div class="number">${index+1}</div>
-
-        <div>
-          <div class="eyebrow">
-            ${id.toUpperCase()} · LIVE SIMULATION
           </div>
 
-          <div class="simtitle">
-            ${model.name}
-          </div>
 
-          <div class="simdesc">
-            ${description}
-          </div>
-        </div>
+          <!-- NAVIGATION -->
 
-        <div class="live">LIVE</div>
+          <nav
+            id="simulationTabs"
+            class="
+              flex
+              gap-1
+              p-1
+              rounded-xl
+              bg-slate-950/80
+              border
+              border-slate-800
+              overflow-x-auto
+              scrollbar
+            "
+            aria-label="Simulation navigation"
+          >
 
-      </div>
+            <button
+              type="button"
+              class="
+                simulation-tab
+                active
+                whitespace-nowrap
+                px-3
+                py-2
+                rounded-lg
+                border
+                border-transparent
+                text-xs
+                sm:text-sm
+              "
+              data-simulation="da"
+              aria-label="Open Dialectical Algorithmic simulation"
+              aria-pressed="true"
+            >
+              Dialectical–Algorithmic
+            </button>
 
-      <div class="visual">
 
-        <canvas
-          id="canvas-${id}"
-          role="img"
-          aria-label="${model.name} computational visualization">
-        </canvas>
+            <button
+              type="button"
+              class="
+                simulation-tab
+                whitespace-nowrap
+                px-3
+                py-2
+                rounded-lg
+                border
+                border-transparent
+                text-xs
+                sm:text-sm
+                text-slate-400
+              "
+              data-simulation="cd"
+              aria-label="Open Causal Deterministic simulation"
+              aria-pressed="false"
+            >
+              Causal–Deterministic
+            </button>
 
-        <div class="hud">
-          <span class="badge">COMPUTATIONAL MODEL</span>
-          <span class="badge" id="stage-${id}">STAGE 01</span>
+
+            <button
+              type="button"
+              class="
+                simulation-tab
+                whitespace-nowrap
+                px-3
+                py-2
+                rounded-lg
+                border
+                border-transparent
+                text-xs
+                sm:text-sm
+                text-slate-400
+              "
+              data-simulation="hp"
+              aria-label="Open Holographical Panoramic simulation"
+              aria-pressed="false"
+            >
+              Holographical–Panoramic
+            </button>
+
+
+            <button
+              type="button"
+              class="
+                simulation-tab
+                whitespace-nowrap
+                px-3
+                py-2
+                rounded-lg
+                border
+                border-transparent
+                text-xs
+                sm:text-sm
+                text-slate-400
+              "
+              data-simulation="vs"
+              aria-label="Open Vortical Synergetic simulation"
+              aria-pressed="false"
+            >
+              Vortical–Synergetic
+            </button>
+
+          </nav>
+
         </div>
 
       </div>
 
-      <div class="explain">
+    </header>
 
-        <strong>WHAT IS HAPPENING NOW</strong>
 
-        <div class="phase" id="phase-${id}"></div>
+    <!-- =======================================================
+         MAIN CONTENT
+         ======================================================= -->
 
-        <p id="explain-${id}"></p>
+    <main
+      id="main-content"
+      aria-label="Cognitive Dynamics simulations"
+      class="
+        flex-1
+        w-full
+        max-w-[1600px]
+        mx-auto
+        px-3
+        sm:px-5
+        py-3
+        sm:py-5
+      "
+    >
+
+      <section
+        class="
+          overflow-hidden
+          rounded-2xl
+          border
+          border-slate-800
+          bg-[#080c12]
+          shadow-2xl
+          shadow-black/30
+        "
+        aria-labelledby="simulationTitle"
+      >
+
+        <!-- ===================================================
+             SIMULATION HEADER
+             =================================================== -->
+
+        <div
+          class="
+            px-4
+            sm:px-6
+            py-4
+            border-b
+            border-slate-800
+            flex
+            flex-col
+            xl:flex-row
+            xl:items-center
+            xl:justify-between
+            gap-4
+          "
+        >
+
+          <div class="min-w-0">
+
+            <div
+              id="simulationKicker"
+              class="
+                mono
+                text-[9px]
+                tracking-[0.25em]
+                uppercase
+                text-slate-600
+              "
+            >
+              ORDERED CONTRADICTION-DRIVEN PROCESS
+            </div>
+
+
+            <h2
+              id="simulationTitle"
+              class="
+                mt-1
+                text-base
+                sm:text-lg
+                font-semibold
+                text-slate-100
+              "
+            >
+              Dialectical–Algorithmic Cognition
+            </h2>
+
+
+            <p
+              id="simulationDescription"
+              class="
+                mt-1
+                text-xs
+                leading-5
+                text-slate-500
+                max-w-4xl
+              "
+            >
+              State definition → thesis and antithesis →
+              explicit contrast → contradiction →
+              synthesis → rule → ordered algorithm →
+              execution → feedback.
+            </p>
+
+          </div>
+
+
+          <!-- CONTROLS -->
+
+          <div
+            id="simulationControls"
+            class="
+              flex
+              flex-wrap
+              items-center
+              gap-2
+            "
+            aria-label="Simulation controls"
+          ></div>
+
+        </div>
+
+
+        <!-- ===================================================
+             CANVAS
+             =================================================== -->
+
+        <div
+          id="canvasContainer"
+          class="
+            relative
+            w-full
+            h-[58vh]
+            min-h-[520px]
+            max-h-[820px]
+            bg-[#05070b]
+          "
+        >
+
+          <canvas
+            id="canvas"
+            aria-label="Interactive cognitive simulation visualization"
+          ></canvas>
+
+        </div>
+
+
+        <!-- ===================================================
+             METRICS
+             =================================================== -->
+
+        <div
+          id="metrics"
+          class="
+            grid
+            grid-cols-2
+            lg:grid-cols-4
+            border-t
+            border-slate-800
+          "
+          aria-label="Simulation metrics"
+        ></div>
+
+      </section>
+
+
+      <!-- =====================================================
+           INFORMATION / KEYBOARD HINT
+           ===================================================== -->
+
+      <div
+        id="simulationHint"
+        class="
+          mt-3
+          px-1
+          mono
+          text-[10px]
+          leading-5
+          text-slate-600
+        "
+      ></div>
+
+
+      <!-- =====================================================
+           ACCESSIBILITY INFORMATION
+           ===================================================== -->
+
+      <div class="sr-only">
+
+        <h2>
+          About the four Cognitive Dynamics simulations
+        </h2>
+
+        <p>
+          The Dialectical–Algorithmic simulation represents
+          cognition as an ordered contradiction-driven process
+          moving from state definition through thesis,
+          antithesis, contradiction, synthesis, rule,
+          algorithm, execution and feedback.
+        </p>
+
+        <p>
+          The Causal–Deterministic simulation represents
+          analytic and deductive cognition through observation,
+          analysis, premises, causal chains, mechanisms,
+          deductions, consequences and a singular result.
+        </p>
+
+        <p>
+          The Holographical–Panoramic simulation keeps one
+          central object fixed while changing the perspective,
+          projection, criterion and relation through which
+          the object is examined.
+        </p>
+
+        <p>
+          The Vortical–Synergetic simulation represents
+          fluctuation, circulation, alternative generation,
+          screening, feedback and emergent concentration
+          around an attractor.
+        </p>
 
       </div>
 
-      <div class="metrics" id="metrics-${id}"></div>
+    </main>
 
-      <div class="controls">
+  </div>
 
-        <button
-          class="btn primary play"
-          data-id="${id}">
-          Ⅱ Pause
-        </button>
 
-        <button
-          class="btn step"
-          data-id="${id}">
-          ▶ Step
-        </button>
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
 
-        <button
-          class="btn reset"
-          data-id="${id}">
-          ↻ Reset
-        </button>
+  <script>
 
-        <button
-          class="btn fullscreen-button"
-          data-id="${id}">
-          ⛶ Fullscreen
-        </button>
+    "use strict";
 
-        <label class="speed">
-          SPEED
-          <input
-            aria-label="${model.name} simulation speed"
-            data-speed="${id}"
-            type="range"
-            min=".25"
-            max="2"
-            step=".25"
-            value="1">
-          <span data-speed-label="${id}">1×</span>
-        </label>
 
-      </div>
+    /* =========================================================
+       DOM REFERENCES
+       ========================================================= */
 
-      <div class="progress" aria-hidden="true">
-        <div id="progress-${id}"></div>
-      </div>
-    `;
-
-    grid.appendChild(article);
-  });
-
-  document.querySelectorAll(".play").forEach(button=>{
-    button.addEventListener("click",()=>{
-      const id=button.dataset.id;
-
-      paused[id]=!paused[id];
-
-      button.textContent=
-        paused[id]
-          ?"▶ Resume"
-          :"Ⅱ Pause";
-    });
-  });
-
-  document.querySelectorAll(".step").forEach(button=>{
-    button.addEventListener(
-      "click",
-      ()=>stepSimulation(button.dataset.id)
-    );
-  });
-
-  document.querySelectorAll(".reset").forEach(button=>{
-    button.addEventListener(
-      "click",
-      ()=>resetSimulation(button.dataset.id)
-    );
-  });
-
-  document.querySelectorAll(".fullscreen-button").forEach(button=>{
-    button.addEventListener(
-      "click",
-      ()=>toggleFullscreen(button.dataset.id)
-    );
-  });
-
-  document.querySelectorAll("[data-speed]").forEach(range=>{
-    range.addEventListener("input",()=>{
-      const id=range.dataset.speed;
-
-      speeds[id]=Number(range.value);
-
-      document.querySelector(
-        `[data-speed-label="${id}"]`
-      ).textContent=`${range.value}×`;
-    });
-  });
-}
-
-function fitCanvas(canvas,context){
-
-  const rect=canvas.getBoundingClientRect();
-
-  const density=Math.min(
-    window.devicePixelRatio||1,
-    2
-  );
-
-  const width=Math.max(1,Math.floor(rect.width));
-  const height=Math.max(1,Math.floor(rect.height));
-
-  canvas.width=Math.floor(width*density);
-  canvas.height=Math.floor(height*density);
-
-  context.setTransform(
-    density,
-    0,
-    0,
-    density,
-    0,
-    0
-  );
-
-  return [width,height];
-}
-
-function clearCanvas(canvas,context){
-
-  const [width,height]=fitCanvas(canvas,context);
-
-  context.fillStyle="#010409";
-  context.fillRect(0,0,width,height);
-
-  context.strokeStyle="rgba(255,255,255,.035)";
-  context.lineWidth=1;
-
-  for(let x=0;x<width;x+=42){
-    context.beginPath();
-    context.moveTo(x,0);
-    context.lineTo(x,height);
-    context.stroke();
-  }
-
-  for(let y=0;y<height;y+=42){
-    context.beginPath();
-    context.moveTo(0,y);
-    context.lineTo(width,y);
-    context.stroke();
-  }
-
-  return [width,height];
-}
-
-function text(context,string,x,y,size,color="#fff",weight=800){
-
-  context.fillStyle=color;
-
-  context.font=
-    `${weight} ${size}px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace`;
-
-  context.textAlign="center";
-  context.textBaseline="middle";
-
-  context.fillText(string,x,y);
-}
-
-function circle(
-  context,
-  x,
-  y,
-  radius,
-  fill,
-  stroke,
-  lineWidth=2
-){
-
-  context.shadowColor=stroke;
-  context.shadowBlur=18;
-
-  context.beginPath();
-  context.arc(x,y,radius,0,Math.PI*2);
-
-  context.fillStyle=fill;
-  context.fill();
-
-  context.shadowBlur=0;
-
-  context.strokeStyle=stroke;
-  context.lineWidth=lineWidth;
-  context.stroke();
-}
-
-function line(
-  context,
-  x1,
-  y1,
-  x2,
-  y2,
-  color,
-  width=2
-){
-
-  context.strokeStyle=color;
-  context.lineWidth=width;
-
-  context.beginPath();
-  context.moveTo(x1,y1);
-  context.lineTo(x2,y2);
-  context.stroke();
-}
-
-function arrow(
-  context,
-  x1,
-  y1,
-  x2,
-  y2,
-  color
-){
-
-  line(
-    context,
-    x1,
-    y1,
-    x2,
-    y2,
-    color,
-    2.5
-  );
-
-  const length=10;
-  const angle=Math.atan2(
-    y2-y1,
-    x2-x1
-  );
-
-  context.fillStyle=color;
-
-  context.beginPath();
-
-  context.moveTo(x2,y2);
-
-  context.lineTo(
-    x2-length*Math.cos(angle-.5),
-    y2-length*Math.sin(angle-.5)
-  );
-
-  context.lineTo(
-    x2-length*Math.cos(angle+.5),
-    y2-length*Math.sin(angle+.5)
-  );
-
-  context.closePath();
-  context.fill();
-}
-
-function drawCausal(canvas,context){
-
-  const [width,height]=clearCanvas(
-    canvas,
-    context
-  );
-
-  const model=MODELS.cd;
-  const current=state.cd.i;
-
-  const gap=Math.min(
-    150,
-    (width-110)/(model.stages.length-1)
-  );
-
-  const start=
-    (width-gap*(model.stages.length-1))/2;
-
-  const y=height*.5;
-
-  for(let i=0;i<model.stages.length-1;i++){
-
-    arrow(
-      context,
-      start+i*gap+32,
-      y,
-      start+(i+1)*gap-32,
-      y,
-      i<current
-        ?"rgba(37,184,255,.95)"
-        :"#304354"
-    );
-  }
-
-  model.stages.forEach((stage,index)=>{
-
-    const active=index===current;
-
-    circle(
-      context,
-      start+index*gap,
-      y,
-      active?31:28,
-      active?"#0f3650":"#07111b",
-      active?"#7bd7ff":"#476072",
-      active?3:1
-    );
-
-    text(
-      context,
-      String(index+1).padStart(2,"0"),
-      start+index*gap,
-      y,
-      11,
-      active?"#fff":"#8da0af"
-    );
-
-    text(
-      context,
-      stage,
-      start+index*gap,
-      y+50,
-      8,
-      active?"#eaf9ff":"#738493"
-    );
-  });
-
-  text(
-    context,
-    "OBSERVE → EXPLAIN → DEDUCE → RESULT",
-    width/2,
-    34,
-    11,
-    "#52c5ff"
-  );
-}
-
-function drawDialectical(canvas,context){
-
-  const [width,height]=clearCanvas(
-    canvas,
-    context
-  );
-
-  const current=state.da.i;
-
-  const cx=width/2;
-  const cy=height/2;
-
-  const positions=[
-    [-.34,-.2],
-    [-.34,.2],
-    [-.10,0],
-    [.13,0],
-    [.35,0],
-    [.47,0]
-  ];
-
-  const labels=MODELS.da.stages;
-
-  line(
-    context,
-    cx-.34*width,
-    cy-.2*height,
-    cx-.10*width,
-    cy,
-    "#42ed72",
-    4
-  );
-
-  line(
-    context,
-    cx-.34*width,
-    cy+.2*height,
-    cx-.10*width,
-    cy,
-    "#c765ff",
-    4
-  );
-
-  for(let i=2;i<5;i++){
-
-    arrow(
-      context,
-      cx+positions[i][0]*width,
-      cy,
-      cx+positions[i+1][0]*width,
-      cy,
-      i<=current
-        ?"rgba(66,237,114,.95)"
-        :"#31493a"
-    );
-  }
-
-  positions.forEach((position,index)=>{
-
-    const colors=[
-      "#42ed72",
-      "#c765ff",
-      "#ff4e55",
-      "#25b8ff",
-      "#ffe04b",
-      "#ff9e27"
-    ];
-
-    const active=index===current;
-    const color=colors[index];
-
-    const x=cx+position[0]*width;
-    const y=cy+position[1]*height;
-
-    circle(
-      context,
-      x,
-      y,
-      active?31:28,
-      active?"#183c24":"#07111b",
-      color,
-      active?3:1
-    );
-
-    text(
-      context,
-      labels[index],
-      x,
-      y+46,
-      8,
-      active?"#fff":color
-    );
-  });
-
-  text(
-    context,
-    "OPPOSITION → CONTRADICTION → SYNTHESIS",
-    width/2,
-    34,
-    11,
-    "#62ef82"
-  );
-}
-
-function drawPanoramic(canvas,context){
-
-  const [width,height]=clearCanvas(
-    canvas,
-    context
-  );
-
-  const current=state.hp.i;
-  const angle=state.hp.angle;
-
-  const cx=width/2;
-  const cy=height/2;
-
-  const colors=[
-    "#25b8ff",
-    "#42ed72",
-    "#ffe04b",
-    "#ff9e27",
-    "#c765ff",
-    "#8e72ff"
-  ];
-
-  circle(
-    context,
-    cx,
-    cy,
-    69,
-    "#180b22",
-    "#e1baff",
-    3
-  );
-
-  text(
-    context,
-    "SAME OBJECT",
-    cx,
-    cy,
-    11,
-    "#fff"
-  );
-
-  MODELS.hp.stages.forEach((stage,index)=>{
-
-    const a=
-      angle+
-      index*Math.PI/3;
-
-    const radius=Math.min(
-      width*.36,
-      270
-    );
-
-    const x=
-      cx+
-      Math.cos(a)*radius;
-
-    const y=
-      cy+
-      Math.sin(a)*Math.min(
-        height*.31,
-        175
-      );
-
-    const active=index===current;
-
-    arrow(
-      context,
-      cx,
-      cy,
-      x,
-      y,
-      active
-        ?colors[index]
-        :"#344657"
-    );
-
-    circle(
-      context,
-      x,
-      y,
-      active?31:28,
-      active?"#32154a":"#07111b",
-      colors[index],
-      active?3:1
-    );
-
-    text(
-      context,
-      stage,
-      x,
-      y+45,
-      8,
-      active?"#fff":colors[index]
-    );
-  });
-
-  text(
-    context,
-    "ONE OBJECT · MANY PROJECTIONS",
-    width/2,
-    34,
-    11,
-    "#dc92ff"
-  );
-}
-
-function drawVortical(canvas,context){
-
-  const [width,height]=clearCanvas(
-    canvas,
-    context
-  );
-
-  const s=state.vs;
-
-  const cx=width/2;
-  const cy=height/2;
-
-  const colors=[
-    "#ff9e27",
-    "#ff4fbd",
-    "#c765ff",
-    "#25b8ff",
-    "#42ed72",
-    "#ffe04b"
-  ];
-
-  for(let q=0;q<6;q++){
-
-    context.beginPath();
-
-    for(let i=0;i<330;i++){
-
-      const angle=
-        i*.052+
-        q*1.03+
-        s.t*.4;
-
-      const radius=
-        40+
-        i*(q+1)*.48;
-
-      const x=
-        cx+
-        Math.cos(angle)*radius;
-
-      const y=
-        cy+
-        Math.sin(angle)*radius*.49;
-
-      if(i===0){
-        context.moveTo(x,y);
-      }else{
-        context.lineTo(x,y);
-      }
-    }
-
-    context.strokeStyle=
-      colors[q]+"66";
-
-    context.lineWidth=1.5;
-    context.stroke();
-  }
-
-  for(let i=0;i<110;i++){
-
-    const angle=
-      random()*Math.PI*2+
-      s.t*.4;
-
-    const radius=
-      70+
-      random()*Math.min(
-        340,
-        width*.38
-      );
-
-    const x=
-      cx+
-      Math.cos(angle)*radius;
-
-    const y=
-      cy+
-      Math.sin(angle)*radius*.5;
-
-    const color=
-      colors[i%colors.length];
-
-    context.fillStyle=color;
-    context.shadowColor=color;
-    context.shadowBlur=10;
-
-    context.beginPath();
-    context.arc(
-      x,
-      y,
-      1.4+random()*2.7,
-      0,
-      Math.PI*2
-    );
-
-    context.fill();
-    context.shadowBlur=0;
-  }
-
-  circle(
-    context,
-    cx,
-    cy,
-    62,
-    "#2c1703",
-    "#ffc56c",
-    3
-  );
-
-  text(
-    context,
-    "ATTRACTOR",
-    cx,
-    cy,
-    11,
-    "#fff"
-  );
-
-  text(
-    context,
-    "ALTERNATIVES → FEEDBACK → SELF-ORGANIZATION",
-    width/2,
-    34,
-    11,
-    "#ffb34c"
-  );
-}
-
-function updateInterface(id){
-
-  const model=MODELS[id];
-  const s=state[id];
-
-  const current=
-    typeof s.i==="number"
-      ?s.i
-      :0;
-
-  const phase=
-    typeof s.i==="number"
-      ?model.stages[current]
-      :"Dynamic attractor field";
-
-  const stageElement=
-    document.getElementById(`stage-${id}`);
-
-  stageElement.textContent=
-    typeof s.i==="number"
-      ?`STAGE ${String(current+1).padStart(2,"0")} / ${model.stages.length}`
-      :"LIVE FIELD";
-
-  document.getElementById(
-    `phase-${id}`
-  ).textContent=phase;
-
-  let explanation="";
-
-  if(id==="cd"){
-    explanation=
-      `The model is emphasizing ${phase.toLowerCase()} and its relationship to the next state.`;
-  }
-
-  if(id==="da"){
-    explanation=
-      `The current transition is ${phase.toLowerCase()}; opposing information remains visible so synthesis can be inspected.`;
-  }
-
-  if(id==="hp"){
-    explanation=
-      `The object is unchanged; the active projection is ${phase.toLowerCase()}.`;
-  }
-
-  if(id==="vs"){
-    explanation=
-      `The field is fluctuating; attraction is ${(s.attractor*100).toFixed(0)}% and feedback is ${(s.feedback*100).toFixed(0)}%.`;
-  }
-
-  document.getElementById(
-    `explain-${id}`
-  ).textContent=explanation;
-
-  let metrics=[];
-
-  if(id==="cd"){
-    metrics=[
-      ["STAGE",current+1],
-      ["CAUSALITY","1.00"],
-      ["NOISE",".02"],
-      ["OUTPUT",phase.toUpperCase()]
-    ];
-  }
-
-  if(id==="da"){
-    metrics=[
-      ["STAGE",current+1],
-      ["OPPOSITION",".81"],
-      ["SYNTHESIS",current>=3?".76":".31"],
-      ["ALGORITHM",current>=4?"READY":"FORMING"]
-    ];
-  }
-
-  if(id==="hp"){
-    metrics=[
-      ["VIEW",current+1],
-      ["OBJECT","STABLE"],
-      ["PROJECTIONS","6"],
-      ["CRITERION","CHANGING"]
-    ];
-  }
-
-  if(id==="vs"){
-    metrics=[
-      ["FIELD","DYNAMIC"],
-      ["ATTRACTOR",(s.attractor*100).toFixed(0)+"%"],
-      ["FEEDBACK",(s.feedback*100).toFixed(0)+"%"],
-      ["DENSITY",(s.field*100).toFixed(0)+"%"]
-    ];
-  }
-
-  document.getElementById(
-    `metrics-${id}`
-  ).innerHTML=metrics.map(
-    metric=>`
-      <div class="metric">
-        <b>${metric[0]}</b>
-        <span>${metric[1]}</span>
-      </div>
-    `
-  ).join("");
-
-  document.getElementById(
-    `progress-${id}`
-  ).style.width=
-    typeof s.i==="number"
-      ?`${((current+1)/model.stages.length)*100}%`
-      :"100%";
-}
-
-function render(){
-
-  Object.keys(MODELS).forEach(id=>{
-
-    const canvas=
-      document.getElementById(`canvas-${id}`);
-
-    const context=
-      canvas.getContext("2d");
-
-    if(id==="cd"){
-      drawCausal(canvas,context);
-    }
-
-    if(id==="da"){
-      drawDialectical(canvas,context);
-    }
-
-    if(id==="hp"){
-      drawPanoramic(canvas,context);
-    }
-
-    if(id==="vs"){
-      drawVortical(canvas,context);
-    }
-
-    updateInterface(id);
-  });
-
-  document.querySelectorAll(
-    "#overview button"
-  ).forEach(button=>{
-    button.classList.toggle(
-      "active",
-      button.dataset.id===selected
-    );
-  });
-}
-
-function stepSimulation(id){
-
-  if(id==="cd"){
-    state.cd.i=
-      (state.cd.i+1)%
-      MODELS.cd.stages.length;
-  }
-
-  if(id==="da"){
-    state.da.i=
-      (state.da.i+1)%
-      MODELS.da.stages.length;
-  }
-
-  if(id==="hp"){
-    state.hp.i=
-      (state.hp.i+1)%
-      MODELS.hp.stages.length;
-
-    state.hp.angle+=Math.PI/8;
-  }
-
-  if(id==="vs"){
-    state.vs.t+=.35;
-
-    state.vs.field=
-      .35+
-      .25*Math.abs(
-        Math.sin(state.vs.t)
-      );
-
-    state.vs.attractor=
-      .55+
-      .4*Math.abs(
-        Math.cos(state.vs.t*.7)
-      );
-
-    state.vs.feedback=
-      .4+
-      .45*Math.abs(
-        Math.sin(state.vs.t*.9)
-      );
-  }
-
-  render();
-}
-
-function resetSimulation(id){
-
-  if(id==="cd"){
-    state.cd={i:0};
-  }
-
-  if(id==="da"){
-    state.da={i:0};
-  }
-
-  if(id==="hp"){
-    state.hp={
-      i:0,
-      angle:0
-    };
-  }
-
-  if(id==="vs"){
-    state.vs={
-      t:0,
-      field:.45,
-      attractor:.72,
-      feedback:.62
-    };
-  }
-
-  render();
-}
-
-function focusSimulation(id){
-
-  selected=id;
-
-  document.querySelectorAll(
-    ".sim"
-  ).forEach(sim=>{
-    sim.classList.toggle(
-      "focused",
-      sim.id===`sim-${id}`
-    );
-  });
-
-  document.getElementById(
-    `sim-${id}`
-  ).scrollIntoView({
-    behavior:reducedMotion?"auto":"smooth",
-    block:"center"
-  });
-}
-
-async function toggleFullscreen(id){
-
-  const element=
-    document.getElementById(`sim-${id}`);
-
-  try{
-
-    if(!document.fullscreenElement){
-
-      await element.requestFullscreen();
-
-    }else{
-
-      await document.exitFullscreen();
-
-    }
-
-  }catch(error){
-
-    console.warn(
-      "Fullscreen was unavailable:",
-      error
-    );
-  }
-}
-
-buildSimulations();
-focusSimulation("cd");
-
-window.addEventListener(
-  "resize",
-  render
-);
-
-document.addEventListener(
-  "fullscreenchange",
-  ()=>{
-    document.querySelectorAll(
-      ".sim"
-    ).forEach(sim=>{
-      sim.classList.remove("fullscreen");
-    });
-
-    if(document.fullscreenElement){
-      document.fullscreenElement.classList.add(
-        "fullscreen"
-      );
-    }
-
-    render();
-  }
-);
-
-let lastFrame=performance.now();
-
-let accumulator={
-  cd:0,
-  da:0
-};
-
-function animationLoop(now){
-
-  const delta=
-    Math.min(
-      .05,
-      (now-lastFrame)/1000
-    );
-
-  lastFrame=now;
-
-  if(!reducedMotion){
-
-    if(!paused.hp){
-
-      state.hp.angle+=
-        delta*.18*speeds.hp;
-
-      state.hp.t=
-        (state.hp.t||0)+
-        delta*.18*speeds.hp;
-    }
-
-    if(!paused.vs){
-
-      state.vs.t+=
-        delta*speeds.vs;
-
-      state.vs.field=
-        .35+
-        .25*Math.abs(
-          Math.sin(state.vs.t)
-        );
-
-      state.vs.attractor=
-        .55+
-        .4*Math.abs(
-          Math.cos(state.vs.t*.7)
-        );
-
-      state.vs.feedback=
-        .4+
-        .45*Math.abs(
-          Math.sin(state.vs.t*.9)
-        );
-    }
-
-    ["cd","da"].forEach(id=>{
-
-      if(paused[id]){
-        return;
-      }
-
-      accumulator[id]+=
-        delta*speeds[id];
-
-      if(accumulator[id]>=.9){
-
-        accumulator[id]-=.9;
-
-        stepSimulation(id);
-      }
-    });
-  }
-
-  render();
-
-  requestAnimationFrame(
-    animationLoop
-  );
-}
-
-requestAnimationFrame(
-  animationLoop
-);
-
-document.getElementById(
-  "model"
-).addEventListener(
-  "change",
-  event=>{
-    focusSimulation(
-      event.target.value
-    );
-  }
-);
-
-document.getElementById(
-  "seed"
-).addEventListener(
-  "change",
-  event=>{
-
-    random=
-      makeRandom(
-        event.target.value
-      );
-
-    Object.keys(
-      MODELS
-    ).forEach(
-      resetSimulation
-    );
-  }
-);
-
-function snapshot(){
-
-  const id=
-    document.getElementById(
-      "model"
-    ).value;
-
-  return {
-    project:"Cognitive Dynamics Studio",
-    model:MODELS[id].name,
-    modelVersion:"final",
-    seed:
-      Number(
-        document.getElementById("seed").value
-      )||1,
-    timestamp:
-      new Date().toISOString(),
-    state:
-      JSON.parse(
-        JSON.stringify(state[id])
-      ),
-    interpretationBoundary:
-      "Computational state only; not a human measurement."
-  };
-}
-
-function showExperimentOutput(){
-
-  const output=
-    document.getElementById("out");
-
-  output.textContent=
-    JSON.stringify(
-      {
-        baseline,
-        intervention
-      },
-      null,
-      2
-    );
-
-  output.classList.remove(
-    "hidden"
-  );
-}
-
-document.getElementById(
-  "baseline"
-).addEventListener(
-  "click",
-  ()=>{
-    baseline=snapshot();
-    showExperimentOutput();
-  }
-);
-
-document.getElementById(
-  "intervention"
-).addEventListener(
-  "click",
-  ()=>{
-    intervention=snapshot();
-    showExperimentOutput();
-  }
-);
-
-document.getElementById(
-  "run"
-).addEventListener(
-  "click",
-  ()=>{
-
-    const id=
+    const canvas =
       document.getElementById(
-        "model"
-      ).value;
+        "canvas"
+      );
 
-    resetSimulation(id);
+    const ctx =
+      canvas.getContext(
+        "2d"
+      );
 
-    const steps=
-      Math.max(
-        1,
-        Math.min(
-          1000,
-          Number(
-            document.getElementById(
-              "steps"
-            ).value
-          )||20
+    const tabs =
+      Array.from(
+        document.querySelectorAll(
+          ".simulation-tab"
         )
       );
 
-    for(let i=0;i<steps;i++){
-      stepSimulation(id);
+    const titleElement =
+      document.getElementById(
+        "simulationTitle"
+      );
+
+    const descriptionElement =
+      document.getElementById(
+        "simulationDescription"
+      );
+
+    const kickerElement =
+      document.getElementById(
+        "simulationKicker"
+      );
+
+    const controlsElement =
+      document.getElementById(
+        "simulationControls"
+      );
+
+    const metricsElement =
+      document.getElementById(
+        "metrics"
+      );
+
+    const hintElement =
+      document.getElementById(
+        "simulationHint"
+      );
+
+
+    /* =========================================================
+       CANVAS STATE
+       ========================================================= */
+
+    let canvasWidth =
+      1200;
+
+    let canvasHeight =
+      700;
+
+    let deviceScale =
+      1;
+
+    let activeSimulation =
+      "da";
+
+    let previousTime =
+      performance.now();
+
+    let uiRefreshClock =
+      0;
+
+
+    /* =========================================================
+       BASIC UTILITIES
+       ========================================================= */
+
+    function clamp(
+      value,
+      minimum = 0,
+      maximum = 1
+    ) {
+
+      return Math.max(
+        minimum,
+        Math.min(
+          maximum,
+          value
+        )
+      );
     }
 
-    const output=
-      document.getElementById("out");
 
-    output.textContent=
-      JSON.stringify(
-        {
-          run:snapshot(),
-          steps,
-          fixedTimestep:.05,
-          baseline,
-          intervention
-        },
-        null,
-        2
+    function randomBetween(
+      minimum,
+      maximum
+    ) {
+
+      return (
+        minimum +
+        Math.random() *
+        (
+          maximum -
+          minimum
+        )
       );
+    }
 
-    output.classList.remove(
-      "hidden"
+
+    /* =========================================================
+       CANVAS RESIZING
+       ========================================================= */
+
+    function resizeCanvas() {
+
+      const rect =
+        canvas.getBoundingClientRect();
+
+      canvasWidth =
+        Math.max(
+          1,
+          rect.width
+        );
+
+      canvasHeight =
+        Math.max(
+          1,
+          rect.height
+        );
+
+      deviceScale =
+        Math.min(
+          window.devicePixelRatio ||
+          1,
+          2
+        );
+
+      canvas.width =
+        Math.round(
+          canvasWidth *
+          deviceScale
+        );
+
+      canvas.height =
+        Math.round(
+          canvasHeight *
+          deviceScale
+        );
+
+      ctx.setTransform(
+        deviceScale,
+        0,
+        0,
+        deviceScale,
+        0,
+        0
+      );
+    }
+
+
+    window.addEventListener(
+      "resize",
+      resizeCanvas
     );
-  }
-);
 
-document.getElementById(
-  "download"
-).addEventListener(
-  "click",
-  ()=>{
 
-    const content=
-      document.getElementById(
-        "out"
-      ).textContent||
-      JSON.stringify(
-        snapshot(),
-        null,
-        2
+    resizeCanvas();
+
+
+    /* =========================================================
+       DRAWING HELPERS
+       ========================================================= */
+
+    function clearScene() {
+
+      ctx.fillStyle =
+        "#05070b";
+
+      ctx.fillRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
       );
 
-    const blob=
-      new Blob(
-        [content],
+
+      /*
+       * Technical grid.
+       */
+
+      ctx.lineWidth =
+        1;
+
+      ctx.strokeStyle =
+        "rgba(150,165,185,0.035)";
+
+      const spacing =
+        40;
+
+
+      for (
+        let x = 0;
+        x <= canvasWidth;
+        x += spacing
+      ) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+          x,
+          0
+        );
+
+        ctx.lineTo(
+          x,
+          canvasHeight
+        );
+
+        ctx.stroke();
+      }
+
+
+      for (
+        let y = 0;
+        y <= canvasHeight;
+        y += spacing
+      ) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+          0,
+          y
+        );
+
+        ctx.lineTo(
+          canvasWidth,
+          y
+        );
+
+        ctx.stroke();
+      }
+
+    }
+
+
+    function drawLine(
+      x1,
+      y1,
+      x2,
+      y2,
+      color =
+        "rgba(180,195,215,0.2)",
+      width = 1
+    ) {
+
+      ctx.beginPath();
+
+      ctx.strokeStyle =
+        color;
+
+      ctx.lineWidth =
+        width;
+
+      ctx.moveTo(
+        x1,
+        y1
+      );
+
+      ctx.lineTo(
+        x2,
+        y2
+      );
+
+      ctx.stroke();
+    }
+
+
+    function drawArrow(
+      x1,
+      y1,
+      x2,
+      y2,
+      color =
+        "rgba(200,210,225,0.35)",
+      width = 1
+    ) {
+
+      drawLine(
+        x1,
+        y1,
+        x2,
+        y2,
+        color,
+        width
+      );
+
+
+      const angle =
+        Math.atan2(
+          y2 - y1,
+          x2 - x1
+        );
+
+      const size =
+        7;
+
+
+      ctx.fillStyle =
+        color;
+
+      ctx.beginPath();
+
+      ctx.moveTo(
+        x2,
+        y2
+      );
+
+      ctx.lineTo(
+        x2 -
+        size *
+        Math.cos(
+          angle -
+          0.45
+        ),
+        y2 -
+        size *
+        Math.sin(
+          angle -
+          0.45
+        )
+      );
+
+      ctx.lineTo(
+        x2 -
+        size *
+        Math.cos(
+          angle +
+          0.45
+        ),
+        y2 -
+        size *
+        Math.sin(
+          angle +
+          0.45
+        )
+      );
+
+      ctx.closePath();
+
+      ctx.fill();
+    }
+
+
+    function drawCircle(
+      x,
+      y,
+      radius,
+      fill,
+      stroke = null,
+      strokeWidth = 1
+    ) {
+
+      ctx.beginPath();
+
+      ctx.arc(
+        x,
+        y,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        fill;
+
+      ctx.fill();
+
+
+      if (stroke) {
+
+        ctx.strokeStyle =
+          stroke;
+
+        ctx.lineWidth =
+          strokeWidth;
+
+        ctx.stroke();
+      }
+    }
+
+
+    function drawText(
+      value,
+      x,
+      y,
+      size = 11,
+      color = "#aeb8c8",
+      align = "center",
+      weight = "400"
+    ) {
+
+      ctx.fillStyle =
+        color;
+
+      ctx.font =
+        `${weight} ${size}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`;
+
+      ctx.textAlign =
+        align;
+
+      ctx.textBaseline =
+        "middle";
+
+      ctx.fillText(
+        value,
+        x,
+        y
+      );
+    }
+
+
+    function drawPill(
+      value,
+      x,
+      y,
+      active = false
+    ) {
+
+      ctx.font =
+        "600 10px ui-monospace, monospace";
+
+
+      const width =
+        ctx.measureText(
+          value
+        ).width +
+        18;
+
+
+      ctx.fillStyle =
+        active
+          ? "#e8edf3"
+          : "#0d131b";
+
+
+      ctx.strokeStyle =
+        active
+          ? "#e8edf3"
+          : "#2b3542";
+
+
+      ctx.lineWidth =
+        1;
+
+
+      ctx.beginPath();
+
+      ctx.roundRect(
+        x -
+        width / 2,
+        y -
+        13,
+        width,
+        26,
+        13
+      );
+
+      ctx.fill();
+
+      ctx.stroke();
+
+
+      drawText(
+        value,
+        x,
+        y,
+        10,
+        active
+          ? "#080b10"
+          : "#8994a4",
+        "center",
+        "600"
+      );
+    }
+
+
+    function drawGlow(
+      x,
+      y,
+      radius,
+      rgbaColor,
+      alpha = 0.2
+    ) {
+
+      const color =
+        rgbaColor.replace(
+          "ALPHA",
+          String(alpha)
+        );
+
+      const transparentColor =
+        rgbaColor.replace(
+          "ALPHA",
+          "0"
+        );
+
+
+      const gradient =
+        ctx.createRadialGradient(
+          x,
+          y,
+          0,
+          x,
+          y,
+          radius
+        );
+
+
+      gradient.addColorStop(
+        0,
+        color
+      );
+
+      gradient.addColorStop(
+        1,
+        transparentColor
+      );
+
+
+      ctx.fillStyle =
+        gradient;
+
+
+      ctx.beginPath();
+
+      ctx.arc(
+        x,
+        y,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fill();
+    }
+
+
+    /* =========================================================
+       DIALECTICAL–ALGORITHMIC
+       ========================================================= */
+
+    const dialectical = {
+
+      name:
+        "Dialectical–Algorithmic Cognition",
+
+      kicker:
+        "ORDERED CONTRADICTION-DRIVEN PROCESS",
+
+      description:
+        "State definition → thesis and antithesis → explicit contrast → contradiction → synthesis → rule → ordered algorithm → execution → feedback.",
+
+      subject:
+        "A machine",
+
+      running:
+        true,
+
+      time:
+        0,
+
+      stage:
+        0,
+
+      stageDuration:
+        2.8,
+
+      stages: [
+
+        [
+          "STATE",
+          "initial condition"
+        ],
+
+        [
+          "THESIS",
+          "affirm current relation"
+        ],
+
+        [
+          "ANTITHESIS",
+          "introduce opposing condition"
+        ],
+
+        [
+          "CONTRAST",
+          "compare formulations"
+        ],
+
+        [
+          "CONTRADICTION",
+          "locate incompatibility"
+        ],
+
+        [
+          "SYNTHESIS",
+          "resolve at higher level"
+        ],
+
+        [
+          "RULE",
+          "extract governing principle"
+        ],
+
+        [
+          "ALGORITHM",
+          "order the procedure"
+        ],
+
+        [
+          "EXECUTE",
+          "apply the procedure"
+        ],
+
+        [
+          "FEEDBACK",
+          "test and revise"
+        ]
+
+      ],
+
+      profiles: {
+
+        machine: {
+
+          axis:
+            "stability ↔ adaptation",
+
+          thesis:
+            "The process is working because its procedure is stable.",
+
+          antithesis:
+            "The process may fail when operating conditions change.",
+
+          synthesis:
+            "A stable procedure remains valid only while its governing conditions hold.",
+
+          rule:
+            "Validate conditions before repeating a procedure."
+
+        },
+
+        university: {
+
+          axis:
+            "consistency ↔ adaptation",
+
+          thesis:
+            "Consistency of rules supports reliable operation.",
+
+          antithesis:
+            "Rigid consistency can obstruct changing educational needs.",
+
+          synthesis:
+            "Rules should remain stable structurally while procedures adapt to context.",
+
+          rule:
+            "Preserve the governing principle; adapt the procedure to the case."
+
+        },
+
+        ecosystem: {
+
+          axis:
+            "equilibrium ↔ transformation",
+
+          thesis:
+            "Existing relationships stabilize the system.",
+
+          antithesis:
+            "Environmental change can disrupt those relationships.",
+
+          synthesis:
+            "Equilibrium is maintained by mechanisms that can themselves change.",
+
+          rule:
+            "Track the relation, then update the mechanism when the relation changes."
+
+        },
+
+        friendship: {
+
+          axis:
+            "expectation ↔ circumstance",
+
+          thesis:
+            "Consistency of expectations makes interaction predictable.",
+
+          antithesis:
+            "Changing circumstances can invalidate old expectations.",
+
+          synthesis:
+            "A durable relationship preserves its core principle while revising outdated expectations.",
+
+          rule:
+            "Keep the relationship principle; update assumptions when circumstances change."
+
+        },
+
+        city: {
+
+          axis:
+            "structure ↔ demand",
+
+          thesis:
+            "Established infrastructure constrains and stabilizes activity.",
+
+          antithesis:
+            "Changing population and behavior can exceed those constraints.",
+
+          synthesis:
+            "Infrastructure remains useful only when its rules and capacities match current demand.",
+
+          rule:
+            "Compare the operating structure against changing demand before scaling it."
+
+        },
+
+        idea: {
+
+          axis:
+            "formulation ↔ counterexample",
+
+          thesis:
+            "The initial formulation captures a useful pattern.",
+
+          antithesis:
+            "A counterexample exposes limits in the formulation.",
+
+          synthesis:
+            "A stronger formulation preserves what survives the counterexample.",
+
+          rule:
+            "Refine the rule at the point where a counterexample defeats it."
+
+        }
+
+      },
+
+
+      profile() {
+
+        const lower =
+          this.subject.toLowerCase();
+
+
+        for (
+          const key of
+          Object.keys(
+            this.profiles
+          )
+        ) {
+
+          if (
+            lower.includes(
+              key
+            )
+          ) {
+
+            return this.profiles[
+              key
+            ];
+          }
+        }
+
+
+        return this.profiles.idea;
+      },
+
+
+      reset() {
+
+        this.time =
+          0;
+
+        this.stage =
+          0;
+      },
+
+
+      nextStage() {
+
+        this.stage =
+          (
+            this.stage +
+            1
+          ) %
+          this.stages.length;
+
+        this.time =
+          0;
+      },
+
+
+      update(dt) {
+
+        if (
+          !this.running
+        ) {
+
+          return;
+        }
+
+
+        this.time +=
+          dt;
+
+
+        if (
+          this.time >=
+          this.stageDuration
+        ) {
+
+          this.time =
+            0;
+
+          this.stage =
+            (
+              this.stage +
+              1
+            ) %
+            this.stages.length;
+        }
+      },
+
+
+      draw() {
+
+        clearScene();
+
+
+        const cx =
+          canvasWidth /
+          2;
+
+        const cy =
+          canvasHeight *
+          0.48;
+
+
+        const profile =
+          this.profile();
+
+
+        const positions = [
+
+          [
+            cx,
+            cy - 220
+          ],
+
+          [
+            cx - 230,
+            cy - 110
+          ],
+
+          [
+            cx + 230,
+            cy - 110
+          ],
+
+          [
+            cx - 155,
+            cy
+          ],
+
+          [
+            cx + 155,
+            cy
+          ],
+
+          [
+            cx,
+            cy + 90
+          ],
+
+          [
+            cx,
+            cy + 175
+          ],
+
+          [
+            cx - 165,
+            cy + 240
+          ],
+
+          [
+            cx + 165,
+            cy + 240
+          ],
+
+          [
+            cx,
+            cy + 315
+          ]
+
+        ];
+
+
+        /*
+         * Ordered chain.
+         */
+
+        for (
+          let i = 0;
+          i <
+          positions.length -
+          1;
+          i++
+        ) {
+
+          const a =
+            positions[i];
+
+          const b =
+            positions[i + 1];
+
+
+          drawArrow(
+            a[0],
+            a[1] + 31,
+            b[0],
+            b[1] - 31,
+            "rgba(170,185,205,0.13)",
+            1
+          );
+        }
+
+
+        /*
+         * Contradiction branches.
+         */
+
+        drawArrow(
+          positions[1][0] + 32,
+          positions[1][1] + 15,
+          positions[4][0] - 38,
+          positions[4][1] - 15,
+          "rgba(205,215,230,0.18)",
+          1
+        );
+
+
+        drawArrow(
+          positions[2][0] - 32,
+          positions[2][1] + 15,
+          positions[3][0] + 38,
+          positions[3][1] - 15,
+          "rgba(205,215,230,0.18)",
+          1
+        );
+
+
+        /*
+         * Nodes.
+         */
+
+        for (
+          let i = 0;
+          i <
+          positions.length;
+          i++
+        ) {
+
+          const x =
+            positions[i][0];
+
+          const y =
+            positions[i][1];
+
+
+          const distanceFromStage =
+            Math.abs(
+              i -
+              this.stage
+            );
+
+
+          const activation =
+            clamp(
+              1 -
+              distanceFromStage *
+              0.25
+            );
+
+
+          const radius =
+            i === 4 ||
+            i === 5
+              ? 42
+              : 32;
+
+
+          if (
+            i ===
+            this.stage
+          ) {
+
+            drawGlow(
+              x,
+              y,
+              radius * 2.4,
+              "rgba(210,225,240,ALPHA)",
+              0.13
+            );
+          }
+
+
+          drawCircle(
+            x,
+            y,
+            radius,
+            `rgba(215,224,235,${0.025 + activation * 0.065})`,
+            `rgba(215,224,235,${0.12 + activation * 0.56})`,
+            i ===
+            this.stage
+              ? 2
+              : 1
+          );
+
+
+          drawText(
+            this.stages[i][0],
+            x,
+            y,
+            9,
+            i ===
+            this.stage
+              ? "#f4f6f9"
+              : "#7f8a9a",
+            "center",
+            "700"
+          );
+
+
+          drawText(
+            this.stages[i][1],
+            x,
+            y + radius + 12,
+            7,
+            i ===
+            this.stage
+              ? "#929eae"
+              : "#4e5968",
+            "center",
+            "400"
+          );
+        }
+
+
+        /*
+         * Central state.
+         */
+
+        const pulse =
+          112 +
+          Math.sin(
+            this.time *
+            2
+          ) *
+          12;
+
+
+        drawCircle(
+          cx,
+          cy,
+          pulse,
+          "rgba(220,230,240,0.012)",
+          "rgba(200,215,230,0.07)",
+          1
+        );
+
+
+        drawText(
+          this.subject.toUpperCase(),
+          cx,
+          cy - 21,
+          9,
+          "#5f6b7b",
+          "center",
+          "700"
+        );
+
+
+        drawText(
+          this.stages[
+            this.stage
+          ][0],
+          cx,
+          cy + 3,
+          18,
+          "#e8edf3",
+          "center",
+          "700"
+        );
+
+
+        drawText(
+          `${Math.round(
+            (
+              this.time /
+              this.stageDuration
+            ) *
+            100
+          )}%`,
+          cx,
+          cy + 28,
+          10,
+          "#7e8999",
+          "center",
+          "400"
+        );
+
+
+        /*
+         * Semantic information.
+         */
+
+        const panelY =
+          canvasHeight -
+          80;
+
+
+        drawPill(
+          profile.axis,
+          cx,
+          panelY - 28,
+          this.stage >= 2 &&
+          this.stage <= 5
+        );
+
+
+        let semanticText =
+          profile.thesis;
+
+
+        if (
+          this.stage ===
+          2
+        ) {
+
+          semanticText =
+            profile.antithesis;
+        }
+
+
+        if (
+          this.stage ===
+          5
+        ) {
+
+          semanticText =
+            profile.synthesis;
+        }
+
+
+        if (
+          this.stage >=
+          6
+        ) {
+
+          semanticText =
+            profile.rule;
+        }
+
+
+        drawText(
+          semanticText,
+          cx,
+          panelY + 8,
+          9,
+          "#6e7a8a",
+          "center",
+          "400"
+        );
+
+      }
+
+    };
+
+
+    /* =========================================================
+       CAUSAL–DETERMINISTIC
+       ========================================================= */
+
+    const causal = {
+
+      name:
+        "Causal–Deterministic Cognition",
+
+      kicker:
+        "OBSERVATION → PREMISES → CAUSAL LINK → RESULT",
+
+      description:
+        "Analytic, positive, deductive and stable cognition represented as a chain of explicit intermediate causes and consequences.",
+
+      subject:
+        "A theorem",
+
+      running:
+        true,
+
+      time:
+        0,
+
+      stage:
+        0,
+
+      stageDuration:
+        2.6,
+
+      stages: [
+
+        "OBSERVATION",
+
+        "ANALYSIS",
+
+        "PREMISES",
+
+        "CAUSAL CHAIN",
+
+        "MECHANISM",
+
+        "DEDUCTION",
+
+        "CONSEQUENCE",
+
+        "SINGULAR RESULT"
+
+      ],
+
+      nodes: [
+
+        "axioms",
+
+        "definitions",
+
+        "premises",
+
+        "lemma",
+
+        "inference",
+
+        "proof",
+
+        "conclusion",
+
+        "verification"
+
+      ],
+
+
+      reset() {
+
+        this.time =
+          0;
+
+        this.stage =
+          0;
+      },
+
+
+      update(dt) {
+
+        if (
+          !this.running
+        ) {
+
+          return;
+        }
+
+
+        this.time +=
+          dt;
+
+
+        if (
+          this.time >=
+          this.stageDuration
+        ) {
+
+          this.time =
+            0;
+
+          this.stage =
+            (
+              this.stage +
+              1
+            ) %
+            this.stages.length;
+        }
+      },
+
+
+      draw() {
+
+        clearScene();
+
+
+        const cx =
+          canvasWidth /
+          2;
+
+        const cy =
+          canvasHeight *
+          0.52;
+
+
+        const count =
+          this.nodes.length;
+
+
+        const availableWidth =
+          canvasWidth -
+          180;
+
+
+        const step =
+          Math.min(
+            145,
+            availableWidth /
+            (count - 1)
+          );
+
+
+        const points = [];
+
+
+        /*
+         * Causal nodes.
+         */
+
+        for (
+          let i = 0;
+          i <
+          count;
+          i++
+        ) {
+
+          const x =
+            cx -
+            (
+              (
+                count -
+                1
+              ) *
+              step
+            ) /
+            2 +
+            i *
+            step;
+
+
+          const y =
+            cy +
+            Math.sin(
+              i *
+              1.25
+            ) *
+            65;
+
+
+          points.push({
+            x,
+            y
+          });
+        }
+
+
+        /*
+         * Causal arrows.
+         */
+
+        for (
+          let i = 0;
+          i <
+          points.length -
+          1;
+          i++
+        ) {
+
+          const a =
+            points[i];
+
+          const b =
+            points[i + 1];
+
+
+          const active =
+            i <
+            this.stage;
+
+
+          drawArrow(
+            a.x + 27,
+            a.y,
+            b.x - 27,
+            b.y,
+            active
+              ? "rgba(220,230,240,0.50)"
+              : "rgba(160,175,195,0.16)",
+            active
+              ? 2
+              : 1
+          );
+        }
+
+
+        /*
+         * Causal nodes.
+         */
+
+        for (
+          let i = 0;
+          i <
+          points.length;
+          i++
+        ) {
+
+          const point =
+            points[i];
+
+
+          const activation =
+            clamp(
+              1 -
+              Math.abs(
+                i -
+                this.stage
+              ) *
+              0.21
+            );
+
+
+          if (
+            i ===
+            this.stage
+          ) {
+
+            drawGlow(
+              point.x,
+              point.y,
+              70,
+              "rgba(210,225,240,ALPHA)",
+              0.12
+            );
+          }
+
+
+          drawCircle(
+            point.x,
+            point.y,
+            23,
+            `rgba(215,225,235,${0.025 + activation * 0.055})`,
+            `rgba(210,220,235,${0.15 + activation * 0.6})`,
+            i ===
+            this.stage
+              ? 2
+              : 1
+          );
+
+
+          drawText(
+            String(
+              i + 1
+            ).padStart(
+              2,
+              "0"
+            ),
+            point.x,
+            point.y,
+            8,
+            i ===
+            this.stage
+              ? "#f4f6f9"
+              : "#697587",
+            "center",
+            "700"
+          );
+
+
+          drawText(
+            this.nodes[
+              i
+            ].toUpperCase(),
+            point.x,
+            point.y + 39,
+            7,
+            i ===
+            this.stage
+              ? "#e6ebf2"
+              : "#606c7d",
+            "center",
+            "700"
+          );
+        }
+
+
+        /*
+         * Causal conjunctions.
+         */
+
+        drawPill(
+          "BECAUSE",
+          cx - 190,
+          canvasHeight *
+          0.17
+        );
+
+
+        drawPill(
+          "THEREFORE",
+          cx,
+          canvasHeight *
+          0.17,
+          true
+        );
+
+
+        drawPill(
+          "CONSEQUENTLY",
+          cx + 190,
+          canvasHeight *
+          0.17
+        );
+
+
+        drawText(
+          this.subject.toUpperCase(),
+          cx,
+          canvasHeight *
+          0.30,
+          12,
+          "#dce3ec",
+          "center",
+          "700"
+        );
+
+
+        drawText(
+          this.stages[
+            this.stage
+          ],
+          cx,
+          canvasHeight *
+          0.37,
+          18,
+          "#eef2f6",
+          "center",
+          "700"
+        );
+
+
+        drawText(
+          "Intermediate links remain explicit; the chain narrows the system toward one determined result.",
+          cx,
+          canvasHeight *
+          0.43,
+          9,
+          "#697587",
+          "center",
+          "400"
+        );
+
+
+        /*
+         * Rule cards.
+         */
+
+        const rules = [
+
+          [
+            "IF",
+            "premises are valid"
+          ],
+
+          [
+            "THEN",
+            "a valid inference follows"
+          ],
+
+          [
+            "THEREFORE",
+            "the consequence is determined"
+          ]
+
+        ];
+
+
+        const cardY =
+          canvasHeight -
+          105;
+
+
+        const cardWidth =
+          Math.min(
+            290,
+            canvasWidth *
+            0.27
+          );
+
+
+        for (
+          let i = 0;
+          i <
+          rules.length;
+          i++
+        ) {
+
+          const x =
+            cx -
+            cardWidth -
+            20 +
+            i *
+            (
+              cardWidth +
+              20
+            );
+
+
+          ctx.fillStyle =
+            "#0a0f16";
+
+          ctx.strokeStyle =
+            "#27313d";
+
+          ctx.lineWidth =
+            1;
+
+
+          ctx.beginPath();
+
+          ctx.roundRect(
+            x,
+            cardY,
+            cardWidth,
+            56,
+            8
+          );
+
+          ctx.fill();
+
+          ctx.stroke();
+
+
+          drawText(
+            rules[i][0],
+            x + 13,
+            cardY + 18,
+            8,
+            "#7d899a",
+            "left",
+            "700"
+          );
+
+
+          drawText(
+            rules[i][1],
+            x + 13,
+            cardY + 37,
+            8,
+            "#596575",
+            "left",
+            "400"
+          );
+        }
+
+      }
+
+    };
+
+
+    /* =========================================================
+       HOLOGRAPHICAL–PANORAMIC
+       ========================================================= */
+
+    const panoramic = {
+
+      name:
+        "Holographical–Panoramic Cognition",
+
+      kicker:
+        "ONE OBJECT • MULTIPLE PROJECTIONS • PANORAMIC RECOMBINATION",
+
+      description:
+        "A fixed object is viewed through multiple criteria and projections, compared across perspectives, skeletonized into invariants and recombined.",
+
+      subject:
+        "A city",
+
+      running:
+        true,
+
+      time:
+        0,
+
+      stage:
+        0,
+
+      stageDuration:
+        4,
+
+      projections: [
+
+        [
+          "WHOLE",
+          "larger system",
+          "macro"
+        ],
+
+        [
+          "PART",
+          "components",
+          "micro"
+        ],
+
+        [
+          "RELATION",
+          "connections",
+          "meso"
+        ],
+
+        [
+          "FUNCTION",
+          "role",
+          "meso"
+        ],
+
+        [
+          "ORIGIN",
+          "formation",
+          "macro"
+        ],
+
+        [
+          "CHANGE",
+          "transformation",
+          "micro"
+        ],
+
+        [
+          "OPPOSITE",
+          "reversal",
+          "macro"
+        ],
+
+        [
+          "ANALOGY",
+          "structural correspondence",
+          "macro"
+        ]
+
+      ],
+
+      invariants: [
+
+        "identity",
+
+        "persistent relation",
+
+        "part ↔ whole",
+
+        "structural role",
+
+        "relational skeleton"
+
+      ],
+
+
+      reset() {
+
+        this.time =
+          0;
+
+        this.stage =
+          0;
+      },
+
+
+      update(dt) {
+
+        if (
+          !this.running
+        ) {
+
+          return;
+        }
+
+
+        this.time +=
+          dt;
+
+
+        if (
+          this.time >=
+          this.stageDuration
+        ) {
+
+          this.time =
+            0;
+
+          this.stage =
+            (
+              this.stage +
+              1
+            ) %
+            this.projections.length;
+        }
+      },
+
+
+      draw() {
+
+        clearScene();
+
+
+        const cx =
+          canvasWidth /
+          2;
+
+        const cy =
+          canvasHeight /
+          2 +
+          8;
+
+
+        const rotation =
+          this.time *
+          0.25 +
+          this.stage *
+          0.78;
+
+
+        /*
+         * Fixed object.
+         */
+
+        drawGlow(
+          cx,
+          cy,
+          150,
+          "rgba(205,220,235,ALPHA)",
+          0.07
+        );
+
+
+        drawCircle(
+          cx,
+          cy,
+          78,
+          "rgba(215,225,235,0.018)",
+          "rgba(105,120,138,0.65)",
+          1
+        );
+
+
+        drawCircle(
+          cx,
+          cy,
+          46,
+          "rgba(225,235,245,0.035)",
+          "rgba(195,205,218,0.7)",
+          1
+        );
+
+
+        drawText(
+          this.subject.toUpperCase(),
+          cx,
+          cy,
+          10,
+          "#eef2f6",
+          "center",
+          "700"
+        );
+
+
+        /*
+         * Projection orbit.
+         */
+
+        const orbitX =
+          Math.min(
+            350,
+            canvasWidth *
+            0.29
+          );
+
+
+        const orbitY =
+          Math.min(
+            230,
+            canvasHeight *
+            0.30
+          );
+
+
+        for (
+          let i = 0;
+          i <
+          this.projections.length;
+          i++
+        ) {
+
+          const projection =
+            this.projections[
+              i
+            ];
+
+
+          const angle =
+            rotation +
+            i *
+            Math.PI *
+            2 /
+            this.projections.length;
+
+
+          const x =
+            cx +
+            Math.cos(
+              angle
+            ) *
+            orbitX;
+
+
+          const y =
+            cy +
+            Math.sin(
+              angle
+            ) *
+            orbitY;
+
+
+          const isActive =
+            i ===
+            this.stage;
+
+
+          drawLine(
+            cx,
+            cy,
+            x,
+            y,
+            isActive
+              ? "rgba(195,210,225,0.38)"
+              : "rgba(170,185,205,0.09)",
+            isActive
+              ? 2
+              : 1
+          );
+
+
+          /*
+           * Projection plane.
+           */
+
+          ctx.save();
+
+          ctx.translate(
+            x,
+            y
+          );
+
+          ctx.rotate(
+            angle +
+            Math.PI /
+            2
+          );
+
+
+          ctx.strokeStyle =
+            isActive
+              ? "rgba(210,220,235,0.32)"
+              : "rgba(150,170,195,0.08)";
+
+
+          ctx.lineWidth =
+            isActive
+              ? 1.5
+              : 1;
+
+
+          ctx.strokeRect(
+            -34,
+            -24,
+            68,
+            48
+          );
+
+
+          ctx.restore();
+
+
+          if (
+            isActive
+          ) {
+
+            drawGlow(
+              x,
+              y,
+              65,
+              "rgba(205,220,235,ALPHA)",
+              0.10
+            );
+          }
+
+
+          drawCircle(
+            x,
+            y,
+            32,
+            isActive
+              ? "rgba(210,220,235,0.065)"
+              : "rgba(210,220,235,0.015)",
+            isActive
+              ? "rgba(210,220,235,0.72)"
+              : "rgba(160,175,195,0.17)",
+            isActive
+              ? 2
+              : 1
+          );
+
+
+          drawText(
+            projection[0],
+            x,
+            y,
+            9,
+            isActive
+              ? "#f1f4f8"
+              : "#7f8b9d",
+            "center",
+            "700"
+          );
+
+
+          drawText(
+            projection[1],
+            x,
+            y + 47,
+            7,
+            "#596576",
+            "center",
+            "400"
+          );
+
+        }
+
+
+        /*
+         * Internal detail field.
+         */
+
+        for (
+          let i = 0;
+          i < 70;
+          i++
+        ) {
+
+          const angle =
+            i *
+            0.48 +
+            rotation *
+            0.82;
+
+
+          const radius =
+            90 +
+            (
+              i % 6
+            ) *
+            26 +
+            Math.sin(
+              this.time +
+              i
+            ) *
+            5;
+
+
+          const x =
+            cx +
+            Math.cos(
+              angle
+            ) *
+            radius;
+
+
+          const y =
+            cy +
+            Math.sin(
+              angle
+            ) *
+            radius *
+            0.68;
+
+
+          const importance =
+            0.16 +
+            (
+              i % 5
+            ) *
+            0.08;
+
+
+          drawCircle(
+            x,
+            y,
+            1.4 +
+            (
+              i % 3
+            ) *
+            0.5,
+            `rgba(205,220,235,${importance})`
+          );
+
+        }
+
+
+        /*
+         * Invariant skeleton.
+         */
+
+        const invariantY =
+          canvasHeight -
+          55;
+
+
+        for (
+          let i = 0;
+          i <
+          this.invariants.length;
+          i++
+        ) {
+
+          drawPill(
+            this.invariants[i],
+            cx +
+            (
+              i -
+              2
+            ) *
+            145,
+            invariantY,
+            i ===
+            (
+              this.stage %
+              this.invariants.length
+            )
+          );
+        }
+
+
+        drawText(
+          "FIXED OBJECT",
+          cx,
+          35,
+          9,
+          "#6c7888",
+          "center",
+          "700"
+        );
+
+
+        drawText(
+          "criterion rotation / perspective shift",
+          cx,
+          53,
+          8,
+          "#4f5b6b",
+          "center",
+          "400"
+        );
+
+      }
+
+    };
+
+
+    /* =========================================================
+       VORTICAL–SYNERGETIC
+       ========================================================= */
+
+    const vortical = {
+
+      name:
+        "Vortical–Synergetic Cognition",
+
+      kicker:
+        "FLUCTUATION • CIRCULATION • ALTERNATIVES • ATTRACTOR",
+
+      description:
+        "Non-equilibrium dynamics with vortical movement, rapid alternative generation, screening, reversals, positive feedback and emergent concentration.",
+
+      running:
+        true,
+
+      time:
+        0,
+
+      stage:
+        0,
+
+      stageDuration:
+        3,
+
+      variants: [],
+
+      substrate: [],
+
+      vortices: [
+
         {
-          type:"application/json"
+          offsetX:
+            -0.20,
+
+          offsetY:
+            -0.02,
+
+          radius:
+            250,
+
+          strength:
+            0.45,
+
+          rotation:
+            1
+        },
+
+        {
+          offsetX:
+            0.20,
+
+          offsetY:
+            0.02,
+
+          radius:
+            230,
+
+          strength:
+            0.40,
+
+          rotation:
+            -1
+        },
+
+        {
+          offsetX:
+            0,
+
+          offsetY:
+            0.20,
+
+          radius:
+            185,
+
+          strength:
+            0.28,
+
+          rotation:
+            0.72
+        }
+
+      ],
+
+
+      reset() {
+
+        this.time =
+          0;
+
+        this.stage =
+          0;
+
+        this.variants =
+          [];
+
+        this.substrate =
+          [];
+
+
+        /*
+         * Substrate particles.
+         */
+
+        for (
+          let i = 0;
+          i < 105;
+          i++
+        ) {
+
+          const angle =
+            randomBetween(
+              0,
+              Math.PI *
+              2
+            );
+
+
+          const radius =
+            randomBetween(
+              20,
+              310
+            );
+
+
+          this.substrate.push({
+
+            x:
+              canvasWidth /
+              2 +
+              Math.cos(
+                angle
+              ) *
+              radius,
+
+            y:
+              canvasHeight /
+              2 +
+              Math.sin(
+                angle
+              ) *
+              radius *
+              0.67,
+
+            vx:
+              randomBetween(
+                -0.35,
+                0.35
+              ),
+
+            vy:
+              randomBetween(
+                -0.35,
+                0.35
+              ),
+
+            phase:
+              randomBetween(
+                0,
+                Math.PI *
+                2
+              ),
+
+            mass:
+              randomBetween(
+                0.7,
+                1.4
+              )
+
+          });
+
+        }
+
+
+        /*
+         * Initial alternatives.
+         */
+
+        for (
+          let i = 0;
+          i < 34;
+          i++
+        ) {
+
+          this.spawnVariant();
+        }
+
+      },
+
+
+      spawnVariant(
+        parent = null
+      ) {
+
+        const cx =
+          canvasWidth /
+          2;
+
+        const cy =
+          canvasHeight /
+          2;
+
+
+        if (
+          parent
+        ) {
+
+          this.variants.push({
+
+            x:
+              parent.x,
+
+            y:
+              parent.y,
+
+            vx:
+              parent.vx +
+              randomBetween(
+                -1.6,
+                1.6
+              ),
+
+            vy:
+              parent.vy +
+              randomBetween(
+                -1.6,
+                1.6
+              ),
+
+            energy:
+              parent.energy *
+              randomBetween(
+                0.72,
+                1.08
+              ),
+
+            score:
+              0,
+
+            trail:
+              []
+
+          });
+
+
+          return;
+        }
+
+
+        const angle =
+          randomBetween(
+            0,
+            Math.PI *
+            2
+          );
+
+
+        const radius =
+          randomBetween(
+            160,
+            330
+          );
+
+
+        const x =
+          cx +
+          Math.cos(
+            angle
+          ) *
+          radius;
+
+
+        const y =
+          cy +
+          Math.sin(
+            angle
+          ) *
+          radius *
+          0.67;
+
+
+        const direction =
+          angle +
+          Math.PI /
+          2 +
+          randomBetween(
+            -1.2,
+            1.2
+          );
+
+
+        const speed =
+          randomBetween(
+            1,
+            3.3
+          );
+
+
+        this.variants.push({
+
+          x,
+
+          y,
+
+          vx:
+            Math.cos(
+              direction
+            ) *
+            speed,
+
+          vy:
+            Math.sin(
+              direction
+            ) *
+            speed,
+
+          energy:
+            randomBetween(
+              0.55,
+              1.25
+            ),
+
+          score:
+            0,
+
+          trail:
+            []
+
+        });
+
+      },
+
+
+      substrateField(
+        x,
+        y
+      ) {
+
+        let fx =
+          0;
+
+        let fy =
+          0;
+
+
+        for (
+          let i = 0;
+          i <
+          this.substrate.length;
+          i += 2
+        ) {
+
+          const particle =
+            this.substrate[i];
+
+
+          const dx =
+            particle.x -
+            x;
+
+
+          const dy =
+            particle.y -
+            y;
+
+
+          const distanceSquared =
+            dx * dx +
+            dy * dy;
+
+
+          if (
+            distanceSquared <
+              1 ||
+            distanceSquared >
+              10000
+          ) {
+
+            continue;
+          }
+
+
+          const radius =
+            Math.sqrt(
+              distanceSquared
+            );
+
+
+          const influence =
+            particle.mass /
+            (
+              distanceSquared +
+              30
+            );
+
+
+          fx +=
+            (
+              dx /
+              radius
+            ) *
+            influence *
+            28;
+
+
+          fy +=
+            (
+              dy /
+              radius
+            ) *
+            influence *
+            28;
+
+        }
+
+
+        return {
+          x: fx,
+          y: fy
+        };
+
+      },
+
+
+      update(dt) {
+
+        if (
+          !this.running
+        ) {
+
+          return;
+        }
+
+
+        this.time +=
+          dt;
+
+
+        if (
+          this.time >=
+          this.stageDuration
+        ) {
+
+          this.time =
+            0;
+
+          this.stage =
+            (
+              this.stage +
+              1
+            ) %
+            5;
+        }
+
+
+        const cx =
+          canvasWidth /
+          2;
+
+        const cy =
+          canvasHeight /
+          2;
+
+
+        /*
+         * Substrate dynamics.
+         */
+
+        for (
+          const particle of
+          this.substrate
+        ) {
+
+          const field =
+            this.substrateField(
+              particle.x,
+              particle.y
+            );
+
+
+          const noise =
+            0.22;
+
+
+          particle.vx +=
+            field.x *
+            0.002 +
+            Math.sin(
+              particle.phase +
+              this.time *
+              1.7
+            ) *
+            noise *
+            0.002;
+
+
+          particle.vy +=
+            field.y *
+            0.002 +
+            Math.cos(
+              particle.phase +
+              this.time *
+              1.3
+            ) *
+            noise *
+            0.002;
+
+
+          particle.vx *=
+            0.986;
+
+          particle.vy *=
+            0.986;
+
+
+          particle.x +=
+            particle.vx;
+
+          particle.y +=
+            particle.vy;
+
+
+          particle.phase +=
+            0.018;
+
+
+          const margin =
+            20;
+
+
+          if (
+            particle.x <
+            margin
+          ) {
+
+            particle.x =
+              margin;
+
+            particle.vx =
+              Math.abs(
+                particle.vx
+              ) *
+              0.7;
+          }
+
+
+          if (
+            particle.x >
+            canvasWidth -
+            margin
+          ) {
+
+            particle.x =
+              canvasWidth -
+              margin;
+
+            particle.vx =
+              -Math.abs(
+                particle.vx
+              ) *
+              0.7;
+          }
+
+
+          if (
+            particle.y <
+            margin
+          ) {
+
+            particle.y =
+              margin;
+
+            particle.vy =
+              Math.abs(
+                particle.vy
+              ) *
+              0.7;
+          }
+
+
+          if (
+            particle.y >
+            canvasHeight -
+            margin
+          ) {
+
+            particle.y =
+              canvasHeight -
+              margin;
+
+            particle.vy =
+              -Math.abs(
+                particle.vy
+              ) *
+              0.7;
+          }
+
+        }
+
+
+        /*
+         * Alternative dynamics.
+         */
+
+        for (
+          const variant of
+          this.variants
+        ) {
+
+          const field =
+            this.substrateField(
+              variant.x,
+              variant.y
+            );
+
+
+          let ax =
+            field.x *
+            0.006;
+
+          let ay =
+            field.y *
+            0.006;
+
+
+          /*
+           * Vortices.
+           */
+
+          for (
+            const vortex of
+            this.vortices
+          ) {
+
+            const vortexX =
+              cx +
+              canvasWidth *
+              vortex.offsetX;
+
+
+            const vortexY =
+              cy +
+              canvasHeight *
+              vortex.offsetY;
+
+
+            const dx =
+              variant.x -
+              vortexX;
+
+
+            const dy =
+              variant.y -
+              vortexY;
+
+
+            const radius =
+              Math.max(
+                0.001,
+                Math.hypot(
+                  dx,
+                  dy
+                )
+              );
+
+
+            const influence =
+              clamp(
+                1 -
+                radius /
+                vortex.radius
+              );
+
+
+            if (
+              influence <=
+              0
+            ) {
+
+              continue;
+            }
+
+
+            /*
+             * Tangential force.
+             */
+
+            const tangentX =
+              -dy /
+              radius;
+
+
+            const tangentY =
+              dx /
+              radius;
+
+
+            ax +=
+              tangentX *
+              vortex.rotation *
+              vortex.strength *
+              influence;
+
+
+            ay +=
+              tangentY *
+              vortex.rotation *
+              vortex.strength *
+              influence;
+
+
+            /*
+             * Inward spiral.
+             */
+
+            ax +=
+              (
+                -dx /
+                radius
+              ) *
+              vortex.strength *
+              influence *
+              0.16;
+
+
+            ay +=
+              (
+                -dy /
+                radius
+              ) *
+              vortex.strength *
+              influence *
+              0.16;
+
+          }
+
+
+          /*
+           * Emergent attractor.
+           */
+
+          const goalX =
+            cx;
+
+          const goalY =
+            cy;
+
+
+          const dx =
+            goalX -
+            variant.x;
+
+
+          const dy =
+            goalY -
+            variant.y;
+
+
+          const radius =
+            Math.max(
+              0.001,
+              Math.hypot(
+                dx,
+                dy
+              )
+            );
+
+
+          const attraction =
+            0.20 +
+            0.95 *
+            clamp(
+              radius /
+              430
+            );
+
+
+          ax +=
+            (
+              dx /
+              radius
+            ) *
+            attraction;
+
+
+          ay +=
+            (
+              dy /
+              radius
+            ) *
+            attraction;
+
+
+          /*
+           * Nonlinear perturbation.
+           */
+
+          const cascade =
+            0.18;
+
+
+          ax +=
+            Math.sin(
+              variant.y *
+              0.012 +
+              this.time *
+              1.8
+            ) *
+            cascade;
+
+
+          ay +=
+            Math.cos(
+              variant.x *
+              0.010 +
+              this.time *
+              1.5
+            ) *
+            cascade;
+
+
+          /*
+           * Fluctuation.
+           */
+
+          ax +=
+            randomBetween(
+              -0.02,
+              0.02
+            );
+
+
+          ay +=
+            randomBetween(
+              -0.02,
+              0.02
+            );
+
+
+          variant.vx +=
+            ax *
+            0.060;
+
+
+          variant.vy +=
+            ay *
+            0.060;
+
+
+          const speed =
+            Math.hypot(
+              variant.vx,
+              variant.vy
+            );
+
+
+          const speedLimit =
+            4 +
+            variant.energy *
+            1.8;
+
+
+          if (
+            speed >
+            speedLimit
+          ) {
+
+            const scale =
+              speedLimit /
+              speed;
+
+
+            variant.vx *=
+              scale;
+
+            variant.vy *=
+              scale;
+          }
+
+
+          variant.vx *=
+            0.973;
+
+          variant.vy *=
+            0.973;
+
+
+          variant.x +=
+            variant.vx;
+
+          variant.y +=
+            variant.vy;
+
+
+          /*
+           * Boundary reflection.
+           */
+
+          if (
+            variant.x <
+            15
+          ) {
+
+            variant.x =
+              15;
+
+            variant.vx =
+              Math.abs(
+                variant.vx
+              ) *
+              0.6;
+          }
+
+
+          if (
+            variant.x >
+            canvasWidth -
+            15
+          ) {
+
+            variant.x =
+              canvasWidth -
+              15;
+
+            variant.vx =
+              -Math.abs(
+                variant.vx
+              ) *
+              0.6;
+          }
+
+
+          if (
+            variant.y <
+            15
+          ) {
+
+            variant.y =
+              15;
+
+            variant.vy =
+              Math.abs(
+                variant.vy
+              ) *
+              0.6;
+          }
+
+
+          if (
+            variant.y >
+            canvasHeight -
+            15
+          ) {
+
+            variant.y =
+              canvasHeight -
+              15;
+
+            variant.vy =
+              -Math.abs(
+                variant.vy
+              ) *
+              0.6;
+          }
+
+
+          /*
+           * Attractor score.
+           */
+
+          const goalDistance =
+            Math.hypot(
+              variant.x -
+              cx,
+              variant.y -
+              cy
+            );
+
+
+          variant.score =
+            clamp(
+              1 -
+              goalDistance /
+              480
+            );
+
+
+          /*
+           * Trail.
+           */
+
+          variant.trail.push([
+            variant.x,
+            variant.y
+          ]);
+
+
+          if (
+            variant.trail.length >
+            22
+          ) {
+
+            variant.trail.shift();
+          }
+
+
+          /*
+           * Positive feedback:
+           * successful variants generate
+           * additional alternatives.
+           */
+
+          if (
+            variant.score >
+              0.82 &&
+            Math.random() <
+              0.008 &&
+            this.variants.length <
+              90
+          ) {
+
+            this.spawnVariant(
+              variant
+            );
+          }
+
+        }
+
+
+        /*
+         * Prevent unbounded growth.
+         */
+
+        if (
+          this.variants.length >
+          90
+        ) {
+
+          this.variants.splice(
+            0,
+            10
+          );
+        }
+
+      },
+
+
+      draw() {
+
+        clearScene();
+
+
+        const cx =
+          canvasWidth /
+          2;
+
+        const cy =
+          canvasHeight /
+          2;
+
+
+        /*
+         * Vortex field.
+         */
+
+        for (
+          let i = 0;
+          i <
+          this.vortices.length;
+          i++
+        ) {
+
+          const vortex =
+            this.vortices[i];
+
+
+          const x =
+            cx +
+            canvasWidth *
+            vortex.offsetX;
+
+
+          const y =
+            cy +
+            canvasHeight *
+            vortex.offsetY;
+
+
+          for (
+            let ring = 0;
+            ring < 3;
+            ring++
+          ) {
+
+            const radius =
+              vortex.radius *
+              (
+                0.35 +
+                ring *
+                0.20
+              );
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+              x,
+              y,
+              radius,
+              0,
+              Math.PI *
+              2
+            );
+
+
+            ctx.strokeStyle =
+              `rgba(130,155,185,${0.045 + ring * 0.018})`;
+
+
+            ctx.lineWidth =
+              1;
+
+
+            ctx.stroke();
+          }
+
+        }
+
+
+        /*
+         * Substrate.
+         */
+
+        for (
+          const particle of
+          this.substrate
+        ) {
+
+          drawCircle(
+            particle.x,
+            particle.y,
+            1.2,
+            "rgba(150,175,200,0.12)"
+          );
+        }
+
+
+        /*
+         * Emergent goal.
+         */
+
+        drawGlow(
+          cx,
+          cy,
+          115,
+          "rgba(210,225,240,ALPHA)",
+          0.13
+        );
+
+
+        drawCircle(
+          cx,
+          cy,
+          52,
+          "rgba(220,230,240,0.035)",
+          "rgba(190,205,220,0.65)",
+          1
+        );
+
+
+        drawCircle(
+          cx,
+          cy,
+          24 +
+          Math.sin(
+            this.time *
+            2
+          ) *
+          3,
+          "rgba(225,235,245,0.035)",
+          "rgba(225,235,245,0.34)",
+          1
+        );
+
+
+        drawText(
+          "EMERGENT GOAL",
+          cx,
+          cy,
+          9,
+          "#e7edf3",
+          "center",
+          "700"
+        );
+
+
+        /*
+         * Variants.
+         */
+
+        for (
+          const variant of
+          this.variants
+        ) {
+
+          if (
+            variant.trail.length >
+            1
+          ) {
+
+            ctx.beginPath();
+
+
+            ctx.moveTo(
+              variant.trail[0][0],
+              variant.trail[0][1]
+            );
+
+
+            for (
+              let i = 1;
+              i <
+              variant.trail.length;
+              i++
+            ) {
+
+              ctx.lineTo(
+                variant.trail[i][0],
+                variant.trail[i][1]
+              );
+            }
+
+
+            ctx.strokeStyle =
+              `rgba(180,200,220,${0.025 + variant.score * 0.17})`;
+
+
+            ctx.lineWidth =
+              1;
+
+
+            ctx.stroke();
+          }
+
+
+          const radius =
+            1.5 +
+            variant.score *
+            3;
+
+
+          drawCircle(
+            variant.x,
+            variant.y,
+            radius,
+            `rgba(215,228,240,${0.22 + variant.score * 0.62})`
+          );
+        }
+
+
+        const stateLabels = [
+
+          "FLUCTUATION / GENERATING ALTERNATIVES",
+
+          "VORTICAL EXPLORATION",
+
+          "SCREENING WEAK VARIANTS",
+
+          "POSITIVE FEEDBACK",
+
+          "CONCENTRATION → BURST → DISSIPATION"
+
+        ];
+
+
+        drawText(
+          stateLabels[
+            this.stage
+          ],
+          cx,
+          31,
+          10,
+          "#9aa7b8",
+          "center",
+          "700"
+        );
+
+
+        drawText(
+          `${this.variants.length} variants  •  attractor active  •  circulation + fluctuation`,
+          cx,
+          canvasHeight -
+          28,
+          9,
+          "#5f6c7c",
+          "center",
+          "400"
+        );
+
+      }
+
+    };
+
+
+    /* =========================================================
+       SIMULATION REGISTRY
+       ========================================================= */
+
+    const simulations = {
+
+      da:
+        dialectical,
+
+      cd:
+        causal,
+
+      hp:
+        panoramic,
+
+      vs:
+        vortical
+
+    };
+
+
+    /* =========================================================
+       UI CONTROL HELPERS
+       ========================================================= */
+
+    function createButton(
+      label,
+      handler,
+      icon = null
+    ) {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "control-button rounded-lg px-3 py-2 text-xs flex items-center gap-2";
+
+
+      if (
+        icon
+      ) {
+
+        const iconElement =
+          document.createElement(
+            "i"
+          );
+
+
+        iconElement.className =
+          icon;
+
+
+        iconElement.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+
+        button.appendChild(
+          iconElement
+        );
+      }
+
+
+      const textNode =
+        document.createTextNode(
+          label
+        );
+
+
+      button.appendChild(
+        textNode
+      );
+
+
+      button.addEventListener(
+        "click",
+        handler
+      );
+
+
+      controlsElement.appendChild(
+        button
+      );
+
+
+      return button;
+    }
+
+
+    function createSubjectInput(
+      simulation
+    ) {
+
+      const input =
+        document.createElement(
+          "input"
+        );
+
+
+      input.type =
+        "text";
+
+
+      input.value =
+        simulation.subject;
+
+
+      input.className =
+        "control-input rounded-lg px-3 py-2 text-xs w-44 sm:w-56";
+
+
+      input.setAttribute(
+        "aria-label",
+        "Simulation subject"
+      );
+
+
+      input.setAttribute(
+        "placeholder",
+        "Enter a subject"
+      );
+
+
+      input.addEventListener(
+        "change",
+        () => {
+
+          simulation.subject =
+            input.value.trim() ||
+            simulation.subject;
+
+          simulation.reset();
+
+          updateInterface();
         }
       );
 
-    const url=
-      URL.createObjectURL(blob);
 
-    const link=
-      document.createElement("a");
-
-    link.href=url;
-    link.download=
-      "cognitive-dynamics-studio-experiment.json";
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setTimeout(
-      ()=>URL.revokeObjectURL(url),
-      500
-    );
-  }
-);
-
-document.getElementById(
-  "textsize"
-).addEventListener(
-  "change",
-  event=>{
-
-    document.documentElement.classList.remove(
-      "large",
-      "xl"
-    );
-
-    if(event.target.value!=="normal"){
-      document.documentElement.classList.add(
-        event.target.value
+      controlsElement.appendChild(
+        input
       );
+
     }
-  }
-);
 
-document.getElementById(
-  "contrast"
-).addEventListener(
-  "change",
-  event=>{
-    document.body.classList.toggle(
-      "high-contrast",
-      event.target.checked
-    );
-  }
-);
 
-document.getElementById(
-  "reduced"
-).addEventListener(
-  "change",
-  event=>{
+    /* =========================================================
+       TAB UI
+       ========================================================= */
 
-    reducedMotion=
-      event.target.checked;
+    function updateTabs() {
 
-    document.querySelectorAll(
-      ".play"
-    ).forEach(button=>{
+      for (
+        const tab of
+        tabs
+      ) {
 
-      if(reducedMotion){
+        const active =
+          tab.dataset.simulation ===
+          activeSimulation;
 
-        paused[
-          button.dataset.id
-        ]=true;
 
-        button.textContent=
-          "▶ Resume";
+        tab.classList.toggle(
+          "active",
+          active
+        );
+
+
+        tab.classList.toggle(
+          "text-slate-400",
+          !active
+        );
+
+
+        tab.setAttribute(
+          "aria-pressed",
+          String(
+            active
+          )
+        );
+
       }
-    });
-  }
-);
-</script>
+
+    }
+
+
+    /* =========================================================
+       HEADER UI
+       ========================================================= */
+
+    function updateHeader(
+      simulation
+    ) {
+
+      kickerElement.textContent =
+        simulation.kicker;
+
+
+      titleElement.textContent =
+        simulation.name;
+
+
+      descriptionElement.textContent =
+        simulation.description;
+
+    }
+
+
+    /* =========================================================
+       CONTROL UI
+       ========================================================= */
+
+    function updateControls(
+      simulation
+    ) {
+
+      controlsElement.innerHTML =
+        "";
+
+
+      createButton(
+        simulation.running
+          ? "Pause"
+          : "Resume",
+
+        () => {
+
+          simulation.running =
+            !simulation.running;
+
+          updateInterface();
+        },
+
+        simulation.running
+          ? "fas fa-pause"
+          : "fas fa-play"
+      );
+
+
+      createButton(
+        "Reset",
+
+        () => {
+
+          simulation.reset();
+
+          updateInterface();
+        },
+
+        "fas fa-redo-alt"
+      );
+
+
+      /*
+       * Dialectical controls.
+       */
+
+      if (
+        activeSimulation ===
+        "da"
+      ) {
+
+        createButton(
+          "Next Stage",
+
+          () => {
+
+            simulation.nextStage();
+
+            updateInterface();
+          },
+
+          "fas fa-step-forward"
+        );
+
+
+        createSubjectInput(
+          simulation
+        );
+      }
+
+
+      /*
+       * Causal controls.
+       */
+
+      if (
+        activeSimulation ===
+        "cd"
+      ) {
+
+        createSubjectInput(
+          simulation
+        );
+      }
+
+
+      /*
+       * Panoramic controls.
+       */
+
+      if (
+        activeSimulation ===
+        "hp"
+      ) {
+
+        createSubjectInput(
+          simulation
+        );
+      }
+
+
+      /*
+       * Vortical controls.
+       */
+
+      if (
+        activeSimulation ===
+        "vs"
+      ) {
+
+        createButton(
+          "Burst",
+
+          () => {
+
+            for (
+              let i = 0;
+              i < 8;
+              i++
+            ) {
+
+              simulation.spawnVariant();
+            }
+
+            updateInterface();
+          },
+
+          "fas fa-bolt"
+        );
+      }
+
+    }
+
+
+    /* =========================================================
+       METRICS
+       ========================================================= */
+
+    function metricCell(
+      label,
+      value
+    ) {
+
+      return `
+
+        <div
+          class="
+            metric-cell
+            p-3
+            sm:p-4
+            border-r
+            border-slate-800
+          "
+        >
+
+          <div
+            class="
+              mono
+              text-[9px]
+              tracking-[0.2em]
+              uppercase
+              text-slate-600
+            "
+          >
+            ${label}
+          </div>
+
+          <div
+            class="
+              mt-1
+              mono
+              text-sm
+              text-slate-300
+            "
+          >
+            ${value}
+          </div>
+
+        </div>
+
+      `;
+    }
+
+
+    function updateMetrics() {
+
+      /*
+       * Dialectical.
+       */
+
+      if (
+        activeSimulation ===
+        "da"
+      ) {
+
+        const simulation =
+          dialectical;
+
+
+        const progress =
+          Math.round(
+            (
+              simulation.time /
+              simulation.stageDuration
+            ) *
+            100
+          );
+
+
+        metricsElement.innerHTML =
+
+          metricCell(
+            "STAGE",
+            simulation.stages[
+              simulation.stage
+            ][0]
+          ) +
+
+          metricCell(
+            "PROGRESS",
+            `${progress}%`
+          ) +
+
+          metricCell(
+            "CONTRADICTION",
+            simulation.stage >= 2 &&
+            simulation.stage <= 4
+              ? "HIGH"
+              : "LOW"
+          ) +
+
+          metricCell(
+            "MODE",
+            "ITERATIVE"
+          );
+
+
+        return;
+      }
+
+
+      /*
+       * Causal.
+       */
+
+      if (
+        activeSimulation ===
+        "cd"
+      ) {
+
+        const simulation =
+          causal;
+
+
+        metricsElement.innerHTML =
+
+          metricCell(
+            "STAGE",
+            simulation.stages[
+              simulation.stage
+            ]
+          ) +
+
+          metricCell(
+            "DETERMINISM",
+            "94%"
+          ) +
+
+          metricCell(
+            "CLARITY",
+            "88%"
+          ) +
+
+          metricCell(
+            "CERTAINTY",
+            "84%"
+          );
+
+
+        return;
+      }
+
+
+      /*
+       * Panoramic.
+       */
+
+      if (
+        activeSimulation ===
+        "hp"
+      ) {
+
+        const simulation =
+          panoramic;
+
+
+        metricsElement.innerHTML =
+
+          metricCell(
+            "PROJECTION",
+            simulation.projections[
+              simulation.stage
+            ][0]
+          ) +
+
+          metricCell(
+            "CRITERION",
+            "ROTATING"
+          ) +
+
+          metricCell(
+            "INVARIANTS",
+            simulation.invariants.length
+          ) +
+
+          metricCell(
+            "MODE",
+            "PANORAMIC"
+          );
+
+
+        return;
+      }
+
+
+      /*
+       * Vortical.
+       */
+
+      if (
+        activeSimulation ===
+        "vs"
+      ) {
+
+        const simulation =
+          vortical;
+
+
+        const states = [
+
+          "FLUCTUATION",
+
+          "EXPLORATION",
+
+          "SCREENING",
+
+          "FEEDBACK",
+
+          "DISSIPATION"
+
+        ];
+
+
+        metricsElement.innerHTML =
+
+          metricCell(
+            "STATE",
+            states[
+              simulation.stage
+            ]
+          ) +
+
+          metricCell(
+            "VARIANTS",
+            simulation.variants.length
+          ) +
+
+          metricCell(
+            "ATTRACTOR",
+            "ACTIVE"
+          ) +
+
+          metricCell(
+            "FEEDBACK",
+            "POSITIVE"
+          );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       HINTS
+       ========================================================= */
+
+    function updateHint() {
+
+      const hints = {
+
+        da:
+          "Dialectical–Algorithmic: the active stage moves through an ordered contradiction-driven cycle. Space pauses/resumes, R resets, and Right Arrow advances the stage.",
+
+        cd:
+          "Causal–Deterministic: explicit intermediate links remain visible between premises, mechanisms, consequences and the singular result. Space pauses/resumes; R resets.",
+
+        hp:
+          "Holographical–Panoramic: the central object remains fixed while the active projection and criterion rotate around it. Space pauses/resumes; R resets.",
+
+        vs:
+          "Vortical–Synergetic: alternatives circulate through a fluctuating field, are screened by their relation to the emergent goal, and can generate new alternatives. Press B for a burst."
+
+      };
+
+
+      hintElement.textContent =
+        hints[
+          activeSimulation
+        ];
+    }
+
+
+    /* =========================================================
+       FULL UI UPDATE
+       ========================================================= */
+
+    function updateInterface() {
+
+      const simulation =
+        simulations[
+          activeSimulation
+        ];
+
+
+      updateTabs();
+
+      updateHeader(
+        simulation
+      );
+
+      updateControls(
+        simulation
+      );
+
+      updateMetrics();
+
+      updateHint();
+
+    }
+
+
+    /* =========================================================
+       TAB EVENTS
+       ========================================================= */
+
+    for (
+      const tab of
+      tabs
+    ) {
+
+      tab.addEventListener(
+        "click",
+        () => {
+
+          activeSimulation =
+            tab.dataset.simulation;
+
+
+          simulations[
+            activeSimulation
+          ].reset();
+
+
+          updateInterface();
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       KEYBOARD CONTROLS
+       ========================================================= */
+
+    window.addEventListener(
+      "keydown",
+      event => {
+
+        const activeElement =
+          document.activeElement;
+
+
+        const tagName =
+          activeElement &&
+          activeElement.tagName
+            ? activeElement.tagName.toLowerCase()
+            : "";
+
+
+        /*
+         * Don't intercept keys while
+         * typing in an input.
+         */
+
+        if (
+          tagName ===
+            "input" ||
+          tagName ===
+            "textarea" ||
+          tagName ===
+            "select"
+        ) {
+
+          return;
+        }
+
+
+        const simulation =
+          simulations[
+            activeSimulation
+          ];
+
+
+        /*
+         * Space:
+         * pause / resume.
+         */
+
+        if (
+          event.code ===
+          "Space"
+        ) {
+
+          event.preventDefault();
+
+
+          simulation.running =
+            !simulation.running;
+
+
+          updateInterface();
+
+          return;
+        }
+
+
+        /*
+         * R:
+         * reset.
+         */
+
+        if (
+          event.key.toLowerCase() ===
+          "r"
+        ) {
+
+          simulation.reset();
+
+          updateInterface();
+
+          return;
+        }
+
+
+        /*
+         * Dialectical:
+         * Right Arrow advances stage.
+         */
+
+        if (
+          activeSimulation ===
+            "da" &&
+          event.key ===
+            "ArrowRight"
+        ) {
+
+          dialectical.nextStage();
+
+          updateInterface();
+
+          return;
+        }
+
+
+        /*
+         * Vortical:
+         * B creates alternatives.
+         */
+
+        if (
+          activeSimulation ===
+            "vs" &&
+          event.key.toLowerCase() ===
+            "b"
+        ) {
+
+          for (
+            let i = 0;
+            i < 8;
+            i++
+          ) {
+
+            vortical.spawnVariant();
+          }
+
+
+          updateInterface();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       ANIMATION LOOP
+       ========================================================= */
+
+    function animationLoop(
+      timestamp
+    ) {
+
+      const delta =
+        Math.min(
+          0.05,
+          (
+            timestamp -
+            previousTime
+          ) /
+          1000
+        );
+
+
+      previousTime =
+        timestamp;
+
+
+      const simulation =
+        simulations[
+          activeSimulation
+        ];
+
+
+      simulation.update(
+        delta
+      );
+
+
+      simulation.draw();
+
+
+      uiRefreshClock +=
+        delta;
+
+
+      /*
+       * DOM updates happen only
+       * periodically rather than every
+       * animation frame.
+       */
+
+      if (
+        uiRefreshClock >
+        0.35
+      ) {
+
+        uiRefreshClock =
+          0;
+
+        updateMetrics();
+
+      }
+
+
+      requestAnimationFrame(
+        animationLoop
+      );
+
+    }
+
+
+    /* =========================================================
+       INITIALIZATION
+       ========================================================= */
+
+    dialectical.reset();
+
+    causal.reset();
+
+    panoramic.reset();
+
+    vortical.reset();
+
+
+    updateInterface();
+
+
+    requestAnimationFrame(
+      animationLoop
+    );
+
+  </script>
 
 </body>
 </html>
