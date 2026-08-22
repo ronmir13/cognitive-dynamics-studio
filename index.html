@@ -30,9 +30,7 @@
   --shadow:0 24px 90px rgba(0,0,0,.48);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html{
   background:var(--bg);
@@ -51,17 +49,7 @@ body{
   font:18px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-html.large body{
-  font-size:20px;
-}
-
-html.xl body{
-  font-size:22px;
-}
-
-button,
-input,
-select{
+button,input,select{
   font:inherit;
 }
 
@@ -249,26 +237,10 @@ a:hover{
   letter-spacing:-.025em;
 }
 
-html.large .simtitle{
-  font-size:1.55rem;
-}
-
-html.xl .simtitle{
-  font-size:1.65rem;
-}
-
 .simdesc{
   margin-top:4px;
   color:#aebbc6;
   font-size:.9rem;
-}
-
-html.large .simdesc{
-  font-size:1rem;
-}
-
-html.xl .simdesc{
-  font-size:1.08rem;
 }
 
 .live{
@@ -352,14 +324,6 @@ html.xl .simdesc{
   font-size:.9rem;
 }
 
-html.large .explain p{
-  font-size:1rem;
-}
-
-html.xl .explain p{
-  font-size:1.08rem;
-}
-
 .metrics{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -406,11 +370,6 @@ html.xl .explain p{
   color:#eef4f8;
   cursor:pointer;
   font-weight:750;
-}
-
-html.large .btn,
-html.xl .btn{
-  min-height:48px;
 }
 
 .btn:hover{
@@ -483,11 +442,6 @@ html.xl .btn{
   font-size:.9rem;
 }
 
-html.large .overview strong,
-html.xl .overview strong{
-  font-size:1rem;
-}
-
 .overview small{
   display:block;
   margin-top:2px;
@@ -518,16 +472,6 @@ html.xl .overview strong{
 .source p{
   color:#9facb8;
   font-size:.9rem;
-}
-
-html.large .info p,
-html.large .source p{
-  font-size:1rem;
-}
-
-html.xl .info p,
-html.xl .source p{
-  font-size:1.08rem;
 }
 
 .source a{
@@ -759,9 +703,7 @@ footer{
     inspect live metrics, or open a model fullscreen.
   </p>
 
-  <a class="cta" href="#simulations">
-    Enter the simulation studio ↓
-  </a>
+  <a class="cta" href="#simulations">Enter the simulation studio ↓</a>
 </section>
 
 <section id="simulations" class="section">
@@ -787,12 +729,8 @@ footer{
   <div class="info">
 
     <article>
-      <div class="eyebrow" style="color:var(--blue)">
-        CAUSAL–DETERMINIST
-      </div>
-
+      <div class="eyebrow" style="color:var(--blue)">CAUSAL–DETERMINIST</div>
       <h3>Follow a chain</h3>
-
       <p>
         Seven explicit states form a directional chain. Step advances exactly
         one state; playback uses the same transition.
@@ -800,12 +738,8 @@ footer{
     </article>
 
     <article>
-      <div class="eyebrow" style="color:var(--green)">
-        DIALECTICAL–ALGORITHMIC
-      </div>
-
+      <div class="eyebrow" style="color:var(--green)">DIALECTICAL–ALGORITHMIC</div>
       <h3>Hold opposites together</h3>
-
       <p>
         Thesis and antithesis converge on contradiction, then move through
         synthesis, rule formation and algorithmic iteration.
@@ -813,12 +747,8 @@ footer{
     </article>
 
     <article>
-      <div class="eyebrow" style="color:var(--purple)">
-        HOLOGRAPHICAL–PANORAMIC
-      </div>
-
+      <div class="eyebrow" style="color:var(--purple)">HOLOGRAPHICAL–PANORAMIC</div>
       <h3>Change the viewpoint</h3>
-
       <p>
         The central object remains stable while the active projection rotates
         through six perspectives.
@@ -826,12 +756,8 @@ footer{
     </article>
 
     <article>
-      <div class="eyebrow" style="color:var(--orange)">
-        VORTICAL–SYNERGETIC
-      </div>
-
+      <div class="eyebrow" style="color:var(--orange)">VORTICAL–SYNERGETIC</div>
       <h3>Watch a dynamic field</h3>
-
       <p>
         Alternatives fluctuate around an attractor; field density, attraction
         and feedback are explicit state variables.
@@ -858,16 +784,11 @@ footer{
 
       <label class="field-label">
         <span class="eyebrow">Seed</span>
-        <input
-          id="seed"
-          class="input"
-          type="number"
-          value="482913">
+        <input id="seed" class="input" type="number" value="482913">
       </label>
 
       <label class="field-label">
         <span class="eyebrow">Model</span>
-
         <select id="model" class="select">
           <option value="cd">Causal–Determinist</option>
           <option value="da">Dialectical–Algorithmic</option>
@@ -878,40 +799,19 @@ footer{
 
       <label class="field-label">
         <span class="eyebrow">Discrete steps</span>
-
-        <input
-          id="steps"
-          class="input"
-          type="number"
-          min="1"
-          max="1000"
-          value="20">
+        <input id="steps" class="input" type="number" min="1" max="1000" value="20">
       </label>
 
     </div>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
-
-      <button class="btn" id="baseline">
-        Capture baseline
-      </button>
-
-      <button class="btn" id="intervention">
-        Capture intervention
-      </button>
-
-      <button class="btn primary" id="run">
-        Run deterministic experiment
-      </button>
-
-      <button class="btn" id="download">
-        Export JSON
-      </button>
-
+      <button class="btn" id="baseline">Capture baseline</button>
+      <button class="btn" id="intervention">Capture intervention</button>
+      <button class="btn primary" id="run">Run deterministic experiment</button>
+      <button class="btn" id="download">Export JSON</button>
     </div>
 
-    <pre
-      id="out"
+    <pre id="out"
       class="hidden"
       aria-live="polite"
       style="margin-top:16px;background:#03070c;border:1px solid #263746;border-radius:12px;padding:15px;color:#cdd7df;font-size:12px"></pre>
@@ -924,15 +824,12 @@ footer{
 
     <div class="eyebrow">04 · Scientific integrity</div>
 
-    <h2>
-      Source, implementation and evidence are separated.
-    </h2>
+    <h2>Source, implementation and evidence are separated.</h2>
 
     <div class="grid3">
 
       <div>
         <div class="eyebrow">Source-derived</div>
-
         <p>
           The four names, terminology and conceptual framing are presented as
           source-derived material.
@@ -941,7 +838,6 @@ footer{
 
       <div>
         <div class="eyebrow">Original implementation</div>
-
         <p>
           Numerical state variables, transition rules, particles, trajectories,
           metrics and visual metaphors are software choices in this website.
@@ -950,7 +846,6 @@ footer{
 
       <div>
         <div class="eyebrow">Evidence boundary</div>
-
         <p>
           These are educational simulations, not psychological tests,
           diagnoses, neuroscience models or validated measures of individual
@@ -961,7 +856,6 @@ footer{
     </div>
 
     <div class="source" style="margin-top:18px">
-
       <b>How to read the display</b>
 
       <p>
@@ -969,7 +863,6 @@ footer{
         computational model. It should not be treated as empirical evidence
         that the underlying framework predicts human cognition.
       </p>
-
     </div>
 
   </div>
@@ -989,19 +882,15 @@ footer{
     </p>
 
     <p>
-      <a
-        href="https://www.publishing.socionic.info/index.php/socionics/article/view/1228"
-        target="_blank"
-        rel="noopener noreferrer">
+      <a href="https://www.publishing.socionic.info/index.php/socionics/article/view/1228"
+         target="_blank"
+         rel="noopener noreferrer">
         Publisher record ↗
       </a>
-
       ·
-
-      <a
-        href="https://www.socionicsforum.com/vbulletin/content.php/51-Forms-of-Cognition-by-Victor-Gulenko"
-        target="_blank"
-        rel="noopener noreferrer">
+      <a href="https://www.socionicsforum.com/vbulletin/content.php/51-Forms-of-Cognition-by-Victor-Gulenko"
+         target="_blank"
+         rel="noopener noreferrer">
         English translation ↗
       </a>
     </p>
@@ -1025,7 +914,6 @@ footer{
 
       <label class="field-label">
         <span class="eyebrow">Text size</span>
-
         <select id="textsize" class="select">
           <option value="normal">Normal</option>
           <option value="large">Large</option>
@@ -1054,16 +942,12 @@ footer{
 </section>
 
 <footer>
-
-  <div class="eyebrow">
-    Cognitive Dynamics Studio
-  </div>
+  <div class="eyebrow">Cognitive Dynamics Studio</div>
 
   <p class="muted" style="font-size:.85rem">
     Four Interactive Models of Cognition · educational computational software
     · not a validated psychological measurement
   </p>
-
 </footer>
 
 </main>
@@ -1071,7 +955,7 @@ footer{
 <script>
 "use strict";
 
-const MODELS={
+const MODELS = {
   cd:{
     name:"Causal–Determinist",
     color:"#25b8ff",
@@ -1130,14 +1014,8 @@ const MODELS={
 
 const state={
   cd:{i:0},
-
   da:{i:0},
-
-  hp:{
-    i:0,
-    angle:0
-  },
-
+  hp:{i:0,angle:0},
   vs:{
     t:0,
     field:.45,
@@ -1167,346 +1045,220 @@ let baseline=null;
 let intervention=null;
 
 function makeRandom(seed){
-
   let x=(Number(seed)||1)>>>0;
 
   return function(){
-
     x+=0x6D2B79F5;
 
     let q=x;
 
     q=Math.imul(q^q>>>15,q|1);
+    q^=q+Math.imul(q^q>>>7,q|61);
 
-    q^=q+
-      Math.imul(
-        q^q>>>7,
-        q|61
-      );
-
-    return(
-      (q^q>>>14)>>>0
-    )/4294967296;
+    return((q^q>>>14)>>>0)/4294967296;
   };
 }
 
 function buildSimulations(){
 
-  const overview=
-    document.getElementById("overview");
+  const overview=document.getElementById("overview");
+  const grid=document.getElementById("simgrid");
 
-  const grid=
-    document.getElementById("simgrid");
+  Object.entries(MODELS).forEach(([id,model],index)=>{
 
-  Object.entries(MODELS).forEach(
-    ([id,model,index])=>{
+    const overviewButton=document.createElement("button");
 
-      const overviewButton=
-        document.createElement("button");
+    overviewButton.dataset.id=id;
+    overviewButton.setAttribute(
+      "aria-label",
+      `Focus ${model.name} simulation`
+    );
 
-      overviewButton.dataset.id=id;
+    overviewButton.innerHTML=`
+      <strong>${index+1}. ${model.name}</strong>
+      <small>${model.stages.join(" → ")}</small>
+    `;
 
-      overviewButton.setAttribute(
-        "aria-label",
-        `Focus ${model.name} simulation`
-      );
+    overviewButton.addEventListener("click",()=>focusSimulation(id));
 
-      overviewButton.innerHTML=`
-        <strong>
-          ${Object.keys(MODELS).indexOf(id)+1}.
-          ${model.name}
-        </strong>
+    overview.appendChild(overviewButton);
 
-        <small>
-          ${model.stages.join(" → ")}
-        </small>
-      `;
+    const article=document.createElement("article");
 
-      overviewButton.addEventListener(
-        "click",
-        ()=>focusSimulation(id)
-      );
+    article.className="sim";
+    article.id=`sim-${id}`;
+    article.style.setProperty("--accent",model.color);
 
-      overview.appendChild(
-        overviewButton
-      );
+    const description=
+      id==="cd"
+        ?"Cause → mechanism → consequence"
+      :id==="da"
+        ?"Opposition → synthesis → algorithm"
+      :id==="hp"
+        ?"One object → many perspectives"
+        :"Alternatives → attraction → feedback";
 
-      const article=
-        document.createElement("article");
+    article.innerHTML=`
 
-      article.className="sim";
-      article.id=`sim-${id}`;
+      <div class="simhead">
 
-      article.style.setProperty(
-        "--accent",
-        model.color
-      );
+        <div class="number">${index+1}</div>
 
-      const description=
-        id==="cd"
-          ?"Cause → mechanism → consequence"
-        :id==="da"
-          ?"Opposition → synthesis → algorithm"
-        :id==="hp"
-          ?"One object → many perspectives"
-          :"Alternatives → attraction → feedback";
-
-      article.innerHTML=`
-
-        <div class="simhead">
-
-          <div class="number">
-            ${Object.keys(MODELS).indexOf(id)+1}
+        <div>
+          <div class="eyebrow">
+            ${id.toUpperCase()} · LIVE SIMULATION
           </div>
 
-          <div>
-
-            <div class="eyebrow">
-              ${id.toUpperCase()} · LIVE SIMULATION
-            </div>
-
-            <div class="simtitle">
-              ${model.name}
-            </div>
-
-            <div class="simdesc">
-              ${description}
-            </div>
-
+          <div class="simtitle">
+            ${model.name}
           </div>
 
-          <div class="live">
-            LIVE
+          <div class="simdesc">
+            ${description}
           </div>
-
         </div>
 
-        <div class="visual">
+        <div class="live">LIVE</div>
 
-          <canvas
-            id="canvas-${id}"
-            role="img"
-            aria-label="${model.name} computational visualization">
-          </canvas>
+      </div>
 
-          <div class="hud">
+      <div class="visual">
 
-            <span class="badge">
-              COMPUTATIONAL MODEL
-            </span>
+        <canvas
+          id="canvas-${id}"
+          role="img"
+          aria-label="${model.name} computational visualization">
+        </canvas>
 
-            <span
-              class="badge"
-              id="stage-${id}">
-              STAGE 01
-            </span>
-
-          </div>
-
+        <div class="hud">
+          <span class="badge">COMPUTATIONAL MODEL</span>
+          <span class="badge" id="stage-${id}">STAGE 01</span>
         </div>
 
-        <div class="explain">
+      </div>
 
-          <strong>
-            WHAT IS HAPPENING NOW
-          </strong>
+      <div class="explain">
 
-          <div
-            class="phase"
-            id="phase-${id}">
-          </div>
+        <strong>WHAT IS HAPPENING NOW</strong>
 
-          <p id="explain-${id}"></p>
+        <div class="phase" id="phase-${id}"></div>
 
-        </div>
+        <p id="explain-${id}"></p>
 
-        <div
-          class="metrics"
-          id="metrics-${id}">
-        </div>
+      </div>
 
-        <div class="controls">
+      <div class="metrics" id="metrics-${id}"></div>
 
-          <button
-            class="btn primary play"
-            data-id="${id}">
-            Ⅱ Pause
-          </button>
+      <div class="controls">
 
-          <button
-            class="btn step"
-            data-id="${id}">
-            ▶ Step
-          </button>
+        <button
+          class="btn primary play"
+          data-id="${id}">
+          Ⅱ Pause
+        </button>
 
-          <button
-            class="btn reset"
-            data-id="${id}">
-            ↻ Reset
-          </button>
+        <button
+          class="btn step"
+          data-id="${id}">
+          ▶ Step
+        </button>
 
-          <button
-            class="btn fullscreen-button"
-            data-id="${id}">
-            ⛶ Fullscreen
-          </button>
+        <button
+          class="btn reset"
+          data-id="${id}">
+          ↻ Reset
+        </button>
 
-          <label class="speed">
+        <button
+          class="btn fullscreen-button"
+          data-id="${id}">
+          ⛶ Fullscreen
+        </button>
 
-            SPEED
+        <label class="speed">
+          SPEED
+          <input
+            aria-label="${model.name} simulation speed"
+            data-speed="${id}"
+            type="range"
+            min=".25"
+            max="2"
+            step=".25"
+            value="1">
+          <span data-speed-label="${id}">1×</span>
+        </label>
 
-            <input
-              aria-label="${model.name} simulation speed"
-              data-speed="${id}"
-              type="range"
-              min=".25"
-              max="2"
-              step=".25"
-              value="1">
+      </div>
 
-            <span
-              data-speed-label="${id}">
-              1×
-            </span>
+      <div class="progress" aria-hidden="true">
+        <div id="progress-${id}"></div>
+      </div>
+    `;
 
-          </label>
+    grid.appendChild(article);
+  });
 
-        </div>
+  document.querySelectorAll(".play").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const id=button.dataset.id;
 
-        <div
-          class="progress"
-          aria-hidden="true">
+      paused[id]=!paused[id];
 
-          <div
-            id="progress-${id}">
-          </div>
+      button.textContent=
+        paused[id]
+          ?"▶ Resume"
+          :"Ⅱ Pause";
+    });
+  });
 
-        </div>
-      `;
-
-      grid.appendChild(article);
-    }
-  );
-
-  document.querySelectorAll(
-    ".play"
-  ).forEach(button=>{
-
+  document.querySelectorAll(".step").forEach(button=>{
     button.addEventListener(
       "click",
-      ()=>{
-
-        const id=button.dataset.id;
-
-        paused[id]=!paused[id];
-
-        button.textContent=
-          paused[id]
-            ?"▶ Resume"
-            :"Ⅱ Pause";
-      }
+      ()=>stepSimulation(button.dataset.id)
     );
   });
 
-  document.querySelectorAll(
-    ".step"
-  ).forEach(button=>{
-
+  document.querySelectorAll(".reset").forEach(button=>{
     button.addEventListener(
       "click",
-      ()=>stepSimulation(
-        button.dataset.id
-      )
+      ()=>resetSimulation(button.dataset.id)
     );
   });
 
-  document.querySelectorAll(
-    ".reset"
-  ).forEach(button=>{
-
+  document.querySelectorAll(".fullscreen-button").forEach(button=>{
     button.addEventListener(
       "click",
-      ()=>resetSimulation(
-        button.dataset.id
-      )
+      ()=>toggleFullscreen(button.dataset.id)
     );
   });
 
-  document.querySelectorAll(
-    ".fullscreen-button"
-  ).forEach(button=>{
+  document.querySelectorAll("[data-speed]").forEach(range=>{
+    range.addEventListener("input",()=>{
+      const id=range.dataset.speed;
 
-    button.addEventListener(
-      "click",
-      ()=>toggleFullscreen(
-        button.dataset.id
-      )
-    );
-  });
+      speeds[id]=Number(range.value);
 
-  document.querySelectorAll(
-    "[data-speed]"
-  ).forEach(range=>{
-
-    range.addEventListener(
-      "input",
-      ()=>{
-
-        const id=
-          range.dataset.speed;
-
-        speeds[id]=
-          Number(range.value);
-
-        document.querySelector(
-          `[data-speed-label="${id}"]`
-        ).textContent=
-          `${range.value}×`;
-      }
-    );
+      document.querySelector(
+        `[data-speed-label="${id}"]`
+      ).textContent=`${range.value}×`;
+    });
   });
 }
 
-function prepareCanvas(canvas,context){
+function fitCanvas(canvas,context){
 
-  const rect=
-    canvas.getBoundingClientRect();
+  const rect=canvas.getBoundingClientRect();
 
-  const density=
-    Math.min(
-      window.devicePixelRatio||1,
-      2
-    );
+  const density=Math.min(
+    window.devicePixelRatio||1,
+    2
+  );
 
-  const width=
-    Math.max(
-      1,
-      Math.floor(rect.width)
-    );
+  const width=Math.max(1,Math.floor(rect.width));
+  const height=Math.max(1,Math.floor(rect.height));
 
-  const height=
-    Math.max(
-      1,
-      Math.floor(rect.height)
-    );
-
-  const targetWidth=
-    Math.floor(width*density);
-
-  const targetHeight=
-    Math.floor(height*density);
-
-  if(
-    canvas.width!==targetWidth ||
-    canvas.height!==targetHeight
-  ){
-
-    canvas.width=
-      targetWidth;
-
-    canvas.height=
-      targetHeight;
-  }
+  canvas.width=Math.floor(width*density);
+  canvas.height=Math.floor(height*density);
 
   context.setTransform(
     density,
@@ -1517,94 +1269,37 @@ function prepareCanvas(canvas,context){
     0
   );
 
-  return[
-    width,
-    height,
-    density
-  ];
+  return [width,height];
 }
 
 function clearCanvas(canvas,context){
 
-  const[
-    width,
-    height
-  ]=prepareCanvas(
-    canvas,
-    context
-  );
+  const [width,height]=fitCanvas(canvas,context);
 
   context.fillStyle="#010409";
+  context.fillRect(0,0,width,height);
 
-  context.fillRect(
-    0,
-    0,
-    width,
-    height
-  );
-
-  context.strokeStyle=
-    "rgba(255,255,255,.035)";
-
+  context.strokeStyle="rgba(255,255,255,.035)";
   context.lineWidth=1;
 
-  for(
-    let x=0;
-    x<width;
-    x+=42
-  ){
-
+  for(let x=0;x<width;x+=42){
     context.beginPath();
-
-    context.moveTo(
-      x,
-      0
-    );
-
-    context.lineTo(
-      x,
-      height
-    );
-
+    context.moveTo(x,0);
+    context.lineTo(x,height);
     context.stroke();
   }
 
-  for(
-    let y=0;
-    y<height;
-    y+=42
-  ){
-
+  for(let y=0;y<height;y+=42){
     context.beginPath();
-
-    context.moveTo(
-      0,
-      y
-    );
-
-    context.lineTo(
-      width,
-      y
-    );
-
+    context.moveTo(0,y);
+    context.lineTo(width,y);
     context.stroke();
   }
 
-  return[
-    width,
-    height
-  ];
+  return [width,height];
 }
 
-function text(
-  context,
-  string,
-  x,
-  y,
-  size,
-  color="#fff",
-  weight=800
-){
+function text(context,string,x,y,size,color="#fff",weight=800){
 
   context.fillStyle=color;
 
@@ -1614,11 +1309,7 @@ function text(
   context.textAlign="center";
   context.textBaseline="middle";
 
-  context.fillText(
-    string,
-    x,
-    y
-  );
+  context.fillText(string,x,y);
 }
 
 function circle(
@@ -1635,14 +1326,7 @@ function circle(
   context.shadowBlur=18;
 
   context.beginPath();
-
-  context.arc(
-    x,
-    y,
-    radius,
-    0,
-    Math.PI*2
-  );
+  context.arc(x,y,radius,0,Math.PI*2);
 
   context.fillStyle=fill;
   context.fill();
@@ -1651,7 +1335,6 @@ function circle(
 
   context.strokeStyle=stroke;
   context.lineWidth=lineWidth;
-
   context.stroke();
 }
 
@@ -1669,17 +1352,8 @@ function line(
   context.lineWidth=width;
 
   context.beginPath();
-
-  context.moveTo(
-    x1,
-    y1
-  );
-
-  context.lineTo(
-    x2,
-    y2
-  );
-
+  context.moveTo(x1,y1);
+  context.lineTo(x2,y2);
   context.stroke();
 }
 
@@ -1703,54 +1377,34 @@ function arrow(
   );
 
   const length=10;
-
-  const angle=
-    Math.atan2(
-      y2-y1,
-      x2-x1
-    );
+  const angle=Math.atan2(
+    y2-y1,
+    x2-x1
+  );
 
   context.fillStyle=color;
 
   context.beginPath();
 
-  context.moveTo(
-    x2,
-    y2
+  context.moveTo(x2,y2);
+
+  context.lineTo(
+    x2-length*Math.cos(angle-.5),
+    y2-length*Math.sin(angle-.5)
   );
 
   context.lineTo(
-    x2-
-      length*
-      Math.cos(angle-.5),
-    y2-
-      length*
-      Math.sin(angle-.5)
-  );
-
-  context.lineTo(
-    x2-
-      length*
-      Math.cos(angle+.5),
-    y2-
-      length*
-      Math.sin(angle+.5)
+    x2-length*Math.cos(angle+.5),
+    y2-length*Math.sin(angle+.5)
   );
 
   context.closePath();
-
   context.fill();
 }
 
-function drawCausal(
-  canvas,
-  context
-){
+function drawCausal(canvas,context){
 
-  const[
-    width,
-    height
-  ]=clearCanvas(
+  const [width,height]=clearCanvas(
     canvas,
     context
   );
@@ -1760,24 +1414,15 @@ function drawCausal(
 
   const gap=Math.min(
     150,
-    (width-110)/
-      (model.stages.length-1)
+    (width-110)/(model.stages.length-1)
   );
 
   const start=
-    (
-      width-
-      gap*
-      (model.stages.length-1)
-    )/2;
+    (width-gap*(model.stages.length-1))/2;
 
   const y=height*.5;
 
-  for(
-    let i=0;
-    i<model.stages.length-1;
-    i++
-  ){
+  for(let i=0;i<model.stages.length-1;i++){
 
     arrow(
       context,
@@ -1791,52 +1436,38 @@ function drawCausal(
     );
   }
 
-  model.stages.forEach(
-    (stage,index)=>{
+  model.stages.forEach((stage,index)=>{
 
-      const active=
-        index===current;
+    const active=index===current;
 
-      circle(
-        context,
-        start+index*gap,
-        y,
-        active?31:28,
-        active
-          ?"rgba(15,54,80,1)"
-          :"#07111b",
-        active
-          ?"#7bd7ff"
-          :"#476072",
-        active?3:1
-      );
+    circle(
+      context,
+      start+index*gap,
+      y,
+      active?31:28,
+      active?"#0f3650":"#07111b",
+      active?"#7bd7ff":"#476072",
+      active?3:1
+    );
 
-      text(
-        context,
-        String(index+1)
-          .padStart(2,"0"),
-        start+index*gap,
-        y,
-        11,
-        active
-          ?"#
-fff"
-          :"#8da0af"
-      );
+    text(
+      context,
+      String(index+1).padStart(2,"0"),
+      start+index*gap,
+      y,
+      11,
+      active?"#fff":"#8da0af"
+    );
 
-      text(
-        context,
-        stage,
-        start+index*gap,
-        y+50,
-        8,
-        active
-          ?"#
-eaf9ff"
-          :"#738493"
-      );
-    }
-  );
+    text(
+      context,
+      stage,
+      start+index*gap,
+      y+50,
+      8,
+      active?"#eaf9ff":"#738493"
+    );
+  });
 
   text(
     context,
@@ -1848,15 +1479,9 @@ eaf9ff"
   );
 }
 
-function drawDialectical(
-  canvas,
-  context
-){
+function drawDialectical(canvas,context){
 
-  const[
-    width,
-    height
-  ]=clearCanvas(
+  const [width,height]=clearCanvas(
     canvas,
     context
   );
@@ -1897,11 +1522,7 @@ function drawDialectical(
     4
   );
 
-  for(
-    let i=2;
-    i<5;
-    i++
-  ){
+  for(let i=2;i<5;i++){
 
     arrow(
       context,
@@ -1915,57 +1536,42 @@ function drawDialectical(
     );
   }
 
-  positions.forEach(
-    (position,index)=>{
+  positions.forEach((position,index)=>{
 
-      const colors=[
-        "#42ed72",
-        "#c765ff",
-        "#ff4e55",
-        "#25b8ff",
-        "#ffe04b",
-        "#ff9e27"
-      ];
+    const colors=[
+      "#42ed72",
+      "#c765ff",
+      "#ff4e55",
+      "#25b8ff",
+      "#ffe04b",
+      "#ff9e27"
+    ];
 
-      const active=
-        index===current;
+    const active=index===current;
+    const color=colors[index];
 
-      const color=
-        colors[index];
+    const x=cx+position[0]*width;
+    const y=cy+position[1]*height;
 
-      const x=
-        cx+
-        position[0]*width;
+    circle(
+      context,
+      x,
+      y,
+      active?31:28,
+      active?"#183c24":"#07111b",
+      color,
+      active?3:1
+    );
 
-      const y=
-        cy+
-        position[1]*height;
-
-      circle(
-        context,
-        x,
-        y,
-        active?31:28,
-        active
-          ?"rgba(24,60,36,1)"
-          :"#07111b",
-        color,
-        active?3:1
-      );
-
-      text(
-        context,
-        labels[index],
-        x,
-        y+46,
-        8,
-        active
-          ?"#
-fff"
-          :color
-      );
-    }
-  );
+    text(
+      context,
+      labels[index],
+      x,
+      y+46,
+      8,
+      active?"#fff":color
+    );
+  });
 
   text(
     context,
@@ -1977,15 +1583,9 @@ fff"
   );
 }
 
-function drawPanoramic(
-  canvas,
-  context
-){
+function drawPanoramic(canvas,context){
 
-  const[
-    width,
-    height
-  ]=clearCanvas(
+  const [width,height]=clearCanvas(
     canvas,
     context
   );
@@ -2024,70 +1624,60 @@ function drawPanoramic(
     "#fff"
   );
 
-  MODELS.hp.stages.forEach(
-    (stage,index)=>{
+  MODELS.hp.stages.forEach((stage,index)=>{
 
-      const a=
-        angle+
-        index*Math.PI/3;
+    const a=
+      angle+
+      index*Math.PI/3;
 
-      const radius=
-        Math.min(
-          width*.36,
-          270
-        );
+    const radius=Math.min(
+      width*.36,
+      270
+    );
 
-      const x=
-        cx+
-        Math.cos(a)*radius;
+    const x=
+      cx+
+      Math.cos(a)*radius;
 
-      const y=
-        cy+
-        Math.sin(a)*
-        Math.min(
-          height*.31,
-          175
-        );
-
-      const active=
-        index===current;
-
-      arrow(
-        context,
-        cx,
-        cy,
-        x,
-        y,
-        active
-          ?colors[index]
-          :"#344657"
+    const y=
+      cy+
+      Math.sin(a)*Math.min(
+        height*.31,
+        175
       );
 
-      circle(
-        context,
-        x,
-        y,
-        active?31:28,
-        active
-          ?"rgba(50,21,74,1)"
-          :"#07111b",
-        colors[index],
-        active?3:1
-      );
+    const active=index===current;
 
-      text(
-        context,
-        stage,
-        x,
-        y+45,
-        8,
-        active
-          ?"#
-fff"
-          :colors[index]
-      );
-    }
-  );
+    arrow(
+      context,
+      cx,
+      cy,
+      x,
+      y,
+      active
+        ?colors[index]
+        :"#344657"
+    );
+
+    circle(
+      context,
+      x,
+      y,
+      active?31:28,
+      active?"#32154a":"#07111b",
+      colors[index],
+      active?3:1
+    );
+
+    text(
+      context,
+      stage,
+      x,
+      y+45,
+      8,
+      active?"#fff":colors[index]
+    );
+  });
 
   text(
     context,
@@ -2099,15 +1689,9 @@ fff"
   );
 }
 
-function drawVortical(
-  canvas,
-  context
-){
+function drawVortical(canvas,context){
 
-  const[
-    width,
-    height
-  ]=clearCanvas(
+  const [width,height]=clearCanvas(
     canvas,
     context
   );
@@ -2126,19 +1710,11 @@ function drawVortical(
     "#ffe04b"
   ];
 
-  for(
-    let q=0;
-    q<6;
-    q++
-  ){
+  for(let q=0;q<6;q++){
 
     context.beginPath();
 
-    for(
-      let i=0;
-      i<330;
-      i++
-    ){
+    for(let i=0;i<330;i++){
 
       const angle=
         i*.052+
@@ -2155,19 +1731,12 @@ function drawVortical(
 
       const y=
         cy+
-        Math.sin(angle)*
-        radius*.49;
+        Math.sin(angle)*radius*.49;
 
       if(i===0){
-        context.moveTo(
-          x,
-          y
-        );
+        context.moveTo(x,y);
       }else{
-        context.lineTo(
-          x,
-          y
-        );
+        context.lineTo(x,y);
       }
     }
 
@@ -2175,26 +1744,18 @@ function drawVortical(
       colors[q]+"66";
 
     context.lineWidth=1.5;
-
     context.stroke();
   }
 
-  for(
-    let i=0;
-    i<110;
-    i++
-  ){
+  for(let i=0;i<110;i++){
 
     const angle=
-      random()*
-      Math.PI*
-      2+
+      random()*Math.PI*2+
       s.t*.4;
 
     const radius=
       70+
-      random()*
-      Math.min(
+      random()*Math.min(
         340,
         width*.38
       );
@@ -2205,31 +1766,25 @@ function drawVortical(
 
     const y=
       cy+
-      Math.sin(angle)*
-      radius*.5;
+      Math.sin(angle)*radius*.5;
 
     const color=
-      colors[
-        i%colors.length
-      ];
+      colors[i%colors.length];
 
     context.fillStyle=color;
     context.shadowColor=color;
     context.shadowBlur=10;
 
     context.beginPath();
-
     context.arc(
       x,
       y,
-      1.4+
-      random()*2.7,
+      1.4+random()*2.7,
       0,
       Math.PI*2
     );
 
     context.fill();
-
     context.shadowBlur=0;
   }
 
@@ -2277,9 +1832,10 @@ function updateInterface(id){
       ?model.stages[current]
       :"Dynamic attractor field";
 
-  document.getElementById(
-    `stage-${id}`
-  ).textContent=
+  const stageElement=
+    document.getElementById(`stage-${id}`);
+
+  stageElement.textContent=
     typeof s.i==="number"
       ?`STAGE ${String(current+1).padStart(2,"0")} / ${model.stages.length}`
       :"LIVE FIELD";
@@ -2354,15 +1910,14 @@ function updateInterface(id){
 
   document.getElementById(
     `metrics-${id}`
-  ).innerHTML=
-    metrics.map(
-      metric=>`
-        <div class="metric">
-          <b>${metric[0]}</b>
-          <span>${metric[1]}</span>
-        </div>
-      `
-    ).join("");
+  ).innerHTML=metrics.map(
+    metric=>`
+      <div class="metric">
+        <b>${metric[0]}</b>
+        <span>${metric[1]}</span>
+      </div>
+    `
+  ).join("");
 
   document.getElementById(
     `progress-${id}`
@@ -2374,49 +1929,28 @@ function updateInterface(id){
 
 function render(){
 
-  Object.keys(
-    MODELS
-  ).forEach(id=>{
+  Object.keys(MODELS).forEach(id=>{
 
     const canvas=
-      document.getElementById(
-        `canvas-${id}`
-      );
+      document.getElementById(`canvas-${id}`);
 
     const context=
-      canvas.getContext(
-        "2d",
-        {
-          alpha:false
-        }
-      );
+      canvas.getContext("2d");
 
     if(id==="cd"){
-      drawCausal(
-        canvas,
-        context
-      );
+      drawCausal(canvas,context);
     }
 
     if(id==="da"){
-      drawDialectical(
-        canvas,
-        context
-      );
+      drawDialectical(canvas,context);
     }
 
     if(id==="hp"){
-      drawPanoramic(
-        canvas,
-        context
-      );
+      drawPanoramic(canvas,context);
     }
 
     if(id==="vs"){
-      drawVortical(
-        canvas,
-        context
-      );
+      drawVortical(canvas,context);
     }
 
     updateInterface(id);
@@ -2425,7 +1959,6 @@ function render(){
   document.querySelectorAll(
     "#overview button"
   ).forEach(button=>{
-
     button.classList.toggle(
       "active",
       button.dataset.id===selected
@@ -2436,55 +1969,44 @@ function render(){
 function stepSimulation(id){
 
   if(id==="cd"){
-
     state.cd.i=
       (state.cd.i+1)%
       MODELS.cd.stages.length;
   }
 
   if(id==="da"){
-
     state.da.i=
       (state.da.i+1)%
       MODELS.da.stages.length;
   }
 
   if(id==="hp"){
-
     state.hp.i=
       (state.hp.i+1)%
       MODELS.hp.stages.length;
 
-    state.hp.angle+=
-      Math.PI/8;
+    state.hp.angle+=Math.PI/8;
   }
 
   if(id==="vs"){
-
     state.vs.t+=.35;
 
     state.vs.field=
       .35+
       .25*Math.abs(
-        Math.sin(
-          state.vs.t
-        )
+        Math.sin(state.vs.t)
       );
 
     state.vs.attractor=
       .55+
       .4*Math.abs(
-        Math.cos(
-          state.vs.t*.7
-        )
+        Math.cos(state.vs.t*.7)
       );
 
     state.vs.feedback=
       .4+
       .45*Math.abs(
-        Math.sin(
-          state.vs.t*.9
-        )
+        Math.sin(state.vs.t*.9)
       );
   }
 
@@ -2527,7 +2049,6 @@ function focusSimulation(id){
   document.querySelectorAll(
     ".sim"
   ).forEach(sim=>{
-
     sim.classList.toggle(
       "focused",
       sim.id===`sim-${id}`
@@ -2537,10 +2058,7 @@ function focusSimulation(id){
   document.getElementById(
     `sim-${id}`
   ).scrollIntoView({
-    behavior:
-      reducedMotion
-        ?"auto"
-        :"smooth",
+    behavior:reducedMotion?"auto":"smooth",
     block:"center"
   });
 }
@@ -2548,9 +2066,7 @@ function focusSimulation(id){
 async function toggleFullscreen(id){
 
   const element=
-    document.getElementById(
-      `sim-${id}`
-    );
+    document.getElementById(`sim-${id}`);
 
   try{
 
@@ -2574,68 +2090,38 @@ async function toggleFullscreen(id){
 }
 
 buildSimulations();
-
 focusSimulation("cd");
-
-let resizeQueued=false;
-
-function requestRender(){
-
-  if(resizeQueued){
-    return;
-  }
-
-  resizeQueued=true;
-
-  requestAnimationFrame(
-    ()=>{
-      resizeQueued=false;
-      render();
-    }
-  );
-}
 
 window.addEventListener(
   "resize",
-  requestRender,
-  {
-    passive:true
-  }
+  render
 );
 
 document.addEventListener(
   "fullscreenchange",
   ()=>{
-
     document.querySelectorAll(
       ".sim"
     ).forEach(sim=>{
-      sim.classList.remove(
-        "fullscreen"
-      );
+      sim.classList.remove("fullscreen");
     });
 
     if(document.fullscreenElement){
-
-      document.fullscreenElement
-        .classList.add(
-          "fullscreen"
-        );
+      document.fullscreenElement.classList.add(
+        "fullscreen"
+      );
     }
 
-    requestRender();
+    render();
   }
 );
 
-let lastFrame=
-  performance.now();
+let lastFrame=performance.now();
 
 let accumulator={
   cd:0,
   da:0
 };
-
-let renderTimer=0;
 
 function animationLoop(now){
 
@@ -2653,6 +2139,10 @@ function animationLoop(now){
 
       state.hp.angle+=
         delta*.18*speeds.hp;
+
+      state.hp.t=
+        (state.hp.t||0)+
+        delta*.18*speeds.hp;
     }
 
     if(!paused.vs){
@@ -2663,65 +2153,41 @@ function animationLoop(now){
       state.vs.field=
         .35+
         .25*Math.abs(
-          Math.sin(
-            state.vs.t
-          )
+          Math.sin(state.vs.t)
         );
 
       state.vs.attractor=
         .55+
         .4*Math.abs(
-          Math.cos(
-            state.vs.t*.7
-          )
+          Math.cos(state.vs.t*.7)
         );
 
       state.vs.feedback=
         .4+
         .45*Math.abs(
-          Math.sin(
-            state.vs.t*.9
-          )
+          Math.sin(state.vs.t*.9)
         );
     }
 
-    ["cd","da"].forEach(
-      id=>{
+    ["cd","da"].forEach(id=>{
 
-        if(paused[id]){
-          return;
-        }
-
-        accumulator[id]+=
-          delta*speeds[id];
-
-        if(
-          accumulator[id]>=.9
-        ){
-
-          accumulator[id]-=.9;
-
-          stepSimulation(id);
-        }
+      if(paused[id]){
+        return;
       }
-    );
+
+      accumulator[id]+=
+        delta*speeds[id];
+
+      if(accumulator[id]>=.9){
+
+        accumulator[id]-=.9;
+
+        stepSimulation(id);
+      }
+    });
   }
 
-  /*
-    The simulation animation is intentionally rendered continuously,
-    but canvas dimensions are only changed when the actual CSS size
-    changes. This avoids repeatedly reallocating the backing canvas.
-  */
-  renderTimer+=delta;
-
-  if(
-    renderTimer>=1/60
-  ){
-
-    renderTimer=0;
-
-    render();
-  }
+  render();
 
   requestAnimationFrame(
     animationLoop
@@ -2737,7 +2203,6 @@ document.getElementById(
 ).addEventListener(
   "change",
   event=>{
-
     focusSimulation(
       event.target.value
     );
@@ -2770,33 +2235,20 @@ function snapshot(){
       "model"
     ).value;
 
-  return{
-    project:
-      "Cognitive Dynamics Studio",
-
-    model:
-      MODELS[id].name,
-
-    modelVersion:
-      "final",
-
+  return {
+    project:"Cognitive Dynamics Studio",
+    model:MODELS[id].name,
+    modelVersion:"final",
     seed:
       Number(
-        document.getElementById(
-          "seed"
-        ).value
+        document.getElementById("seed").value
       )||1,
-
     timestamp:
       new Date().toISOString(),
-
     state:
       JSON.parse(
-        JSON.stringify(
-          state[id]
-        )
+        JSON.stringify(state[id])
       ),
-
     interpretationBoundary:
       "Computational state only; not a human measurement."
   };
@@ -2805,9 +2257,7 @@ function snapshot(){
 function showExperimentOutput(){
 
   const output=
-    document.getElementById(
-      "out"
-    );
+    document.getElementById("out");
 
   output.textContent=
     JSON.stringify(
@@ -2829,10 +2279,7 @@ document.getElementById(
 ).addEventListener(
   "click",
   ()=>{
-
-    baseline=
-      snapshot();
-
+    baseline=snapshot();
     showExperimentOutput();
   }
 );
@@ -2842,10 +2289,7 @@ document.getElementById(
 ).addEventListener(
   "click",
   ()=>{
-
-    intervention=
-      snapshot();
-
+    intervention=snapshot();
     showExperimentOutput();
   }
 );
@@ -2876,19 +2320,12 @@ document.getElementById(
         )
       );
 
-    for(
-      let i=0;
-      i<steps;
-      i++
-    ){
-
+    for(let i=0;i<steps;i++){
       stepSimulation(id);
     }
 
     const output=
-      document.getElementById(
-        "out"
-      );
+      document.getElementById("out");
 
     output.textContent=
       JSON.stringify(
@@ -2934,34 +2371,21 @@ document.getElementById(
       );
 
     const url=
-      URL.createObjectURL(
-        blob
-      );
+      URL.createObjectURL(blob);
 
     const link=
-      document.createElement(
-        "a"
-      );
+      document.createElement("a");
 
     link.href=url;
-
     link.download=
       "cognitive-dynamics-studio-experiment.json";
 
-    document.body.appendChild(
-      link
-    );
-
+    document.body.appendChild(link);
     link.click();
-
     link.remove();
 
     setTimeout(
-      ()=>{
-        URL.revokeObjectURL(
-          url
-        );
-      },
+      ()=>URL.revokeObjectURL(url),
       500
     );
   }
@@ -2973,23 +2397,16 @@ document.getElementById(
   "change",
   event=>{
 
-    document.documentElement
-      .classList.remove(
-        "large",
-        "xl"
+    document.documentElement.classList.remove(
+      "large",
+      "xl"
+    );
+
+    if(event.target.value!=="normal"){
+      document.documentElement.classList.add(
+        event.target.value
       );
-
-    if(
-      event.target.value!=="normal"
-    ){
-
-      document.documentElement
-        .classList.add(
-          event.target.value
-        );
     }
-
-    requestRender();
   }
 );
 
@@ -2998,7 +2415,6 @@ document.getElementById(
 ).addEventListener(
   "change",
   event=>{
-
     document.body.classList.toggle(
       "high-contrast",
       event.target.checked
