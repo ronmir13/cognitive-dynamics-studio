@@ -119,15 +119,10 @@ a{
 }
 
 button:focus-visible,
+a:focus-visible,
 input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-a:focus-visible{
-  outline:3px solid #f3f8fb;
-  outline-offset:3px;
-
-  box-shadow:
-    0 0 0 5px rgba(243,248,251,.14);
+select:focus-visible{
+  outline:3px solid #e8f7ff;
 }
 
 .wrap{
@@ -310,30 +305,18 @@ a:focus-visible{
   transition:
     background .18s ease,
     border-color .18s ease,
-    transform .18s ease,
-    box-shadow .18s ease;
+    transform .18s ease;
 }
 
 .overview button:hover{
   background:#101e2b;
-
   border-color:#708797;
-
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.24);
+  transform:translateY(-1px);
 }
 
 .overview button.active{
-  border-color:#d8e6ef;
-  background:#111f2d;
-
-  box-shadow:
-    0 0 0 1px #d8e6ef55 inset,
-    0 12px 35px rgba(0,0,0,.25);
-
-  transform:translateY(-1px);
+  border-color:#9cafbd;
+  background:#101e2b;
 }
 
 .overview strong{
@@ -392,18 +375,19 @@ a:focus-visible{
 }
 
 .sim.focused{
-  transform:translateY(-2px);
+  border-color:var(--accent);
 
   box-shadow:
     0 0 0 1px var(--accent),
-    0 18px 60px rgba(0,0,0,.48),
-    0 0 45px color-mix(
-      in srgb,
-      var(--accent) 18%,
-      transparent
-    );
+    var(--shadow),
+    0 0 50px
+      color-mix(
+        in srgb,
+        var(--accent) 12%,
+        transparent
+      );
 }
-  
+
 .simhead{
   min-height:118px;
 
@@ -447,21 +431,25 @@ a:focus-visible{
 }
 
 .simtitle{
-  font-size:1.78rem;
+  font-size:1.72rem;
 
   line-height:1.08;
 
-  letter-spacing:-.035em;
+  letter-spacing:-.03em;
+
+  font-weight:950;
 }
 
 .simdesc{
+  max-width:680px;
+
   margin-top:6px;
+
+  color:#afbeca;
 
   font-size:1rem;
 
-  line-height:1.45;
-
-  color:#9fb0bd;
+  line-height:1.42;
 }
 
 .live{
@@ -588,31 +576,22 @@ a:focus-visible{
 
 .phase{
   margin-top:4px;
-  font-size:1.65rem;
-  line-height:1.15;
-  font-weight:950;
-  letter-spacing:-.025em;
-}
 
-.sim.focused .phase{
-  text-shadow:
-    0 0 18px color-mix(
-      in srgb,
-      var(--accent) 38%,
-      transparent
-    );
+  font-size:1.55rem;
+
+  line-height:1.12;
+
+  font-weight:950;
 }
 
 .explain p{
-  margin-top:7px;
+  margin:6px 0 0;
+
+  color:#adbbc6;
 
   font-size:1.02rem;
 
-  line-height:1.55;
-
-  color:#b8c7d2;
-
-  max-width:72ch;
+  line-height:1.5;
 }
 
 .metrics{
@@ -629,7 +608,7 @@ a:focus-visible{
 }
 
 .metric{
-  min-height:72px;
+  min-height:67px;
 
   padding:11px;
 
@@ -638,38 +617,21 @@ a:focus-visible{
   border-radius:8px;
 
   background:#08111a;
-
-  transition:
-    background .18s ease,
-    border-color .18s ease,
-    transform .18s ease,
-    box-shadow .18s ease;
-}
-
-.metric:hover{
-  background:#0c1722;
-
-  border-color:#516779;
-
-  transform:translateY(-1px);
-
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.2);
 }
 
 .metric b{
   display:block;
 
-  color:#91a6b6;
+  color:#8195a6;
 
   font:
-    850 10px
+    800 10px
     ui-monospace,
     SFMono-Regular,
     Menlo,
     monospace;
 
-  letter-spacing:.08em;
+  letter-spacing:.06em;
 }
 
 .metric span{
@@ -691,19 +653,17 @@ a:focus-visible{
 
   flex-wrap:wrap;
 
-  gap:7px;
+  gap:9px;
 
-  padding:10px;
+  padding:13px;
 
   border-top:1px solid #263746;
 }
 
 .btn{
-  min-height:46px;
+  min-height:48px;
 
   padding:10px 15px;
-
-  cursor:pointer;
 
   border:1px solid #3c5264;
 
@@ -717,21 +677,20 @@ a:focus-visible{
 
   font-weight:800;
 
+  cursor:pointer;
+
   transition:
-    transform .16s ease,
-    background .16s ease,
-    border-color .16s ease,
-    box-shadow .16s ease;
+    background .15s ease,
+    border-color .15s ease,
+    transform .15s ease;
 }
 
 .btn:hover{
   background:#152535;
+
   border-color:#91a3b1;
 
   transform:translateY(-1px);
-
-  box-shadow:
-    0 8px 22px rgba(0,0,0,.22);
 }
 
 .btn.primary{
@@ -740,16 +699,6 @@ a:focus-visible{
   color:#05080c;
 
   border-color:#f3f8fb;
-
-  font-weight:900;
-
-  box-shadow:
-    0 5px 18px rgba(0,0,0,.18);
-}
-
-.btn.primary:hover{
-  box-shadow:
-    0 9px 26px rgba(255,255,255,.12);
 }
 
 .speed{
@@ -757,9 +706,11 @@ a:focus-visible{
 
   align-items:center;
 
-  gap:8px;
+  gap:7px;
 
   margin-left:auto;
+
+  color:#8193a2;
 
   font:
     800 10px
@@ -767,26 +718,22 @@ a:focus-visible{
     SFMono-Regular,
     Menlo,
     monospace;
-
-  letter-spacing:.06em;
-
-  color:#91a6b6;
 }
 
 .speed input{
   width:135px;
 
-  accent-color:#dceaf2;
+  height:22px;
+
+  accent-color:var(--accent);
 
   cursor:pointer;
 }
 
 .speed span{
-  min-width:32px;
+  color:#dbe7ee;
 
-  text-align:right;
-
-  color:#dce7ef;
+  font-size:1rem;
 
   font-weight:900;
 }
@@ -1006,7 +953,7 @@ body.high-contrast .metric{
   }
 
   .visual{
-    height:520px;
+    height:620px;
   }
 
 }
@@ -1048,10 +995,12 @@ body.high-contrast .metric{
   }
 
   .simhead{
-  min-height:124px;
+    min-height:112px;
 
-  padding:21px 22px 18px;
-}
+    padding:
+      17px
+      15px;
+  }
 
   .number{
     flex-basis:43px;
@@ -1068,36 +1017,9 @@ body.high-contrast .metric{
   }
 
   .visual{
-  height:600px;
-  position:relative;
-  overflow:hidden;
-  background:#010409;
-}
+    height:510px;
+  }
 
-.visual::after{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  pointer-events:none;
-
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      color-mix(
-        in srgb,
-        var(--accent) 7%,
-        transparent
-      ),
-      transparent 58%
-    );
-
-  opacity:.75;
-
-  transition:
-    opacity .3s ease;
-}
-  
   .badge{
     font-size:9px;
 
@@ -1113,9 +1035,8 @@ body.high-contrast .metric{
   }
 
   .phase{
-  font-size:1.45rem;
-  line-height:1.15;
-}
+    font-size:1.35rem;
+  }
 
   .explain p{
     font-size:.96rem;
@@ -1130,20 +1051,8 @@ body.high-contrast .metric{
   }
 
   .metric span{
-  display:block;
-
-  margin-top:5px;
-
-  font-size:1.12rem;
-
-  font-weight:900;
-
-  line-height:1.2;
-
-  letter-spacing:-.01em;
-
-  color:#f1f7fb;
-}
+    font-size:.94rem;
+  }
 
   .btn{
     min-height:47px;
@@ -1165,16 +1074,12 @@ body.high-contrast .metric{
 
 }
 
-@media (prefers-reduced-motion:reduce){
+@media(prefers-reduced-motion:reduce){
 
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important;
+  html{
+    scroll-behavior:auto;
   }
+
 }
 
 </style>
@@ -2433,26 +2338,26 @@ function T(
     String(text);
 
 
-  let scale=1.9;
+  let scale=1.48;
 
 
   if(
     value.length>42
   ){
 
-    scale=1.30;
+    scale=1.08;
 
   }else if(
     value.length>30
   ){
 
-    scale=1.45;
+    scale=1.18;
 
   }else if(
     value.length>20
   ){
 
-    scale=1.60;
+    scale=1.32;
 
   }
 
@@ -2462,7 +2367,7 @@ function T(
     value==='ATTRACTOR'
   ){
 
-    scale=2.05;
+    scale=1.65;
 
   }
 
@@ -2498,32 +2403,13 @@ function T(
     ? 7
     : 3;
 
-  ctx.save();
 
-ctx.fillStyle='rgba(1,4,9,.72)';
-
-const paddingX=8;
-const paddingY=4;
-
-const textWidth=
-  ctx.measureText(value).width;
-
-ctx.fillRect(
-  x-textWidth/2-paddingX,
-  y-size/2-paddingY,
-  textWidth+paddingX*2,
-  size+paddingY*2
-);
-
-ctx.fillStyle=color;
-  
   ctx.fillText(
     value,
     x,
     y
   );
 
-  ctx.restore();
 
   ctx.shadowBlur=0;
 
@@ -2700,15 +2586,11 @@ function draw(id){
       S.cd.i;
 
 
-const side=92;
-
-const gap=
-  Math.min(
-    150,
-    (width-side*2)/6
-  );
-
-const start=side;
+    const gap=
+      Math.min(
+        150,
+        (width-110)/6
+      );
 
 
     const start=
@@ -2851,16 +2733,17 @@ const start=side;
       height/2;
 
 
- const positions=[
+    const positions=[
 
-  [-.32,-.22],
-  [-.32,.22],
-  [-.09,0],
-  [.12,0],
-  [.27,0],
-  [.35,0]
+      [-.34,-.22],
+      [-.34,.22],
+      [-.10,0],
+      [.14,0],
+      [.37,0],
+      [.49,0]
 
-];
+    ];
+
 
     const colors=[
 
@@ -2877,10 +2760,10 @@ const start=side;
     L(
       ctx,
 
-      centerX-.32*width,
+      centerX-.34*width,
       centerY-.22*height,
 
-      centerX-.09*width,
+      centerX-.10*width,
       centerY,
 
       '#51ef7d',
@@ -2892,10 +2775,10 @@ const start=side;
     L(
       ctx,
 
-      centerX-.32*width,
+      centerX-.34*width,
       centerY+.22*height,
 
-      centerX-.09*width,
+      centerX-.10*width,
       centerY,
 
       '#c878ff',
@@ -3075,7 +2958,7 @@ const start=side;
 
         const radius=
           Math.min(
-            width*.31,
+            width*.36,
             270
           );
 
@@ -4283,71 +4166,6 @@ requestAnimationFrame(
   loop
 );
 
-
-/* Keyboard controls for the selected simulation. */
-document.addEventListener('keydown',event=>{
-
-  const target=event.target;
-
-  /*
-    Don't hijack keyboard input while the user is typing
-    or changing a form control.
-  */
-  if(
-    target &&
-    (
-      target.matches('input') ||
-      target.matches('select') ||
-      target.matches('textarea')
-    )
-  ){
-    return;
-  }
-
-  /*
-    Space = pause / resume
-  */
-  if(event.key===' '){
-
-    event.preventDefault();
-
-    const button=
-      document.querySelector(
-        '.play[data-id="'+selected+'"]'
-      );
-
-    if(button){
-      button.click();
-    }
-
-    return;
-  }
-
-  /*
-    Right Arrow = advance one simulation step
-  */
-  if(event.key==='ArrowRight'){
-
-    event.preventDefault();
-
-    step(selected);
-
-    return;
-  }
-
-  /*
-    R = reset selected simulation
-  */
-  if(
-    event.key.toLowerCase()==='r'
-  ){
-
-    event.preventDefault();
-
-    reset(selected);
-  }
-
-});
 </script>
 
 </body>
