@@ -4,48 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030711">
-
-<meta
-  name="description"
-  content="Cognitive Dynamics Studio — Four Interactive Models of Cognition. Explore four educational computational visualizations of causal, dialectical, panoramic, and synergetic dynamics."
->
-
-<meta
-  name="author"
-  content="Cognitive Dynamics Studio"
->
-
-<meta
-  property="og:title"
-  content="Cognitive Dynamics Studio — Four Interactive Models of Cognition"
->
-
-<meta
-  property="og:description"
-  content="Explore four interactive computational models of cognition."
->
-
-<meta
-  property="og:type"
-  content="website"
->
-
-<meta
-  property="og:url"
-  content="https://cognitivedynamicsstudio.com/"
->
-
-<link
-  rel="canonical"
-  href="https://cognitivedynamicsstudio.com/"
->
-
-<title>
-  Cognitive Dynamics Studio — Four Interactive Models of Cognition
-</title>
+<meta name="description" content="Cognitive Dynamics Studio — Four Interactive Models of Cognition. Explore four educational computational visualizations of causal, dialectical, panoramic, and synergetic dynamics.">
+<meta property="og:title" content="Cognitive Dynamics Studio — Four Interactive Models of Cognition">
+<meta property="og:description" content="Explore four interactive computational models of cognition.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cognitivedynamicsstudio.com/">
+<link rel="canonical" href="https://cognitivedynamicsstudio.com/">
+<title>Cognitive Dynamics Studio — Four Interactive Models of Cognition</title>
 
 <style>
-
 :root{
   --bg:#030711;
   --panel:#09131f;
@@ -54,19 +21,15 @@
   --text:#f7faff;
   --muted:#adbdca;
   --soft:#788b9c;
-
   --cyan:#38c9ff;
   --green:#51ef7d;
   --purple:#c878ff;
   --orange:#ffad3d;
   --red:#ff6475;
-
   --shadow:0 24px 80px #0009;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html{
   scroll-behavior:smooth;
@@ -75,46 +38,20 @@ html{
 
 body{
   margin:0;
-  min-height:100vh;
-
   color:var(--text);
-
   background:
-    radial-gradient(
-      circle at 50% -8%,
-      #17364e 0,
-      transparent 38%
-    ),
-    radial-gradient(
-      circle at 0 38%,
-      #38c9ff0c,
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 100% 60%,
-      #c878ff0a,
-      transparent 28%
-    ),
+    radial-gradient(circle at 50% -8%,#17364e 0,transparent 38%),
+    radial-gradient(circle at 0 38%,#38c9ff0c,transparent 28%),
+    radial-gradient(circle at 100% 60%,#c878ff0a,transparent 28%),
     var(--bg);
-
-  font:
-    18px/1.55
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    sans-serif;
+  font:18px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 
-button,
-input,
-select{
+button,input,select{
   font:inherit;
 }
 
-button,
-a{
+button,a{
   outline-offset:3px;
 }
 
@@ -135,11 +72,8 @@ select:focus-visible{
   position:sticky;
   top:0;
   z-index:50;
-
   background:#030711e8;
-
   backdrop-filter:blur(18px);
-
   border-bottom:1px solid #203548;
 }
 
@@ -157,13 +91,7 @@ select:focus-visible{
 }
 
 .eyebrow{
-  font:
-    800 10px/1.2
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
-
+  font:800 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;
   letter-spacing:.16em;
   text-transform:uppercase;
   color:#8195a8;
@@ -190,9 +118,7 @@ select:focus-visible{
   color:#afbecb;
   text-decoration:none;
   white-space:nowrap;
-
   padding:8px 11px;
-
   border-radius:8px;
 }
 
@@ -207,43 +133,26 @@ select:focus-visible{
 
 .hero h1{
   max-width:1150px;
-
   margin:12px 0 22px;
-
-  font-size:
-    clamp(
-      3.1rem,
-      7vw,
-      7.1rem
-    );
-
+  font-size:clamp(3.1rem,7vw,7.1rem);
   line-height:.91;
-
   letter-spacing:-.07em;
 }
 
 .hero p{
   max-width:930px;
-
   color:var(--muted);
-
   font-size:1.14rem;
 }
 
 .cta{
   display:inline-block;
-
   margin-top:19px;
-
   padding:14px 20px;
-
   border-radius:10px;
-
   background:#f4f8fb;
   color:#05080d;
-
   text-decoration:none;
-
   font-weight:900;
 }
 
@@ -253,22 +162,13 @@ select:focus-visible{
 
 .section{
   padding:34px 0;
-
   scroll-margin-top:105px;
 }
 
 .section h2{
   margin:6px 0 8px;
-
-  font-size:
-    clamp(
-      2rem,
-      3.2vw,
-      3.2rem
-    );
-
+  font-size:clamp(2rem,3.2vw,3.2rem);
   line-height:1;
-
   letter-spacing:-.04em;
 }
 
@@ -278,42 +178,21 @@ select:focus-visible{
 
 .overview{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:9px;
-
   margin:22px 0;
 }
 
 .overview button{
-  padding:14px;
-
+  padding:13px;
   border:1px solid var(--line);
-
   border-radius:11px;
-
   background:#07111c;
-
   color:#dce7ef;
-
   text-align:left;
-
-  cursor:pointer;
-
-  transition:
-    background .18s ease,
-    border-color .18s ease,
-    transform .18s ease;
 }
 
-.overview button:hover{
-  background:#101e2b;
-  border-color:#708797;
-  transform:translateY(-1px);
-}
-
+.overview button:hover,
 .overview button.active{
   border-color:#9cafbd;
   background:#101e2b;
@@ -321,474 +200,254 @@ select:focus-visible{
 
 .overview strong{
   display:block;
-
-  font-size:1rem;
+  font-size:.95rem;
 }
 
 .overview small{
   display:block;
-
-  color:#8fa1af;
-
-  margin-top:4px;
-
-  font-size:.84rem;
-
-  line-height:1.4;
+  color:#7f92a3;
+  margin-top:3px;
 }
 
 .simgrid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:22px;
 }
 
 .sim{
   --accent:var(--cyan);
-
   overflow:hidden;
-
   border:1px solid #2c4152;
-
   border-radius:20px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #09131f,
-      #040912
-    );
-
+  background:linear-gradient(145deg,#09131f,#040912);
   box-shadow:var(--shadow);
-
-  transition:
-    border-color .2s ease,
-    box-shadow .2s ease,
-    transform .2s ease;
-}
-
-.sim:hover{
-  transform:translateY(-1px);
+  transition:.2s;
 }
 
 .sim.focused{
   border-color:var(--accent);
-
   box-shadow:
     0 0 0 1px var(--accent),
     var(--shadow),
-    0 0 50px
-      color-mix(
-        in srgb,
-        var(--accent) 12%,
-        transparent
-      );
+    0 0 50px color-mix(in srgb,var(--accent) 12%,transparent);
 }
 
 .simhead{
-  min-height:118px;
-
-  padding:20px 21px 17px;
-
+  min-height:108px;
+  padding:18px 19px 15px;
   display:flex;
-
   align-items:flex-start;
-
   gap:13px;
-
   border-bottom:1px solid #263b4c;
 }
 
 .number{
-  flex:0 0 48px;
-
-  height:48px;
-
+  flex:0 0 43px;
+  height:43px;
   display:grid;
-
   place-items:center;
-
   border-radius:12px;
-
   background:var(--accent);
-
   color:#03101a;
-
-  font-size:1.08rem;
-
   font-weight:950;
-
-  box-shadow:
-    0 0 28px
-    color-mix(
-      in srgb,
-      var(--accent) 55%,
-      transparent
-    );
+  box-shadow:0 0 28px color-mix(in srgb,var(--accent) 55%,transparent);
 }
 
 .simtitle{
-  font-size:1.72rem;
-
-  line-height:1.08;
-
-  letter-spacing:-.03em;
-
+  font-size:1.43rem;
   font-weight:950;
+  line-height:1.1;
 }
 
 .simdesc{
-  max-width:680px;
-
-  margin-top:6px;
-
   color:#afbeca;
-
-  font-size:1rem;
-
-  line-height:1.42;
+  font-size:.9rem;
 }
 
 .live{
   margin-left:auto;
-
   white-space:nowrap;
-
-  padding:7px 10px;
-
+  padding:5px 8px;
   border:1px solid #2e663f;
-
   border-radius:999px;
-
   background:#06150a;
-
   color:#6eff8a;
-
-  font:
-    800 10px
-    ui-monospace,
-    SFMono-Regular,
-    monospace;
+  font:800 9px ui-monospace,SFMono-Regular,monospace;
 }
 
 .live:before{
   content:"";
-
   display:inline-block;
-
   width:7px;
   height:7px;
-
   margin-right:5px;
-
   border-radius:50%;
-
   background:#55ff73;
-
-  box-shadow:
-    0 0 10px #55ff73;
+  box-shadow:0 0 10px #55ff73;
 }
 
 .visual{
+  height:610px;
   position:relative;
-
-  height:640px;
-
   background:#010409;
 }
 
 .visual canvas{
   width:100%;
   height:100%;
-
   display:block;
 }
 
 .hud{
   position:absolute;
-
   inset:13px;
-
   display:flex;
-
   justify-content:space-between;
-
   pointer-events:none;
 }
 
 .badge{
-  padding:8px 10px;
-
+  padding:6px 8px;
   border:1px solid #415667;
-
-  border-radius:9px;
-
+  border-radius:8px;
   background:#03070de0;
-
-  color:#d5e0e7;
-
-  font:
-    800 11px
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
+  color:#cbd7df;
+  font:800 9px ui-monospace,SFMono-Regular,monospace;
 }
 
 .explain{
-  padding:19px 21px;
-
-  border-top:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--accent) 32%,
-      #263746
-    );
-
-  background:
-    linear-gradient(
-      90deg,
-      color-mix(
-        in srgb,
-        var(--accent) 8%,
-        #07101a
-      ),
-      #070d14
-    );
+  padding:15px 18px;
+  border-top:1px solid color-mix(in srgb,var(--accent) 32%,#263746);
+  background:linear-gradient(
+    90deg,
+    color-mix(in srgb,var(--accent) 8%,#07101a),
+    #070d14
+  );
 }
 
 .explain strong{
   color:var(--accent);
-
-  font:
-    900 12px
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
-
-  letter-spacing:.14em;
+  font:900 10px ui-monospace,SFMono-Regular,monospace;
+  letter-spacing:.12em;
 }
 
 .phase{
-  margin-top:4px;
-
-  font-size:1.55rem;
-
-  line-height:1.12;
-
-  font-weight:950;
+  font-size:1.1rem;
+  font-weight:900;
 }
 
 .explain p{
-  margin:6px 0 0;
-
+  margin:2px 0 0;
   color:#adbbc6;
-
-  font-size:1.02rem;
-
-  line-height:1.5;
+  font-size:.9rem;
 }
 
 .metrics{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:9px;
-
-  padding:13px;
-
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+  padding:11px;
   background:#050a10;
 }
 
 .metric{
-  min-height:67px;
-
-  padding:11px;
-
+  padding:8px;
   border:1px solid #273b4c;
-
   border-radius:8px;
-
   background:#08111a;
 }
 
 .metric b{
   display:block;
-
-  color:#8195a6;
-
-  font:
-    800 10px
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
-
-  letter-spacing:.06em;
+  color:#728698;
+  font:800 9px ui-monospace,SFMono-Regular,monospace;
 }
 
 .metric span{
   display:block;
-
-  margin-top:4px;
-
   color:#e1e8ee;
-
-  font-size:1rem;
-
-  font-weight:800;
+  font-size:.82rem;
 }
 
 .controls{
   display:flex;
-
   align-items:center;
-
   flex-wrap:wrap;
-
-  gap:9px;
-
-  padding:13px;
-
+  gap:7px;
+  padding:11px;
   border-top:1px solid #263746;
 }
 
 .btn{
-  min-height:48px;
-
-  padding:10px 15px;
-
+  min-height:44px;
+  padding:9px 13px;
   border:1px solid #3c5264;
-
   border-radius:9px;
-
   background:#09131e;
-
   color:#eef5f9;
-
-  font-size:1rem;
-
   font-weight:800;
-
-  cursor:pointer;
-
-  transition:
-    background .15s ease,
-    border-color .15s ease,
-    transform .15s ease;
 }
 
 .btn:hover{
   background:#152535;
-
   border-color:#91a3b1;
-
-  transform:translateY(-1px);
 }
 
 .btn.primary{
   background:#f3f8fb;
-
   color:#05080c;
-
   border-color:#f3f8fb;
 }
 
 .speed{
   display:flex;
-
   align-items:center;
-
   gap:7px;
-
   margin-left:auto;
-
   color:#8193a2;
-
-  font:
-    800 10px
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
+  font:800 9px ui-monospace,SFMono-Regular,monospace;
 }
 
 .speed input{
-  width:135px;
-
-  height:22px;
-
+  width:120px;
   accent-color:var(--accent);
-
-  cursor:pointer;
-}
-
-.speed span{
-  color:#dbe7ee;
-
-  font-size:1rem;
-
-  font-weight:900;
 }
 
 .progress{
-  height:7px;
-
+  height:5px;
   background:#16232e;
 }
 
 .progress div{
-  width:0;
   height:100%;
-
+  width:0;
   background:var(--accent);
-
-  box-shadow:
-    0 0 14px var(--accent);
-
-  transition:
-    width .18s linear;
+  box-shadow:0 0 14px var(--accent);
 }
 
 .cards{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
-
   margin-top:20px;
 }
 
 .card,
 .source{
   padding:19px;
-
   border:1px solid #293e50;
-
   border-radius:14px;
-
   background:#080f17;
 }
 
 .card h3{
   margin:5px 0;
-
-  font-size:1.2rem;
 }
 
 .card p,
 .source p{
   color:#9faeba;
-
   font-size:.91rem;
 }
 
@@ -798,12 +457,8 @@ select:focus-visible{
 
 .grid3{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
-
   margin-top:18px;
 }
 
@@ -813,84 +468,59 @@ select:focus-visible{
 
 .field-label .eyebrow{
   display:block;
-
   margin-bottom:6px;
 }
 
 .input,
 .select{
   width:100%;
-
   padding:11px;
-
   border:1px solid #3a5163;
-
   border-radius:9px;
-
   background:#050a10;
-
   color:#eef4f8;
 }
 
 .output{
-  max-height:350px;
-
-  overflow:auto;
-
   margin-top:15px;
-
+  max-height:350px;
+  overflow:auto;
   padding:15px;
-
   border:1px solid #293e50;
-
   border-radius:12px;
-
   background:#02060b;
-
   color:#ced9e1;
-
-  font:
-    12px/1.5
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
+  font:12px/1.5 ui-monospace,SFMono-Regular,monospace;
 }
 
 .check{
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   gap:12px;
 }
 
 .check input{
   width:20px;
   height:20px;
-
   accent-color:#fff;
 }
 
 .fullscreen{
   position:fixed!important;
-
   inset:0!important;
-
   z-index:1000!important;
-
-  width:100vw!important;
-  height:100vh!important;
-
   border-radius:0!important;
-
   background:#010409!important;
 }
 
 .fullscreen .visual{
   height:calc(100vh - 190px);
+}
+
+footer{
+  padding:55px 0 75px;
+  text-align:center;
 }
 
 html.large body{
@@ -902,19 +532,11 @@ html.xl body{
 }
 
 html.large .simtitle{
-  font-size:1.9rem;
+  font-size:1.58rem;
 }
 
 html.xl .simtitle{
-  font-size:2.05rem;
-}
-
-html.large .phase{
-  font-size:1.75rem;
-}
-
-html.xl .phase{
-  font-size:1.95rem;
+  font-size:1.7rem;
 }
 
 html.large .simdesc,
@@ -943,7 +565,6 @@ body.high-contrast .metric{
 }
 
 @media(max-width:1120px){
-
   .simgrid{
     grid-template-columns:1fr;
   }
@@ -951,24 +572,16 @@ body.high-contrast .metric{
   .cards{
     grid-template-columns:1fr 1fr;
   }
-
-  .visual{
-    height:620px;
-  }
-
 }
 
 @media(max-width:800px){
-
   .overview,
   .grid3{
     grid-template-columns:1fr 1fr;
   }
-
 }
 
 @media(max-width:620px){
-
   .wrap,
   .topin{
     padding-left:13px;
@@ -980,12 +593,11 @@ body.high-contrast .metric{
   }
 
   .hero h1{
-    font-size:
-      clamp(
-        2.7rem,
-        14vw,
-        4.5rem
-      );
+    font-size:clamp(2.7rem,14vw,4.5rem);
+  }
+
+  .visual{
+    height:470px;
   }
 
   .overview,
@@ -994,404 +606,200 @@ body.high-contrast .metric{
     grid-template-columns:1fr;
   }
 
-  .simhead{
-    min-height:112px;
-
-    padding:
-      17px
-      15px;
-  }
-
-  .number{
-    flex-basis:43px;
-
-    height:43px;
-  }
-
-  .simtitle{
-    font-size:1.42rem;
-  }
-
-  .simdesc{
-    font-size:.94rem;
-  }
-
-  .visual{
-    height:510px;
-  }
-
-  .badge{
-    font-size:9px;
-
-    padding:
-      6px
-      8px;
-  }
-
-  .explain{
-    padding:
-      17px
-      15px;
-  }
-
-  .phase{
-    font-size:1.35rem;
-  }
-
-  .explain p{
-    font-size:.96rem;
-  }
-
   .metrics{
     grid-template-columns:1fr 1fr;
   }
 
-  .metric{
-    min-height:64px;
-  }
-
-  .metric span{
-    font-size:.94rem;
-  }
-
-  .btn{
-    min-height:47px;
-
-    font-size:.96rem;
-  }
-
   .speed{
     width:100%;
-
     margin-left:0;
-
-    padding-top:4px;
   }
 
   .speed input{
     flex:1;
   }
 
+  .simtitle{
+    font-size:1.26rem;
+  }
 }
 
 @media(prefers-reduced-motion:reduce){
-
   html{
     scroll-behavior:auto;
   }
-
 }
-
 </style>
 </head>
-
 
 <body>
 
 <header class="top">
-
   <div class="topin">
-
     <div class="row">
-
       <div>
-
-        <div class="eyebrow">
-          Cognitive Dynamics Studio · Interactive Laboratory
-        </div>
-
-        <div class="brand">
-          Four Interactive Models of Cognition
-        </div>
-
+        <div class="eyebrow">Cognitive Dynamics Studio · Interactive Laboratory</div>
+        <div class="brand">Four Interactive Models of Cognition</div>
       </div>
-
-      <div class="eyebrow">
-        LIVE · EDUCATIONAL
-      </div>
-
+      <div class="eyebrow">LIVE · EDUCATIONAL</div>
     </div>
 
-
-    <nav
-      class="nav"
-      aria-label="Main navigation"
-    >
-
-      <a href="#simulations">
-        Simulations
-      </a>
-
-      <a href="#models">
-        Models
-      </a>
-
-      <a href="#experiment">
-        Experiment
-      </a>
-
-      <a href="#integrity">
-        Integrity
-      </a>
-
-      <a href="#accessibility">
-        Accessibility
-      </a>
-
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#simulations">Simulations</a>
+      <a href="#models">Models</a>
+      <a href="#experiment">Experiment</a>
+      <a href="#integrity">Integrity</a>
+      <a href="#accessibility">Accessibility</a>
     </nav>
-
   </div>
-
 </header>
-
 
 <main class="wrap">
 
-
 <section class="hero">
+  <div class="eyebrow">Cognitive Dynamics Studio</div>
 
-  <div class="eyebrow">
-    Cognitive Dynamics Studio
-  </div>
-
-  <h1>
-    Four Interactive Models of Cognition.
-  </h1>
+  <h1>Four Interactive Models of Cognition.</h1>
 
   <p>
-    Explore four computational visualizations of causal,
-    dialectical, panoramic, and synergetic dynamics.
-    The simulations are the centerpiece: pause them,
-    step through states, change speed, inspect live
-    variables, and open any model fullscreen.
+    Explore four computational visualizations of causal, dialectical,
+    panoramic, and synergetic dynamics. The simulations are the centerpiece:
+    pause them, step through states, change speed, inspect live variables,
+    and open any model fullscreen.
   </p>
 
-  <a
-    class="cta"
-    href="#simulations"
-  >
+  <a class="cta" href="#simulations">
     Enter the simulation studio ↓
   </a>
-
 </section>
 
 
-<section
-  id="simulations"
-  class="section"
->
+<section id="simulations" class="section">
 
-  <div class="eyebrow">
-    01 · Live simulation studio
-  </div>
+  <div class="eyebrow">01 · Live simulation studio</div>
 
-  <h2>
-    See the four models in motion.
-  </h2>
+  <h2>See the four models in motion.</h2>
 
   <p class="muted">
-    Each model has a distinct visual grammar,
-    state sequence, color system, and explanatory panel.
+    Each model has a distinct visual grammar, state sequence,
+    color system, and explanatory panel.
   </p>
 
+  <div id="overview" class="overview"></div>
 
-  <div
-    id="overview"
-    class="overview"
-  ></div>
-
-
-  <div
-    id="simgrid"
-    class="simgrid"
-  ></div>
+  <div id="simgrid" class="simgrid"></div>
 
 </section>
 
 
-<section
-  id="models"
-  class="section"
->
+<section id="models" class="section">
 
-  <div class="eyebrow">
-    02 · How they work
-  </div>
+  <div class="eyebrow">02 · How they work</div>
 
-  <h2>
-    Four models, four visual languages.
-  </h2>
-
+  <h2>Four models, four visual languages.</h2>
 
   <div class="cards">
 
-
     <article class="card">
-
-      <div
-        class="eyebrow"
-        style="color:var(--cyan)"
-      >
+      <div class="eyebrow" style="color:var(--cyan)">
         Causal–Determinist
       </div>
 
-      <h3>
-        Follow a causal chain.
-      </h3>
+      <h3>Follow a causal chain.</h3>
 
       <p>
-        Observation and premise lead through mechanism,
-        process, deduction, and result in a directional sequence.
+        Observation and premise lead through mechanism, process,
+        deduction, and result in a directional sequence.
       </p>
-
     </article>
 
 
     <article class="card">
-
-      <div
-        class="eyebrow"
-        style="color:var(--green)"
-      >
+      <div class="eyebrow" style="color:var(--green)">
         Dialectical–Algorithmic
       </div>
 
-      <h3>
-        Hold opposites together.
-      </h3>
+      <h3>Hold opposites together.</h3>
 
       <p>
-        Thesis and antithesis move through contradiction
-        toward synthesis, rule formation, and algorithmic execution.
+        Thesis and antithesis move through contradiction toward
+        synthesis, rule formation, and algorithmic execution.
       </p>
-
     </article>
 
 
     <article class="card">
-
-      <div
-        class="eyebrow"
-        style="color:var(--purple)"
-      >
+      <div class="eyebrow" style="color:var(--purple)">
         Holographical–Panoramic
       </div>
 
-      <h3>
-        Change the viewpoint.
-      </h3>
+      <h3>Change the viewpoint.</h3>
 
       <p>
-        A stable conceptual object remains central while
-        changing projections make different aspects visible.
+        A stable conceptual object remains central while changing
+        projections make different aspects visible.
       </p>
-
     </article>
 
 
     <article class="card">
-
-      <div
-        class="eyebrow"
-        style="color:var(--orange)"
-      >
+      <div class="eyebrow" style="color:var(--orange)">
         Vortical–Synergetic
       </div>
 
-      <h3>
-        Watch a dynamic field.
-      </h3>
+      <h3>Watch a dynamic field.</h3>
 
       <p>
-        Alternatives fluctuate, are screened, and gather
-        around an attractor as feedback changes the field.
+        Alternatives fluctuate, are screened, and gather around
+        an attractor as feedback changes the field.
       </p>
-
     </article>
 
   </div>
-
 </section>
 
 
-<section
-  id="experiment"
-  class="section"
->
+<section id="experiment" class="section">
 
   <div class="source">
 
-    <div class="eyebrow">
-      03 · Experiment studio
-    </div>
+    <div class="eyebrow">03 · Experiment studio</div>
 
-    <h2>
-      Run a reproducible computational experiment.
-    </h2>
+    <h2>Run a reproducible computational experiment.</h2>
 
     <p>
-      Seeds and steps control the software model.
-      The resulting states describe the simulation,
-      not a measurement of a person's cognition.
+      Seeds and steps control the software model. The resulting states
+      describe the simulation, not a measurement of a person's cognition.
     </p>
 
 
     <div class="grid3">
 
-
       <label class="field-label">
-
-        <span class="eyebrow">
-          Seed
-        </span>
-
+        <span class="eyebrow">Seed</span>
         <input
           id="seed"
           class="input"
           type="number"
           value="482913"
         >
-
       </label>
 
 
       <label class="field-label">
+        <span class="eyebrow">Model</span>
 
-        <span class="eyebrow">
-          Model
-        </span>
-
-        <select
-          id="model"
-          class="select"
-        >
-
-          <option value="cd">
-            Causal–Determinist
-          </option>
-
-          <option value="da">
-            Dialectical–Algorithmic
-          </option>
-
-          <option value="hp">
-            Holographical–Panoramic
-          </option>
-
-          <option value="vs">
-            Vortical–Synergetic
-          </option>
-
+        <select id="model" class="select">
+          <option value="cd">Causal–Determinist</option>
+          <option value="da">Dialectical–Algorithmic</option>
+          <option value="hp">Holographical–Panoramic</option>
+          <option value="vs">Vortical–Synergetic</option>
         </select>
-
       </label>
 
 
       <label class="field-label">
-
-        <span class="eyebrow">
-          Steps
-        </span>
+        <span class="eyebrow">Steps</span>
 
         <input
           id="steps"
@@ -1401,139 +809,92 @@ body.high-contrast .metric{
           max="1000"
           value="20"
         >
-
       </label>
 
     </div>
 
 
-    <div
-      style="
-        display:flex;
-        flex-wrap:wrap;
-        gap:8px;
-        margin-top:16px
-      "
-    >
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
 
-      <button
-        class="btn"
-        id="baseline"
-      >
+      <button class="btn" id="baseline">
         Capture baseline
       </button>
 
-      <button
-        class="btn"
-        id="intervention"
-      >
+      <button class="btn" id="intervention">
         Capture intervention
       </button>
 
-      <button
-        class="btn primary"
-        id="run"
-      >
+      <button class="btn primary" id="run">
         Run experiment
       </button>
 
-      <button
-        class="btn"
-        id="download"
-      >
+      <button class="btn" id="download">
         Export JSON
       </button>
 
     </div>
 
 
-    <pre
-      id="output"
-      class="output"
-      hidden
-    ></pre>
+    <pre id="output" class="output" hidden></pre>
 
   </div>
 
 </section>
 
 
-<section
-  id="integrity"
-  class="section"
->
+<section id="integrity" class="section">
 
   <div class="source">
 
-    <div class="eyebrow">
-      04 · Scientific integrity
-    </div>
+    <div class="eyebrow">04 · Scientific integrity</div>
 
     <h2>
-      Clear boundaries between source,
-      software, and evidence.
+      Clear boundaries between source, software, and evidence.
     </h2>
 
 
     <div class="cards">
 
-
       <article class="card">
-
-        <div class="eyebrow">
-          Source-derived
-        </div>
+        <div class="eyebrow">Source-derived</div>
 
         <p>
-          Conceptual terminology and framing are identified
-          as source-derived where applicable.
+          Conceptual terminology and framing are identified as
+          source-derived where applicable.
         </p>
-
       </article>
 
 
       <article class="card">
-
-        <div class="eyebrow">
-          Original implementation
-        </div>
+        <div class="eyebrow">Original implementation</div>
 
         <p>
           Numerical variables, transition rules, trajectories,
           particles, animation, and interface are software
           representations created for this studio.
         </p>
-
       </article>
 
 
       <article class="card">
-
-        <div class="eyebrow">
-          Evidence boundary
-        </div>
+        <div class="eyebrow">Evidence boundary</div>
 
         <p>
           Simulation output is an output of the computational model.
           It is not automatically empirical evidence for a theory
           of human cognition.
         </p>
-
       </article>
 
 
       <article class="card">
-
-        <div class="eyebrow">
-          Educational purpose
-        </div>
+        <div class="eyebrow">Educational purpose</div>
 
         <p>
-          This is an educational interactive laboratory,
-          not a diagnostic tool, clinical instrument, or
-          validated psychological assessment.
+          This is an educational interactive laboratory, not a
+          diagnostic tool, clinical instrument, or validated
+          psychological assessment.
         </p>
-
       </article>
 
     </div>
@@ -1547,34 +908,22 @@ body.high-contrast .metric{
 
   <div class="source">
 
-    <div class="eyebrow">
-      05 · Sources
-    </div>
+    <div class="eyebrow">05 · Sources</div>
 
-    <h2>
-      Reference material
-    </h2>
+    <h2>Reference material</h2>
 
     <p>
-
       <strong>
-        Viktor V. Gulenko,
-        “Forms of Thinking”
+        Viktor V. Gulenko, “Forms of Thinking”
       </strong>
-
       <br>
-
       <em>
         Socionics, Mentology and Personality Psychology
       </em>,
-
-      No. 4 (2002),
-      pp. 9–25.
-
+      No. 4 (2002), pp. 9–25.
     </p>
 
     <p>
-
       <a
         href="https://www.publishing.socionic.info/index.php/socionics/article/view/1228"
         target="_blank"
@@ -1582,12 +931,10 @@ body.high-contrast .metric{
       >
         Publisher record ↗
       </a>
-
     </p>
 
     <p>
-      This project does not claim endorsement by
-      the author or publication.
+      This project does not claim endorsement by the author or publication.
     </p>
 
   </div>
@@ -1595,16 +942,11 @@ body.high-contrast .metric{
 </section>
 
 
-<section
-  id="accessibility"
-  class="section"
->
+<section id="accessibility" class="section">
 
   <div class="source">
 
-    <div class="eyebrow">
-      06 · Accessibility
-    </div>
+    <div class="eyebrow">06 · Accessibility</div>
 
     <h2>
       Make the studio easier to see and use.
@@ -1613,60 +955,26 @@ body.high-contrast .metric{
 
     <div class="grid3">
 
-
       <label class="field-label">
+        <span class="eyebrow">Text size</span>
 
-        <span class="eyebrow">
-          Text size
-        </span>
-
-        <select
-          id="textSize"
-          class="select"
-        >
-
-          <option value="normal">
-            Normal
-          </option>
-
-          <option value="large">
-            Large
-          </option>
-
-          <option value="xl">
-            Extra large
-          </option>
-
+        <select id="textSize" class="select">
+          <option value="normal">Normal</option>
+          <option value="large">Large</option>
+          <option value="xl">Extra large</option>
         </select>
-
       </label>
 
 
       <label class="card check">
-
-        <span>
-          High contrast
-        </span>
-
-        <input
-          id="contrast"
-          type="checkbox"
-        >
-
+        <span>High contrast</span>
+        <input id="contrast" type="checkbox">
       </label>
 
 
       <label class="card check">
-
-        <span>
-          Reduced motion
-        </span>
-
-        <input
-          id="motion"
-          type="checkbox"
-        >
-
+        <span>Reduced motion</span>
+        <input id="motion" type="checkbox">
       </label>
 
     </div>
@@ -1683,27 +991,23 @@ body.high-contrast .metric{
   </div>
 
   <p class="muted">
-    Four Interactive Models of Cognition · educational
-    computational software · not a validated psychological measurement.
+    Four Interactive Models of Cognition · educational computational
+    software · not a validated psychological measurement.
   </p>
 
 </footer>
-
 
 </main>
 
 
 <script>
-
 'use strict';
-
 
 const M = {
 
   cd:{
     name:'Causal–Determinist',
     color:'#38c9ff',
-
     stages:[
       'Observation',
       'Premise',
@@ -1715,11 +1019,9 @@ const M = {
     ]
   },
 
-
   da:{
     name:'Dialectical–Algorithmic',
     color:'#51ef7d',
-
     stages:[
       'Thesis',
       'Antithesis',
@@ -1730,11 +1032,9 @@ const M = {
     ]
   },
 
-
   hp:{
     name:'Holographical–Panoramic',
     color:'#c878ff',
-
     stages:[
       'Front',
       'Right',
@@ -1745,11 +1045,9 @@ const M = {
     ]
   },
 
-
   vs:{
     name:'Vortical–Synergetic',
     color:'#ffad3d',
-
     stages:[
       'Fluctuation',
       'Alternatives',
@@ -1766,21 +1064,14 @@ const M = {
 
 const S = {
 
-  cd:{
-    i:0
-  },
+  cd:{i:0},
 
-
-  da:{
-    i:0
-  },
-
+  da:{i:0},
 
   hp:{
     i:0,
     a:0
   },
-
 
   vs:{
     t:0,
@@ -1793,64 +1084,46 @@ const S = {
 
 
 const P = {
-
   cd:false,
   da:false,
   hp:false,
   vs:false
-
 };
 
 
 const speed = {
-
   cd:1,
   da:1,
   hp:1,
   vs:1
-
 };
 
 
-let selected='cd';
+let selected = 'cd';
+let reduced = false;
+let rng = seeded(482913);
+let base = null;
+let intv = null;
+let last = performance.now();
 
-let reduced=false;
-
-let rng=seeded(482913);
-
-let base=null;
-
-let intv=null;
-
-let last=performance.now();
-
-let acc={
-
+let acc = {
   cd:0,
   da:0
-
 };
 
 
 function seeded(seed){
 
-  let x=
-    (Number(seed)||1)>>>0;
+  let x = (Number(seed)||1) >>> 0;
 
+  return () => {
 
-  return ()=>{
+    x = (
+      Math.imul(1664525,x) +
+      1013904223
+    ) >>> 0;
 
-    x=
-      (
-        Math.imul(
-          1664525,
-          x
-        )+
-        1013904223
-      )>>>0;
-
-
-    return x/4294967296;
+    return x / 4294967296;
 
   };
 
@@ -1859,241 +1132,182 @@ function seeded(seed){
 
 function build(){
 
-  const overview=
-    document.getElementById(
-      'overview'
+  const o = document.getElementById('overview');
+  const g = document.getElementById('simgrid');
+
+
+  Object.entries(M).forEach(([id,m],n)=>{
+
+    let b = document.createElement('button');
+
+    b.dataset.id = id;
+
+    b.innerHTML =
+      '<strong>' +
+      (n+1) +
+      '. ' +
+      m.name +
+      '</strong>' +
+      '<small>' +
+      m.stages.join(' → ') +
+      '</small>';
+
+    b.onclick = () => focus(id);
+
+    o.appendChild(b);
+
+
+    let a = document.createElement('article');
+
+    a.className = 'sim';
+    a.id = 'sim-' + id;
+
+    a.style.setProperty(
+      '--accent',
+      m.color
     );
 
 
-  const grid=
-    document.getElementById(
-      'simgrid'
-    );
+    a.innerHTML =
 
+      '<div class="simhead">' +
 
-  Object.entries(M).forEach(
-    ([id,m],n)=>{
+        '<div class="number">' +
+          (n+1) +
+        '</div>' +
 
+        '<div>' +
 
-      const button=
-        document.createElement(
-          'button'
-        );
+          '<div class="eyebrow">' +
+            id.toUpperCase() +
+            ' · LIVE MODEL' +
+          '</div>' +
 
+          '<div class="simtitle">' +
+            m.name +
+          '</div>' +
 
-      button.dataset.id=id;
+          '<div class="simdesc">' +
 
+            (
+              id === 'cd'
+              ? 'Explicit causal chain with premises, mechanism and deduction.'
 
-      button.innerHTML=
-        '<strong>'+
-        (n+1)+
-        '. '+
-        m.name+
-        '</strong>'+
-        '<small>'+
-        m.stages.join(' → ')+
-        '</small>';
+              : id === 'da'
+              ? 'Opposites become contradiction, synthesis and an executable rule.'
 
+              : id === 'hp'
+              ? 'A stable conceptual object examined through changing projections.'
 
-      button.onclick=()=>{
-        focus(id);
-      };
+              : 'Alternatives fluctuate, are screened and gather around an attractor.'
+            ) +
 
+          '</div>' +
 
-      overview.appendChild(
-        button
-      );
+        '</div>' +
 
+        '<div class="live">LIVE</div>' +
 
-      const article=
-        document.createElement(
-          'article'
-        );
+      '</div>' +
 
 
-      article.className='sim';
+      '<div class="visual">' +
 
-      article.id='sim-'+id;
+        '<canvas ' +
+          'id="c-' + id + '" ' +
+          'aria-label="' + m.name + ' simulation">' +
+        '</canvas>' +
 
-      article.style.setProperty(
-        '--accent',
-        m.color
-      );
+        '<div class="hud">' +
 
+          '<span class="badge">' +
+            'LIVE · ' +
+            id.toUpperCase() +
+          '</span>' +
 
-      article.innerHTML=
+          '<span class="badge" id="stage-' + id + '">' +
+            'STAGE 01' +
+          '</span>' +
 
-        '<div class="simhead">'+
+        '</div>' +
 
-          '<div class="number">'+
-            (n+1)+
-          '</div>'+
+      '</div>' +
 
-          '<div>'+
 
-            '<div class="eyebrow">'+
-              id.toUpperCase()+
-              ' · LIVE MODEL'+
-            '</div>'+
+      '<div class="explain">' +
 
-            '<div class="simtitle">'+
-              m.name+
-            '</div>'+
+        '<strong>CURRENT MODEL STATE</strong>' +
 
-            '<div class="simdesc">'+
+        '<div class="phase" id="phase-' + id + '"></div>' +
 
-              (
-                id==='cd'
-                ? 'Explicit causal chain with premises, mechanism and deduction.'
+        '<p id="desc-' + id + '"></p>' +
 
-                : id==='da'
-                ? 'Opposites become contradiction, synthesis and an executable rule.'
+      '</div>' +
 
-                : id==='hp'
-                ? 'A stable conceptual object examined through changing projections.'
 
-                : 'Alternatives fluctuate, are screened and gather around an attractor.'
-              )+
+      '<div class="metrics" id="metrics-' + id + '"></div>' +
 
-            '</div>'+
 
-          '</div>'+
+      '<div class="controls">' +
 
-          '<div class="live">LIVE</div>'+
+        '<button class="btn primary play" data-id="' + id + '">' +
+          'Ⅱ Pause' +
+        '</button>' +
 
-        '</div>'+
+        '<button class="btn step" data-id="' + id + '">' +
+          '▶ Step' +
+        '</button>' +
 
+        '<button class="btn reset" data-id="' + id + '">' +
+          '↻ Reset' +
+        '</button>' +
 
-        '<div class="visual">'+
+        '<button class="btn full" data-id="' + id + '">' +
+          '⛶ Fullscreen' +
+        '</button>' +
 
-          '<canvas '+
-            'id="c-'+id+'" '+
-            'aria-label="'+
-              m.name+
-              ' simulation">'+
-          '</canvas>'+
+        '<label class="speed">' +
 
-          '<div class="hud">'+
+          'SPEED ' +
 
-            '<span class="badge">'+
-              'LIVE · '+
-              id.toUpperCase()+
-            '</span>'+
+          '<input ' +
+            'data-speed="' + id + '" ' +
+            'type="range" ' +
+            'min=".25" ' +
+            'max="2" ' +
+            'step=".25" ' +
+            'value="1">' +
 
-            '<span '+
-              'class="badge" '+
-              'id="stage-'+id+'">'+
-              'STAGE 01'+
-            '</span>'+
+          '<span data-speed-label="' + id + '">' +
+            '1×' +
+          '</span>' +
 
-          '</div>'+
+        '</label>' +
 
-        '</div>'+
+      '</div>' +
 
 
-        '<div class="explain">'+
+      '<div class="progress">' +
+        '<div id="prog-' + id + '"></div>' +
+      '</div>';
 
-          '<strong>'+
-            'CURRENT MODEL STATE'+
-          '</strong>'+
 
-          '<div '+
-            'class="phase" '+
-            'id="phase-'+id+'">'+
-          '</div>'+
+    g.appendChild(a);
 
-          '<p '+
-            'id="desc-'+id+'">'+
-          '</p>'+
-
-        '</div>'+
-
-
-        '<div '+
-          'class="metrics" '+
-          'id="metrics-'+id+'">'+
-        '</div>'+
-
-
-        '<div class="controls">'+
-
-          '<button '+
-            'class="btn primary play" '+
-            'data-id="'+id+'">'+
-            'Ⅱ Pause'+
-          '</button>'+
-
-          '<button '+
-            'class="btn step" '+
-            'data-id="'+id+'">'+
-            '▶ Step'+
-          '</button>'+
-
-          '<button '+
-            'class="btn reset" '+
-            'data-id="'+id+'">'+
-            '↻ Reset'+
-          '</button>'+
-
-          '<button '+
-            'class="btn full" '+
-            'data-id="'+id+'">'+
-            '⛶ Fullscreen'+
-          '</button>'+
-
-          '<label class="speed">'+
-
-            'SPEED '+
-
-            '<input '+
-              'data-speed="'+id+'" '+
-              'type="range" '+
-              'min=".25" '+
-              'max="2" '+
-              'step=".25" '+
-              'value="1">'+
-
-            '<span '+
-              'data-speed-label="'+id+'">'+
-              '1×'+
-            '</span>'+
-
-          '</label>'+
-
-        '</div>'+
-
-
-        '<div class="progress">'+
-
-          '<div '+
-            'id="prog-'+id+'">'+
-          '</div>'+
-
-        '</div>';
-
-
-      grid.appendChild(
-        article
-      );
-
-    }
-  );
+  });
 
 
   document
     .querySelectorAll('.play')
-    .forEach(button=>{
+    .forEach(b=>{
 
-      button.onclick=()=>{
+      b.onclick = () => {
 
-        const id=
-          button.dataset.id;
+        let id = b.dataset.id;
 
+        P[id] = !P[id];
 
-        P[id]=!P[id];
-
-
-        button.textContent=
+        b.textContent =
           P[id]
           ? '▶ Resume'
           : 'Ⅱ Pause';
@@ -2105,64 +1319,39 @@ function build(){
 
   document
     .querySelectorAll('.step')
-    .forEach(button=>{
-
-      button.onclick=()=>{
-        step(
-          button.dataset.id
-        );
-      };
-
+    .forEach(b=>{
+      b.onclick = () => step(b.dataset.id);
     });
 
 
   document
     .querySelectorAll('.reset')
-    .forEach(button=>{
-
-      button.onclick=()=>{
-        reset(
-          button.dataset.id
-        );
-      };
-
+    .forEach(b=>{
+      b.onclick = () => reset(b.dataset.id);
     });
 
 
   document
     .querySelectorAll('.full')
-    .forEach(button=>{
-
-      button.onclick=()=>{
-        full(
-          button.dataset.id
-        );
-      };
-
+    .forEach(b=>{
+      b.onclick = () => full(b.dataset.id);
     });
 
 
   document
     .querySelectorAll('[data-speed]')
-    .forEach(range=>{
+    .forEach(r=>{
 
-      range.oninput=()=>{
+      r.oninput = () => {
 
-        const id=
-          range.dataset.speed;
-
-
-        speed[id]=
-          +range.value;
-
+        speed[r.dataset.speed] = +r.value;
 
         document.querySelector(
-          '[data-speed-label="'+
-          id+
+          '[data-speed-label="' +
+          r.dataset.speed +
           '"]'
-        ).textContent=
-          range.value+
-          '×';
+        ).textContent =
+          r.value + '×';
 
       };
 
@@ -2171,54 +1360,41 @@ function build(){
 }
 
 
-function prep(canvas,ctx){
+function prep(c,x){
 
-  const rect=
-    canvas.getBoundingClientRect();
+  let r = c.getBoundingClientRect();
 
+  let d = Math.min(
+    devicePixelRatio || 1,
+    2
+  );
 
-  const d=
-    Math.min(
-      window.devicePixelRatio||1,
-      2
-    );
+  let w = Math.max(
+    1,
+    Math.floor(r.width)
+  );
 
+  let h = Math.max(
+    1,
+    Math.floor(r.height)
+  );
 
-  const width=
-    Math.max(
-      1,
-      Math.floor(rect.width)
-    );
-
-
-  const height=
-    Math.max(
-      1,
-      Math.floor(rect.height)
-    );
-
-
-  const cw=
-    Math.floor(width*d);
-
-
-  const ch=
-    Math.floor(height*d);
+  let cw = Math.floor(w*d);
+  let ch = Math.floor(h*d);
 
 
   if(
-    canvas.width!==cw ||
-    canvas.height!==ch
+    c.width !== cw ||
+    c.height !== ch
   ){
 
-    canvas.width=cw;
-
-    canvas.height=ch;
+    c.width = cw;
+    c.height = ch;
 
   }
 
 
-  ctx.setTransform(
+  x.setTransform(
     d,
     0,
     0,
@@ -2228,377 +1404,226 @@ function prep(canvas,ctx){
   );
 
 
-  return [
-    width,
-    height
-  ];
+  return [w,h];
 
 }
 
 
-function clear(canvas,ctx){
+function clear(c,x){
 
-  const [
-    width,
-    height
-  ]=
-    prep(
-      canvas,
-      ctx
-    );
+  let [w,h] = prep(c,x);
 
+  x.fillStyle = '#010409';
 
-  ctx.fillStyle='#010409';
-
-  ctx.fillRect(
+  x.fillRect(
     0,
     0,
-    width,
-    height
+    w,
+    h
   );
 
 
-  ctx.strokeStyle='#ffffff09';
+  x.strokeStyle = '#ffffff09';
 
 
   for(
     let i=0;
-    i<width;
+    i<w;
     i+=42
   ){
 
-    ctx.beginPath();
-
-    ctx.moveTo(
-      i,
-      0
-    );
-
-    ctx.lineTo(
-      i,
-      height
-    );
-
-    ctx.stroke();
+    x.beginPath();
+    x.moveTo(i,0);
+    x.lineTo(i,h);
+    x.stroke();
 
   }
 
 
   for(
     let i=0;
-    i<height;
+    i<h;
     i+=42
   ){
 
-    ctx.beginPath();
-
-    ctx.moveTo(
-      0,
-      i
-    );
-
-    ctx.lineTo(
-      width,
-      i
-    );
-
-    ctx.stroke();
+    x.beginPath();
+    x.moveTo(0,i);
+    x.lineTo(w,i);
+    x.stroke();
 
   }
 
 
-  return [
-    width,
-    height
-  ];
+  return [w,h];
 
 }
 
 
-/*
-  Central canvas typography function.
-
-  This is intentionally larger than the original build.
-  Long annotation strings are scaled down slightly so
-  they remain readable without overflowing the canvas.
-*/
 function T(
-  ctx,
-  text,
   x,
-  y,
-  baseSize,
-  color='#fff'
+  s,
+  a,
+  b,
+  z,
+  c='#fff'
 ){
 
-  ctx.fillStyle=color;
+  x.fillStyle = c;
 
+  x.font =
+    '800 ' +
+    z +
+    'px ui-monospace,SFMono-Regular,Menlo,monospace';
 
-  const value=
-    String(text);
+  x.textAlign = 'center';
 
+  x.textBaseline = 'middle';
 
-  let scale=1.48;
-
-
-  if(
-    value.length>42
-  ){
-
-    scale=1.08;
-
-  }else if(
-    value.length>30
-  ){
-
-    scale=1.18;
-
-  }else if(
-    value.length>20
-  ){
-
-    scale=1.32;
-
-  }
-
-
-  if(
-    value==='SAME OBJECT' ||
-    value==='ATTRACTOR'
-  ){
-
-    scale=1.65;
-
-  }
-
-
-  const size=
-    Math.max(
-      11,
-      Math.round(
-        baseSize*scale
-      )
-    );
-
-
-  ctx.font=
-    '850 '+
-    size+
-    'px '+
-    'ui-monospace,'+
-    'SFMono-Regular,'+
-    'Menlo,'+
-    'monospace';
-
-
-  ctx.textAlign='center';
-
-  ctx.textBaseline='middle';
-
-
-  ctx.shadowColor=color;
-
-  ctx.shadowBlur=
-    size>=14
-    ? 7
-    : 3;
-
-
-  ctx.fillText(
-    value,
-    x,
-    y
+  x.fillText(
+    s,
+    a,
+    b
   );
-
-
-  ctx.shadowBlur=0;
 
 }
 
 
 function C(
-  ctx,
   x,
-  y,
-  radius,
-  fill,
-  stroke,
-  lineWidth=2
+  a,
+  b,
+  r,
+  f,
+  st,
+  l=2
 ){
 
-  ctx.shadowColor=stroke;
+  x.shadowColor = st;
 
-  ctx.shadowBlur=18;
+  x.shadowBlur = 18;
 
+  x.beginPath();
 
-  ctx.beginPath();
-
-
-  ctx.arc(
-    x,
-    y,
-    radius,
+  x.arc(
+    a,
+    b,
+    r,
     0,
     Math.PI*2
   );
 
+  x.fillStyle = f;
 
-  ctx.fillStyle=fill;
+  x.fill();
 
-  ctx.fill();
+  x.shadowBlur = 0;
 
+  x.strokeStyle = st;
 
-  ctx.shadowBlur=0;
+  x.lineWidth = l;
 
-
-  ctx.strokeStyle=stroke;
-
-  ctx.lineWidth=lineWidth;
-
-  ctx.stroke();
+  x.stroke();
 
 }
 
 
 function L(
-  ctx,
-  x1,
-  y1,
-  x2,
-  y2,
-  color,
-  width=2
+  x,
+  a,
+  b,
+  c,
+  d,
+  col,
+  w=2
 ){
 
-  ctx.strokeStyle=color;
+  x.strokeStyle = col;
 
-  ctx.lineWidth=width;
+  x.lineWidth = w;
 
-  ctx.beginPath();
+  x.beginPath();
 
-  ctx.moveTo(
-    x1,
-    y1
-  );
+  x.moveTo(a,b);
 
-  ctx.lineTo(
-    x2,
-    y2
-  );
+  x.lineTo(c,d);
 
-  ctx.stroke();
+  x.stroke();
 
 }
 
 
 function A(
-  ctx,
-  x1,
-  y1,
-  x2,
-  y2,
-  color
+  x,
+  a,
+  b,
+  c,
+  d,
+  col
 ){
 
   L(
-    ctx,
-    x1,
-    y1,
-    x2,
-    y2,
-    color,
+    x,
+    a,
+    b,
+    c,
+    d,
+    col,
     2.5
   );
 
-
-  const angle=
-    Math.atan2(
-      y2-y1,
-      x2-x1
-    );
-
-
-  const size=11;
-
-
-  ctx.fillStyle=color;
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    x2,
-    y2
+  let q = Math.atan2(
+    d-b,
+    c-a
   );
 
-  ctx.lineTo(
-    x2-size*Math.cos(
-      angle-.5
-    ),
-    y2-size*Math.sin(
-      angle-.5
-    )
+  let n = 11;
+
+  x.fillStyle = col;
+
+  x.beginPath();
+
+  x.moveTo(c,d);
+
+  x.lineTo(
+    c-n*Math.cos(q-.5),
+    d-n*Math.sin(q-.5)
   );
 
-  ctx.lineTo(
-    x2-size*Math.cos(
-      angle+.5
-    ),
-    y2-size*Math.sin(
-      angle+.5
-    )
+  x.lineTo(
+    c-n*Math.cos(q+.5),
+    d-n*Math.sin(q+.5)
   );
 
-  ctx.fill();
+  x.fill();
 
 }
 
 
 function draw(id){
 
-  const canvas=
-    document.getElementById(
-      'c-'+id
+  let c = document.getElementById('c-'+id);
+
+  let x = c.getContext(
+    '2d',
+    {alpha:false}
+  );
+
+  let [w,h] = clear(c,x);
+
+
+  if(id === 'cd'){
+
+    let s = S.cd.i;
+
+    let g = Math.min(
+      150,
+      (w-110)/6
     );
 
+    let st =
+      (w-g*6)/2;
 
-  const ctx=
-    canvas.getContext(
-      '2d',
-      {
-        alpha:false
-      }
-    );
-
-
-  const [
-    width,
-    height
-  ]=
-    clear(
-      canvas,
-      ctx
-    );
-
-
-  if(id==='cd'){
-
-    const stage=
-      S.cd.i;
-
-
-    const gap=
-      Math.min(
-        150,
-        (width-110)/6
-      );
-
-
-    const start=
-      (width-gap*6)/2;
-
-
-    const y=
-      height*.5;
+    let y = h*.5;
 
 
     for(
@@ -2608,21 +1633,12 @@ function draw(id){
     ){
 
       A(
-        ctx,
-
-        start+
-        i*gap+
-        34,
-
+        x,
+        st+i*g+34,
         y,
-
-        start+
-        (i+1)*gap-
-        34,
-
+        st+(i+1)*g-34,
         y,
-
-        i<stage
+        i<s
         ? '#38c9ff'
         : '#304657'
       );
@@ -2631,72 +1647,46 @@ function draw(id){
 
 
     M.cd.stages.forEach(
-      (label,index)=>{
+      (v,i)=>{
 
-        const active=
-          index===stage;
+        let on = i===s;
 
-
-        const x=
-          start+
-          index*gap;
+        let Cx =
+          st+i*g;
 
 
         C(
-          ctx,
           x,
+          Cx,
           y,
-
-          active
-          ? 40
-          : 31,
-
-          active
-          ? '#10344b'
-          : '#07111b',
-
-          active
-          ? '#b9eeff'
-          : '#496275',
-
-          active
-          ? 3
-          : 1
+          on ? 34 : 29,
+          on ? '#10344b' : '#07111b',
+          on ? '#9be6ff' : '#496275',
+          on ? 3 : 1
         );
 
 
         T(
-          ctx,
-          String(
-            index+1
-          ).padStart(
-            2,
-            '0'
-          ),
-
           x,
+          String(i+1).padStart(2,'0'),
+          Cx,
           y,
-
           11,
-
-          active
-          ? '#ffffff'
+          on
+          ? '#fff'
           : '#8799a8'
         );
 
 
         T(
-          ctx,
-          label,
-
           x,
-          y+61,
-
-          9,
-
-          active
+          v,
+          Cx,
+          y+52,
+          8,
+          on
           ? '#e9f8ff'
-          : '#8b9daa'
+          : '#738493'
         );
 
       }
@@ -2704,85 +1694,63 @@ function draw(id){
 
 
     T(
-      ctx,
-
+      x,
       'OBSERVE → PREMISE → MECHANISM → DEDUCTION → RESULT',
-
-      width/2,
-      38,
-
+      w/2,
+      36,
       11,
-
       '#55cfff'
     );
 
   }
 
 
-  if(id==='da'){
+  if(id === 'da'){
 
-    const stage=
-      S.da.i;
+    let s = S.da.i;
 
-
-    const centerX=
-      width/2;
+    let cx = w/2;
+    let cy = h/2;
 
 
-    const centerY=
-      height/2;
-
-
-    const positions=[
-
+    let p = [
       [-.34,-.22],
       [-.34,.22],
       [-.10,0],
       [.14,0],
       [.37,0],
       [.49,0]
-
     ];
 
 
-    const colors=[
-
+    let co = [
       '#51ef7d',
       '#c878ff',
       '#ff6475',
       '#38c9ff',
       '#ffe16a',
       '#ffad3d'
-
     ];
 
 
     L(
-      ctx,
-
-      centerX-.34*width,
-      centerY-.22*height,
-
-      centerX-.10*width,
-      centerY,
-
+      x,
+      cx-.34*w,
+      cy-.22*h,
+      cx-.10*w,
+      cy,
       '#51ef7d',
-
       4
     );
 
 
     L(
-      ctx,
-
-      centerX-.34*width,
-      centerY+.22*height,
-
-      centerX-.10*width,
-      centerY,
-
+      x,
+      cx-.34*w,
+      cy+.22*h,
+      cx-.10*w,
+      cy,
       '#c878ff',
-
       4
     );
 
@@ -2794,19 +1762,12 @@ function draw(id){
     ){
 
       A(
-        ctx,
-
-        centerX+
-        positions[i][0]*width,
-
-        centerY,
-
-        centerX+
-        positions[i+1][0]*width,
-
-        centerY,
-
-        i<stage
+        x,
+        cx+p[i][0]*w,
+        cy,
+        cx+p[i+1][0]*w,
+        cy,
+        i<s
         ? '#51ef7d'
         : '#304a39'
       );
@@ -2814,58 +1775,37 @@ function draw(id){
     }
 
 
-    positions.forEach(
-      (position,index)=>{
+    p.forEach(
+      (q,i)=>{
 
-        const x=
-          centerX+
-          position[0]*width;
+        let X =
+          cx+q[0]*w;
 
+        let Y =
+          cy+q[1]*h;
 
-        const y=
-          centerY+
-          position[1]*height;
-
-
-        const active=
-          index===stage;
+        let on =
+          i===s;
 
 
         C(
-          ctx,
-
           x,
-          y,
-
-          active
-          ? 40
-          : 31,
-
-          active
-          ? '#123a23'
-          : '#07111b',
-
-          colors[index],
-
-          active
-          ? 3
-          : 1
+          X,
+          Y,
+          on ? 34 : 29,
+          on ? '#123a23' : '#07111b',
+          co[i],
+          on ? 3 : 1
         );
 
 
         T(
-          ctx,
-
-          M.da.stages[index],
-
           x,
-          y+61,
-
-          9,
-
-          active
-          ? '#ffffff'
-          : colors[index]
+          M.da.stages[i],
+          X,
+          Y+49,
+          8,
+          on ? '#fff' : co[i]
         );
 
       }
@@ -2873,165 +1813,112 @@ function draw(id){
 
 
     T(
-      ctx,
-
+      x,
       'OPPOSITION → CONTRADICTION → SYNTHESIS → RULE',
-
-      width/2,
-      38,
-
+      w/2,
+      36,
       11,
-
       '#63f58a'
     );
 
   }
 
 
-  if(id==='hp'){
+  if(id === 'hp'){
 
-    const stage=
-      S.hp.i;
+    let s = S.hp.i;
+    let a = S.hp.a;
 
+    let cx = w/2;
+    let cy = h/2;
 
-    const angleOffset=
-      S.hp.a;
-
-
-    const centerX=
-      width/2;
-
-
-    const centerY=
-      height/2;
-
-
-    const colors=[
-
+    let co = [
       '#38c9ff',
       '#51ef7d',
       '#ffe16a',
       '#ffad3d',
       '#c878ff',
       '#8e72ff'
-
     ];
 
 
     C(
-      ctx,
-
-      centerX,
-      centerY,
-
-      80,
-
+      x,
+      cx,
+      cy,
+      72,
       '#1c0d27',
-
       '#e4b9ff',
-
       3
     );
 
 
     T(
-      ctx,
-
+      x,
       'SAME OBJECT',
-
-      centerX,
-      centerY,
-
-      12,
-
-      '#ffffff'
+      cx,
+      cy,
+      11
     );
 
 
     M.hp.stages.forEach(
-      (label,index)=>{
+      (v,i)=>{
 
-        const angle=
-          angleOffset+
-          index*Math.PI/3;
+        let q =
+          a+i*Math.PI/3;
 
-
-        const radius=
+        let r =
           Math.min(
-            width*.36,
+            w*.36,
             270
           );
 
+        let X =
+          cx+Math.cos(q)*r;
 
-        const x=
-          centerX+
-          Math.cos(angle)*
-          radius;
-
-
-        const y=
-          centerY+
-          Math.sin(angle)*
+        let Y =
+          cy+
+          Math.sin(q)*
           Math.min(
-            height*.31,
+            h*.31,
             180
           );
 
-
-        const active=
-          index===stage;
+        let on =
+          i===s;
 
 
         A(
-          ctx,
-
-          centerX,
-          centerY,
-
           x,
-          y,
-
-          active
-          ? colors[index]
+          cx,
+          cy,
+          X,
+          Y,
+          on
+          ? co[i]
           : '#344657'
         );
 
 
         C(
-          ctx,
-
           x,
-          y,
-
-          active
-          ? 40
-          : 31,
-
-          active
-          ? '#32164b'
-          : '#07111b',
-
-          colors[index],
-
-          active
-          ? 3
-          : 1
+          X,
+          Y,
+          on ? 34 : 29,
+          on ? '#32164b' : '#07111b',
+          co[i],
+          on ? 3 : 1
         );
 
 
         T(
-          ctx,
-
-          label,
-
           x,
-          y+61,
-
-          9,
-
-          active
-          ? '#ffffff'
-          : colors[index]
+          v,
+          X,
+          Y+49,
+          8,
+          on ? '#fff' : co[i]
         );
 
       }
@@ -3039,44 +1926,31 @@ function draw(id){
 
 
     T(
-      ctx,
-
+      x,
       'ONE OBJECT · MANY PROJECTIONS',
-
-      width/2,
-      38,
-
+      w/2,
+      36,
       11,
-
       '#db94ff'
     );
 
   }
 
 
-  if(id==='vs'){
+  if(id === 'vs'){
 
-    const state=
-      S.vs;
+    let s = S.vs;
 
+    let cx = w/2;
+    let cy = h/2;
 
-    const centerX=
-      width/2;
-
-
-    const centerY=
-      height/2;
-
-
-    const colors=[
-
+    let co = [
       '#ffad3d',
       '#ff5bb9',
       '#c878ff',
       '#38c9ff',
       '#51ef7d',
       '#ffe16a'
-
     ];
 
 
@@ -3086,7 +1960,7 @@ function draw(id){
       q++
     ){
 
-      ctx.beginPath();
+      x.beginPath();
 
 
       for(
@@ -3095,164 +1969,120 @@ function draw(id){
         i++
       ){
 
-        const angle=
+        let a =
           i*.052+
           q*1.03+
-          state.t*.4;
+          s.t*.4;
 
-
-        const radius=
+        let r =
           45+
           i*(q+1)*.47;
 
+        let X =
+          cx+
+          Math.cos(a)*r;
 
-        const x=
-          centerX+
-          Math.cos(angle)*
-          radius;
-
-
-        const y=
-          centerY+
-          Math.sin(angle)*
-          radius*.48;
+        let Y =
+          cy+
+          Math.sin(a)*r*.48;
 
 
         if(i){
-
-          ctx.lineTo(
-            x,
-            y
-          );
-
+          x.lineTo(X,Y);
         }else{
-
-          ctx.moveTo(
-            x,
-            y
-          );
-
+          x.moveTo(X,Y);
         }
 
       }
 
 
-      ctx.strokeStyle=
-        colors[q]+'66';
+      x.strokeStyle =
+        co[q]+'66';
 
-      ctx.lineWidth=
-        q===0
-        ? 2
-        : 1.2;
-
-      ctx.stroke();
+      x.stroke();
 
     }
 
 
     for(
       let i=0;
-      i<130;
+      i<110;
       i++
     ){
 
-      const angle=
+      let a =
         rng()*Math.PI*2+
-        state.t*.4;
+        s.t*.4;
 
-
-      const radius=
+      let r =
         75+
-        rng()*
-        Math.min(
+        rng()*Math.min(
           350,
-          width*.38
+          w*.38
         );
 
+      let X =
+        cx+
+        Math.cos(a)*r;
 
-      const x=
-        centerX+
-        Math.cos(angle)*
-        radius;
+      let Y =
+        cy+
+        Math.sin(a)*r*.5;
 
-
-      const y=
-        centerY+
-        Math.sin(angle)*
-        radius*.5;
-
-
-      const color=
-        colors[
-          i%colors.length
-        ];
+      let col =
+        co[i%co.length];
 
 
-      ctx.fillStyle=color;
+      x.fillStyle = col;
 
-      ctx.shadowColor=color;
+      x.shadowColor = col;
 
-      ctx.shadowBlur=9;
+      x.shadowBlur = 9;
 
+      x.beginPath();
 
-      ctx.beginPath();
-
-      ctx.arc(
-        x,
-        y,
-        1.5+
-        rng()*3.2,
+      x.arc(
+        X,
+        Y,
+        1.3+rng()*2.7,
         0,
         Math.PI*2
       );
 
-      ctx.fill();
+      x.fill();
 
-      ctx.shadowBlur=0;
+      x.shadowBlur = 0;
 
     }
 
 
     C(
-      ctx,
-
-      centerX,
-      centerY,
-
-      72,
-
+      x,
+      cx,
+      cy,
+      65,
       '#2e1905',
-
       '#ffd08a',
-
       3
     );
 
 
     T(
-      ctx,
-
+      x,
       'ATTRACTOR',
-
-      centerX,
-      centerY,
-
-      12,
-
-      '#ffffff'
+      cx,
+      cy,
+      11,
+      '#fff'
     );
 
 
     T(
-      ctx,
-
+      x,
       'ALTERNATIVES → FEEDBACK → SELF-ORGANIZATION',
-
-      width/2,
-      38,
-
+      w/2,
+      36,
       11,
-
       '#ffba60'
     );
 
@@ -3266,193 +2096,109 @@ function draw(id){
 
 function update(id){
 
-  const model=
-    M[id];
+  let m = M[id];
 
+  let s = S[id];
 
-  const state=
-    S[id];
-
-
-  const index=
-    typeof state.i==='number'
-    ? state.i
+  let i =
+    typeof s.i === 'number'
+    ? s.i
     : 0;
 
-
-  const phase=
-    typeof state.i==='number'
-    ? model.stages[index]
+  let p =
+    typeof s.i === 'number'
+    ? m.stages[i]
     : 'Dynamic attractor field';
 
 
   document.getElementById(
     'stage-'+id
-  ).textContent=
-
-    typeof state.i==='number'
-
-    ? 'STAGE '+
-      String(index+1).padStart(
-        2,
-        '0'
-      )+
-      ' / '+
-      model.stages.length
-
+  ).textContent =
+    typeof s.i === 'number'
+    ? 'STAGE ' +
+      String(i+1).padStart(2,'0') +
+      ' / ' +
+      m.stages.length
     : 'LIVE FIELD';
 
 
   document.getElementById(
     'phase-'+id
-  ).textContent=
-    phase;
+  ).textContent = p;
 
 
   document.getElementById(
     'desc-'+id
-  ).textContent=
+  ).textContent =
 
-    id==='cd'
-
-    ? 'The model emphasizes '+
-      phase.toLowerCase()+
+    id === 'cd'
+    ? 'The model emphasizes ' +
+      p.toLowerCase() +
       ' and its next directional transition.'
 
-    : id==='da'
-
-    ? 'The model is emphasizing '+
-      phase.toLowerCase()+
+    : id === 'da'
+    ? 'The model is emphasizing ' +
+      p.toLowerCase() +
       ' within the opposition-to-synthesis sequence.'
 
-    : id==='hp'
-
-    ? 'The central object remains stable while the active projection is '+
-      phase.toLowerCase()+
+    : id === 'hp'
+    ? 'The central object remains stable while the active projection is ' +
+      p.toLowerCase() +
       '.'
 
     : 'Alternatives are fluctuating around the attractor as feedback changes the field.';
 
 
-  const metrics=
+  let a =
 
-    id==='cd'
-
+    id === 'cd'
     ? [
-
-        ['STEP',index+1],
-
+        ['STEP',i+1],
         ['CAUSALITY','1.00'],
-
         ['NOISE','.02'],
-
-        ['OUTPUT',phase.toUpperCase()]
-
+        ['OUTPUT',p.toUpperCase()]
       ]
 
-
-    : id==='da'
-
+    : id === 'da'
     ? [
-
-        ['STEP',index+1],
-
+        ['STEP',i+1],
         ['OPPOSITION','.81'],
-
-        [
-          'SYNTHESIS',
-          index>=3
-          ? '.76'
-          : '.31'
-        ],
-
-        [
-          'RULE',
-          index>=4
-          ? 'ACTIVE'
-          : 'FORMING'
-        ]
-
+        ['SYNTHESIS',i>=3?'.76':'.31'],
+        ['RULE',i>=4?'ACTIVE':'FORMING']
       ]
 
-
-    : id==='hp'
-
+    : id === 'hp'
     ? [
-
-        ['VIEW',index+1],
-
+        ['VIEW',i+1],
         ['OBJECT','STABLE'],
-
         ['PROJECTIONS','6'],
-
         ['CRITERION','CHANGING']
-
       ]
-
 
     : [
-
-        [
-          'FIELD',
-          (state.field*100).toFixed(0)+'%'
-        ],
-
-        [
-          'ATTRACTOR',
-          (state.attractor*100).toFixed(0)+'%'
-        ],
-
-        [
-          'FEEDBACK',
-          (state.feedback*100).toFixed(0)+'%'
-        ],
-
-        [
-          'DENSITY',
-          (state.field*100).toFixed(0)+'%'
-        ]
-
+        ['FIELD',(s.field*100).toFixed(0)+'%'],
+        ['ATTRACTOR',(s.attractor*100).toFixed(0)+'%'],
+        ['FEEDBACK',(s.feedback*100).toFixed(0)+'%'],
+        ['DENSITY',(s.field*100).toFixed(0)+'%']
       ];
 
 
   document.getElementById(
     'metrics-'+id
-  ).innerHTML=
-
-    metrics.map(
-      metric=>
-
-        '<div class="metric">'+
-
-          '<b>'+
-            metric[0]+
-          '</b>'+
-
-          '<span>'+
-            metric[1]+
-          '</span>'+
-
-        '</div>'
-
-    ).join('');
+  ).innerHTML = a.map(
+    v =>
+      '<div class="metric">' +
+        '<b>' + v[0] + '</b>' +
+        '<span>' + v[1] + '</span>' +
+      '</div>'
+  ).join('');
 
 
   document.getElementById(
     'prog-'+id
-  ).style.width=
-
-    typeof state.i==='number'
-
-    ? (
-        (
-          (index+1)/
-          model.stages.length
-        )*
-        100
-      )+
-      '%'
-
+  ).style.width =
+    typeof s.i === 'number'
+    ? ((i+1)/m.stages.length*100)+'%'
     : '100%';
 
 }
@@ -3460,22 +2206,15 @@ function update(id){
 
 function render(){
 
-  Object.keys(M)
-    .forEach(draw);
-
+  Object.keys(M).forEach(draw);
 
   document
-    .querySelectorAll(
-      '#overview button'
-    )
-    .forEach(button=>{
-
-      button.classList.toggle(
+    .querySelectorAll('#overview button')
+    .forEach(b=>{
+      b.classList.toggle(
         'active',
-        button.dataset.id===
-        selected
+        b.dataset.id === selected
       );
-
     });
 
 }
@@ -3483,75 +2222,58 @@ function render(){
 
 function step(id){
 
-  if(id==='cd'){
+  if(id === 'cd'){
 
-    S.cd.i=
-      (
-        S.cd.i+1
-      )%
+    S.cd.i =
+      (S.cd.i+1) %
       M.cd.stages.length;
 
   }
 
 
-  if(id==='da'){
+  if(id === 'da'){
 
-    S.da.i=
-      (
-        S.da.i+1
-      )%
+    S.da.i =
+      (S.da.i+1) %
       M.da.stages.length;
 
   }
 
 
-  if(id==='hp'){
+  if(id === 'hp'){
 
-    S.hp.i=
-      (
-        S.hp.i+1
-      )%
+    S.hp.i =
+      (S.hp.i+1) %
       M.hp.stages.length;
 
-
-    S.hp.a+=
-      Math.PI/8;
+    S.hp.a += Math.PI/8;
 
   }
 
 
-  if(id==='vs'){
+  if(id === 'vs'){
 
-    S.vs.t+=.35;
+    S.vs.t += .35;
 
-
-    S.vs.field=
+    S.vs.field =
       .35+
       .25*
       Math.abs(
-        Math.sin(
-          S.vs.t
-        )
+        Math.sin(S.vs.t)
       );
 
-
-    S.vs.attractor=
+    S.vs.attractor =
       .55+
       .4*
       Math.abs(
-        Math.cos(
-          S.vs.t*.7
-        )
+        Math.cos(S.vs.t*.7)
       );
 
-
-    S.vs.feedback=
+    S.vs.feedback =
       .4+
       .45*
       Math.abs(
-        Math.sin(
-          S.vs.t*.9
-        )
+        Math.sin(S.vs.t*.9)
       );
 
   }
@@ -3564,45 +2286,29 @@ function step(id){
 
 function reset(id){
 
-  if(id==='cd'){
-
-    S.cd={
-      i:0
-    };
-
+  if(id === 'cd'){
+    S.cd = {i:0};
   }
 
-
-  if(id==='da'){
-
-    S.da={
-      i:0
-    };
-
+  if(id === 'da'){
+    S.da = {i:0};
   }
 
-
-  if(id==='hp'){
-
-    S.hp={
+  if(id === 'hp'){
+    S.hp = {
       i:0,
       a:0
     };
-
   }
 
-
-  if(id==='vs'){
-
-    S.vs={
+  if(id === 'vs'){
+    S.vs = {
       t:0,
       field:.45,
       attractor:.72,
       feedback:.62
     };
-
   }
-
 
   render();
 
@@ -3611,71 +2317,52 @@ function reset(id){
 
 function focus(id){
 
-  selected=id;
-
+  selected = id;
 
   document
     .querySelectorAll('.sim')
-    .forEach(sim=>{
-
-      sim.classList.toggle(
+    .forEach(s=>{
+      s.classList.toggle(
         'focused',
-        sim.id==='sim-'+id
+        s.id === 'sim-'+id
       );
-
     });
 
 
-  const target=
-    document.getElementById(
-      'sim-'+id
-    );
-
-
-  if(target){
-
-    target.scrollIntoView({
-      behavior:
-        reduced
+  document
+    .getElementById('sim-'+id)
+    .scrollIntoView({
+      behavior:reduced
         ? 'auto'
         : 'smooth',
-
       block:'center'
     });
-
-  }
 
 }
 
 
 async function full(id){
 
-  const element=
+  let e =
     document.getElementById(
       'sim-'+id
     );
 
-
   try{
 
-    if(
-      document.fullscreenElement
-    ){
+    if(document.fullscreenElement){
 
       await document.exitFullscreen();
 
     }else{
 
-      await element.requestFullscreen();
+      await e.requestFullscreen();
 
     }
 
-  }catch(error){
+  }catch(e){
 
-    console.warn(
-      'Fullscreen unavailable:',
-      error
-    );
+    console.warn(e);
 
   }
 
@@ -3684,7 +2371,7 @@ async function full(id){
 
 function snap(){
 
-  const id=
+  let id =
     document.getElementById(
       'model'
     ).value;
@@ -3704,7 +2391,7 @@ function snap(){
     seed:
       +document.getElementById(
         'seed'
-      ).value||1,
+      ).value || 1,
 
     timestamp:
       new Date().toISOString(),
@@ -3724,20 +2411,18 @@ function snap(){
 }
 
 
-function show(data){
+function show(o){
 
-  const output=
+  let e =
     document.getElementById(
       'output'
     );
 
+  e.hidden = false;
 
-  output.hidden=false;
-
-
-  output.textContent=
+  e.textContent =
     JSON.stringify(
-      data,
+      o,
       null,
       2
     );
@@ -3755,9 +2440,7 @@ render();
 window.addEventListener(
   'resize',
   render,
-  {
-    passive:true
-  }
+  {passive:true}
 );
 
 
@@ -3767,18 +2450,14 @@ document.addEventListener(
 
     document
       .querySelectorAll('.sim')
-      .forEach(sim=>{
-
-        sim.classList.remove(
+      .forEach(s=>{
+        s.classList.remove(
           'fullscreen'
         );
-
       });
 
 
-    if(
-      document.fullscreenElement
-    ){
+    if(document.fullscreenElement){
 
       document.fullscreenElement
         .classList.add(
@@ -3799,46 +2478,34 @@ document.addEventListener(
 
 document.getElementById(
   'model'
-).onchange=
-  event=>{
-
-    focus(
-      event.target.value
-    );
-
-  };
+).onchange = e =>
+  focus(e.target.value);
 
 
 document.getElementById(
   'seed'
-).onchange=
-  event=>{
+).onchange = e => {
 
-    rng=
-      seeded(
-        event.target.value
-      );
+  rng =
+    seeded(
+      e.target.value
+    );
 
+  Object.keys(M)
+    .forEach(reset);
 
-    Object.keys(M)
-      .forEach(reset);
-
-  };
+};
 
 
 document.getElementById(
   'baseline'
-).onclick=()=>{
+).onclick = () => {
 
-  base=snap();
-
+  base = snap();
 
   show({
-
     baseline:base,
-
     intervention:intv
-
   });
 
 };
@@ -3846,17 +2513,13 @@ document.getElementById(
 
 document.getElementById(
   'intervention'
-).onclick=()=>{
+).onclick = () => {
 
-  intv=snap();
-
+  intv = snap();
 
   show({
-
     baseline:base,
-
     intervention:intv
-
   });
 
 };
@@ -3864,24 +2527,21 @@ document.getElementById(
 
 document.getElementById(
   'run'
-).onclick=()=>{
+).onclick = () => {
 
-  const id=
+  let id =
     document.getElementById(
       'model'
     ).value;
 
-
-  const steps=
+  let n =
     Math.max(
       1,
-
       Math.min(
         1000,
-
         +document.getElementById(
           'steps'
-        ).value||20
+        ).value || 20
       )
     );
 
@@ -3891,7 +2551,7 @@ document.getElementById(
 
   for(
     let i=0;
-    i<steps;
+    i<n;
     i++
   ){
 
@@ -3904,7 +2564,7 @@ document.getElementById(
 
     run:snap(),
 
-    steps,
+    steps:n,
 
     baseline:base,
 
@@ -3917,12 +2577,12 @@ document.getElementById(
 
 document.getElementById(
   'download'
-).onclick=()=>{
+).onclick = () => {
 
-  const data=
+  let d =
     document.getElementById(
       'output'
-    ).textContent||
+    ).textContent ||
     JSON.stringify(
       snap(),
       null,
@@ -3930,46 +2590,31 @@ document.getElementById(
     );
 
 
-  const url=
+  let u =
     URL.createObjectURL(
       new Blob(
-        [data],
-        {
-          type:'application/json'
-        }
+        [d],
+        {type:'application/json'}
       )
     );
 
 
-  const link=
+  let a =
     document.createElement(
       'a'
     );
 
+  a.href = u;
 
-  link.href=url;
-
-  link.download=
+  a.download =
     'cognitive-dynamics-studio-experiment.json';
 
-
-  document.body.appendChild(
-    link
-  );
-
-
-  link.click();
-
-
-  link.remove();
+  a.click();
 
 
   setTimeout(
-    ()=>{
-      URL.revokeObjectURL(
-        url
-      );
-    },
+    () =>
+      URL.revokeObjectURL(u),
     500
   );
 
@@ -3978,104 +2623,101 @@ document.getElementById(
 
 document.getElementById(
   'textSize'
-).onchange=
-  event=>{
+).onchange = e => {
+
+  document.documentElement
+    .classList.remove(
+      'large',
+      'xl'
+    );
+
+
+  if(
+    e.target.value !==
+    'normal'
+  ){
 
     document.documentElement
-      .classList.remove(
-        'large',
-        'xl'
+      .classList.add(
+        e.target.value
       );
 
-
-    if(
-      event.target.value!=='normal'
-    ){
-
-      document.documentElement
-        .classList.add(
-          event.target.value
-        );
-
-    }
+  }
 
 
-    render();
+  render();
 
-  };
+};
 
 
 document.getElementById(
   'contrast'
-).onchange=
-  event=>{
+).onchange = e => {
 
-    document.body
-      .classList.toggle(
-        'high-contrast',
-        event.target.checked
-      );
+  document.body
+    .classList.toggle(
+      'high-contrast',
+      e.target.checked
+    );
 
-  };
+};
 
 
 document.getElementById(
   'motion'
-).onchange=
-  event=>{
+).onchange = e => {
 
-    reduced=
-      event.target.checked;
-
-
-    Object.keys(P)
-      .forEach(id=>{
-
-        if(reduced){
-
-          P[id]=true;
+  reduced =
+    e.target.checked;
 
 
-          const button=
-            document.querySelector(
-              '.play[data-id="'+
-              id+
-              '"]'
-            );
+  Object.keys(P)
+    .forEach(id=>{
+
+      if(reduced){
+
+        P[id] = true;
+
+        let b =
+          document.querySelector(
+            '.play[data-id="' +
+            id +
+            '"]'
+          );
 
 
-          if(button){
+        if(b){
 
-            button.textContent=
-              '▶ Resume';
-
-          }
+          b.textContent =
+            '▶ Resume';
 
         }
 
-      });
+      }
 
-  };
+    });
+
+};
 
 
 function loop(now){
 
-  const delta=
+  let dt =
     Math.min(
       .05,
       (now-last)/1000
     );
 
 
-  last=now;
+  last = now;
 
 
   if(!reduced){
 
     if(!P.hp){
 
-      S.hp.a+=
-        delta*
+      S.hp.a +=
+        dt*
         .18*
         speed.hp;
 
@@ -4084,12 +2726,12 @@ function loop(now){
 
     if(!P.vs){
 
-      S.vs.t+=
-        delta*
+      S.vs.t +=
+        dt*
         speed.vs;
 
 
-      S.vs.field=
+      S.vs.field =
         .35+
         .25*
         Math.abs(
@@ -4099,7 +2741,7 @@ function loop(now){
         );
 
 
-      S.vs.attractor=
+      S.vs.attractor =
         .55+
         .4*
         Math.abs(
@@ -4109,7 +2751,7 @@ function loop(now){
         );
 
 
-      S.vs.feedback=
+      S.vs.feedback =
         .4+
         .45*
         Math.abs(
@@ -4122,24 +2764,19 @@ function loop(now){
 
 
     for(
-      const id of [
-        'cd',
-        'da'
-      ]
+      let id of ['cd','da']
     ){
 
       if(!P[id]){
 
-        acc[id]+=
-          delta*
+        acc[id] +=
+          dt*
           speed[id];
 
 
-        if(
-          acc[id]>=.9
-        ){
+        if(acc[id]>=.9){
 
-          acc[id]-=.9;
+          acc[id] -= .9;
 
           step(id);
 
@@ -4153,7 +2790,6 @@ function loop(now){
 
 
   render();
-
 
   requestAnimationFrame(
     loop
